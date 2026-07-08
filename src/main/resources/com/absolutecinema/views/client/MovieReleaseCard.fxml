@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="140.0" minWidth="280.0" prefHeight="140.0" prefWidth="280.0" styleClass="upcoming-card" stylesheets="@../../styles/movie-release-card.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MovieCardController">
+   <children>
+      <Region fx:id="featuredImage" prefHeight="138.0" prefWidth="278.0" StackPane.alignment="BOTTOM_CENTER" />
+      <Region fx:id="featuredImage1" styleClass="upcoming-overlay" />
+      <AnchorPane>
+         <children>
+            <HBox fillHeight="false" spacing="18.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="upcoming-date-box">
+                     <children>
+                        <Label fx:id="lblDay" alignment="CENTER" styleClass="upcoming-date-day" text="DAY" textAlignment="CENTER" />
+                        <Label fx:id="lblMonth" alignment="CENTER" styleClass="upcoming-date-month" text="MONTH" textAlignment="CENTER" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <Label fx:id="lblTitulo" alignment="CENTER" styleClass="upcoming-title" text="TítuloPelícula" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblGenero" alignment="CENTER" styleClass="upcoming-genre" text="GéneroPelícula" wrapText="true" VBox.vgrow="ALWAYS" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="6.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </AnchorPane>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</StackPane>

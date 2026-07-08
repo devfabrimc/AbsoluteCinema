@@ -1,0 +1,79 @@
+1;Interestelar;Aventura,Ciencia Ficción,Drama;169;8.7;Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.;portadas/interestelar.png
+
+2;Sueño de fuga;Drama;142;9.3;El banquero Andy Dufresne es arrestado por matar a su esposa y amante. Tras una dura adaptación, intenta mejorar las condiciones de la prisión y dar esperanza a sus compañeros.;portadas/Sueñodefuga.png
+
+3;Batman: El caballero de la noche;Acción,Drama,Crimen,Suspenso;152;9.1;Cuando el Joker emerge causando caos y violencia en Gotham, el caballero de la noches deberá aceptar una de las pruebas psicológicas y físicas más difíciles para poder luchar con las injusticias del enemigo.;portadas/batmanCaballeroNoche.png
+
+4;El padrino;Tragedia,Crimen,Drama;175;9.2;El patriarca de una organización criminal transfiere el control de su clandestino imperio a su reacio hijo.;portadas/Elpadrino.png
+
+5;Scary Movie;Comedia,Terror;156;5.3;Dos amigas se ven envueltas otra vez en el caos con asesinos, monstruos y criaturas sobrenaturales.;portadas/ScaryMovie.png
+
+6;Gladiador;Acción,Drama,Aventura;155;8.5;Un ex general romano se propone vengarse del corrupto emperador que asesinó a su familia y lo envió a la esclavitud.;portadas/Gladiador.png
+
+7;El señor de los anillos: La comunidad del anillo;Aventura,Drama,Fantasía;178;8.9;Un Hobbit y ocho compañeros emprendieron un viaje para destruir el poderoso Anillo Único y salvar a la Tierra del Señor Oscuro Sauron.;portadas/senorAnillosComunidad.png
+
+8;Obsesión;Horror,Romance,Terror,Suspenso;168;8.1;El anhelo romántico desesperado de un hombre por su amor platónico desencadena un hechizo siniestro en el perturbador debut de Curry Barker.;portadas/Obsesión.png
+
+9;Guasón;Tragedia,Drama;122;8.3;En Ciudad Gótica, Arthur Fleck, un comediante con problemas mentales, es marginado y maltratado por la sociedad. Esto lo lleva a descender a un espiral de revuelta y crimen donde conoce a su alter-ego, el Joker.;portadas/Guasón.png
+
+10;Rocky;Drama,Deporte;120;8.1;Un boxeador novato tiene una oportunidad extraordinariamente rara de pelear contra un campeón de peso pesado en una pelea en la que se esforzará por ganar respeto.;portadas/Rocky.png
+
+11;John Wick 4;Acción,Crimen,Suspenso;169;7.6;John Wick descubre un camino para derrotar a La Mesa, pero, antes de que pueda ganarse su libertad, Wick debe enfrentar a un nuevo enemigo con poderosas alianzas en todo el mundo y fuerzas que convierten a viejos amigos en enemigos.;portadas/JohnWick4.png
+
+12;Avatar: Fuego y Cenizas;Acción,Aventura,Ciencia Ficción,Drama,Fantasía;197;7.2;La familia de Jake y Neytiri se enfrenta a una tribu Na'vi hostil, el Pueblo de las Cenizas, liderados por el implacable Varang, mientras los conflictos en Pandora se intensifican y surgen nuevos dilemas morales.;portadas/avatarFuegoCeniza.png
+
+13;Toy Story;Animación,Aventura,Comedia;141;8.3;Un vaquero se siente profundamente amenazado y celoso cuando un nuevo astronauta lo reemplaza como el mejor juguete en la habitación de un niño.;portadas/toystory.png
+
+14;Titanic;Tragedia,Drama,Romance;194;8.0;Una joven de la aristocracia se enamora de un chico pobre pero de buen corazón a bordo del lujoso Titanic.;portadas/Titanic.png
+
+15;Matrix;Acción,Ciencia Ficción;136;8.7;Un hacker se da cuenta por medio de otros rebeldes de la naturaleza de su realidad y su role en la guerra contra los controladores.;portadas/Matrix.png
+
+16;Alien, el octavo pasajero;Ciencia Ficción,Terror;117;8.4;Cuando un barco mercante espacial percibe una transmisión desconocida como una llamada de socorro, un miembro de la tripulación es atacado por una misteriosa forma de vida. Pronto se dan cuenta de que su ciclo vital acaba de comenzar.;portadas/alien.png
+
+17;El club de la pelea;Comedia,Drama,Crimen,Suspenso;139;8.8;Un hombre deprimido conoce a un fabricante de jabones, y juntos forman un club de pelea clandestino que evoluciona en algo inesperado.;portadas/clubLucha.png
+
+18;El exorcista;Tragedia,Terror;122;8.1;Cuando una adolescente es poseída por una entidad misteriosa, su madre busca la ayuda de dos sacerdotes para salvar a su hija.;portadas/exorcista.png
+
+19;300;Acción,Drama;117;7.6;El rey Leónidas de Esparta y una fuerza de 300 hombres luchan contra el ejército Persa en las Termópilas en 480AC.;portadas/300.png
+
+20;Michael;Biografía,Drama,Historia;127;7.5;Los primeros años de vida del músico Michael Jackson, desde el descubrimiento de su talento como protagonista de los Jackson Five hasta el artista cuya ambición creativa alimentó una búsqueda por convertirse en el mayor artista del mundo.;portadas/michael.png
+
+21;Spider-Man: Un nuevo universo;Acción,Animación,Aventura;117;8.4;El adolescente Miles Morales es el Spider-Man de su propia realidad y se encontrará con otros como él de otras dimensiones para combatir una amenaza que acecha a todas las realidades.;portadas/spidermanIntoSpiderverse.png
+
+22;Spider-Man: A Través Del Spider-Verso;Acción,Animación,Aventura;140;8.5;Miles Morales regresa para el próximo capítulo de la saga ganadora de un Oscar, una aventura épica que transportará a Brooklyn a tiempo completo.;portadas/spidermanAcrossSpiderverse.png
+
+23;Toy story 3;Animación,Aventura,Comedia,Fantasía;103;8.3;Los juguetes terminan por error en una guardería en lugar del ático de Andy, justo antes que este se vaya a la universidad. Ahora dependerá de Woody convencer a los otros juguetes de que no fueron abandonados y regresar a casa.;portadas/Toy Strory 3.png
+
+24;Toy Story 5;Animación,Comedia,Drama,Fantasía;102;7.6;Los juguetes están de vuelta. Esta vez, Buzz Lightyear, Woody, Jessie y el resto de la pandilla se enfrentan a un nuevo reto cuando conocen a Lilypad, una nueva tablet que llega con sus propias ideas disruptivas sobre lo que es mejor para Bonnie. ¿Volverá a ser lo mismo la hora de jugar?;portadas/Toy Story 5.png
+
+25;Superman;Acción,Aventura,Ciencia Ficción;129;7.0;Un superhéroe, se reconcilia con su herencia y su educación humana. Es la encarnación de la verdad, la justicia y un mañana mejor en un mundo que ve la bondad como algo anticuado.;portadas/Superman.png
+
+26;Super Mario Galaxy: La película;Animación,Aventura,Comedia;98;6.3;Luego de vencer a Bowser y salvar Brooklyn, Mario y amigos enfrentan una nueva amenaza: Wario, con Bowser Jr., conspira para dominar el mundo. Deben aliarse con Yoshi para detener a este dúo malvado.;portadas/Super Mario Galaxy.png
+
+27;Supergirl;Acción,Aventura,Ciencia Ficción,Drama;107;6.1;Kara Zor-El y su origen más oscuro antes de llegar a la Tierra.;portadas/Supergirl.png
+
+28;Spider-Man;Acción,Aventura,Ciencia Ficción;121;7.4;Cuando es mordido por una araña modificada genéticamente, un estudiante tímido de secundaria adquiere habilidades de araña que eventualmente debe usar para luchar contra el mal como un superhéroe, después de que la tragedia tocara a su familia.;portadas/Spiderman.png
+
+29;Spider-Man 2;Acción,Aventura,Ciencia Ficción;127;7.5;Peter Parker está plagado de problemas en su fallida vida personal mientras lucha contra un científico brillante llamado Doctor Otto Octavius.;portadas/Spiderman 2.png
+
+30;The Amazing Spider-Man;Acción,Ciencia Ficción;136;6.9;Después de que Peter Parker es mordido por una araña alterada genéticamente, como resultado obtiene nuevos poderes de araña y se aventura a resolver la misteriosa muerte de su padre.;portadas/The Amazing Spider-Man.png
+
+31;The Amazing Spider-Man 2;Acción,Aventura,Ciencia Ficción;142;6.6;Cuando Oscorp pone a Nueva York bajo el asedio, le corresponde a Spider-Man salvar la ciudad que juró proteger, así como a sus seres queridos.;portadas/The Amazing Spider-Man 2.png
+
+32;Zack Snyder's Justice League;Aventura,Ciencia Ficción,Fantasía;242;7.9;Bruce Wayne, decidido a asegurar que el último sacrificio de Superman no sea en vano, une sus fuerzas con Diana Prince para reclutar un equipo de metahumanos para proteger al mundo de una inminente amenaza.;portadas/Zack Snyder's Justice League.png
+
+33;Wonder Woman 1984;Acción,Aventura,Fantasía;150;5.3;En 1984, en plena Guerra Fría, Diana Prince, conocida como Wonder Woman, se enfrenta al empresario Maxwell Lord y a su antigua amiga Barbara Minerva / Cheetah, una villana que posee fuerza y agilidad sobrehumanas.;portadas/Wonder Woman 1984.png
+
+34;Rápidos y furiosos 8;Acción,Crimen,Suspenso;136;6.6;Cuando todo el equipo está instalado en una vida aparentemente normal y libre de todo cargo, una misteriosa mujer seduce a Dom para regresar al mundo del crimen traicionando así a su familia, quien a partir de ese momento enfrentarán a pruebas como nunca antes habían tenido.;portadas/Rapidos y Furiosos 8.png
+
+35;Spider-Man: Sin Camino A Casa;Acción,Aventura,Ciencia Ficción;148;8.1;Con la identidad de Spider-Man revelada, Peter le pide ayuda al Doctor Strange. Cuando un hechizo sale mal, comienzan a aparecer enemigos de otros mundos, lo que obliga a Peter a descubrir lo que realmente significa ser Spider-Man.;portadas/SpidermanNoWayHome.png
+
+36;Spider-Man: De regreso a casa;Acción,Aventura,Ciencia Ficción;133;7.4;Peter Parker equilibra su vida como estudiante de secundaria en Queens y como el súper héroe Spider Man, esta vez se encuentra a si mismo contra una nueva amenaza asechando Nueva York.;portadas/SpidermanHomecoming.png
+
+
+
+
+
+
+
+

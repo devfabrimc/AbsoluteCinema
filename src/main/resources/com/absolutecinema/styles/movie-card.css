@@ -1,0 +1,40 @@
+.movie-card {
+    -fx-background-color: #121821;
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+}
+
+.movie-card:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-border-color: rgba(214,168,90,0.35);
+}
+
+.movie-overlay {
+    -fx-background-color: linear-gradient(to top,
+    rgba(11, 16, 23, 1.0) 30%,
+    rgba(11, 16, 23, 0.75) 40%,
+    rgba(11, 16, 23, 0.2) 80%,
+    transparent 100%);
+    -fx-background-radius: 16;
+}
+
+.movie-title {
+    -fx-text-fill: #F5F1E8;
+    -fx-font-size: 14px;
+    -fx-font-weight: 800;
+}
+
+.movie-genre {
+    -fx-text-fill: #AAB4C2;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+}
+
+.movie-rating {
+    -fx-effect: innershadow(gaussian, #E6B35C, 30, 0.5, 0, 0);
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}

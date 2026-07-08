@@ -1,0 +1,56 @@
+.modal-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    -fx-background-color: #131518;
+    -fx-border-color: #2a2c30;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 30;
+    -fx-spacing: 15;
+}
+
+.modal-title {
+    -fx-text-fill: #F8F5EF;
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-padding: 0 16 0 16;
+}
+
+.modal-subtitle {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 14px;
+}
+
+.close-btn {
+    -fx-background-color: transparent;
+    -fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);
+}
+
+.login-input {
+    -fx-background-color: #1a1c20;
+    -fx-text-fill: white;
+    -fx-border-color: #3a3d44;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 10 10 40;
+}
+
+.login-input:focused {
+    -fx-border-color: #D6A85A;
+}
+
+.login-error {
+    -fx-text-fill: #ea4444;
+    -fx-font-size: 16px;
+}
+
+.modal-text-link {
+    -fx-text-fill: #E6B35C;
+}
+
+.modal-text-link:hover {
+    -fx-underline: true;
+}

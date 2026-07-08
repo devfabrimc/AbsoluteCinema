@@ -1,0 +1,156 @@
+@startuml
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+enum MovieStatus {
+    NOW_SHOWING
+    COMING_SOON
+}
+
+enum Genre {
+    ACCIÓN,
+    ANIMACIÓN,
+    AVENTURA,
+    BIOGRAFÍA,
+    CIENCIA_FICCIÓN,
+    COMEDIA,
+    CRIMEN,
+    DRAMA,
+    FANTASIA,
+    HISTORIA,
+    HORROR,
+    ROMANCE,
+    SUSPENSO,
+    TERROR
+}
+
+class User {
+    - id : String
+    - fullName : String
+    - email : String
+    - username : String
+    - passwordHash : String
+    - role : Role
+}
+
+class Movie {
+    - id : String
+    - title : String
+    - synopsis : String
+    - genre : Genre
+    - durationMinutes : int
+    - rating : String
+    - score : double
+    - imagePath : String
+    - bannerPath : String
+    - status : MovieStatus
+}
+
+class Room {
+    - id : String
+    - name : String
+    - rows : int
+    - columns : int
+}
+
+class Seat {
+    - row : int
+    - column : int
+    - label : String
+}
+
+class Showtime {
+    - id : String
+    - movieId : String
+    - roomId : String
+    - date : String
+    - time : String
+    - price : double
+    - occupiedSeats : List<String>
+}
+
+class Ticket {
+    - id : String
+    - purchaseId : String
+    - showtimeId : String
+    - movieTitle : String
+    - roomName : String
+    - seatLabel : String
+    - price : double
+}
+
+class Purchase {
+    - id : String
+    - userId : String
+    - ticketIds : List<String>
+    - total : double
+    - purchaseDate : String
+}
+
+interface Repository<T> {
+    + findAll() : List<T>
+    + findById(id : String) : T
+    + save(object : T) : void
+    + update(object : T) : void
+    + delete(id : String) : void
+}
+
+class MovieRepository
+class UserRepository
+class RoomRepository
+class ShowtimeRepository
+class TicketRepository
+class PurchaseRepository
+
+class AuthService {
+    + login(username : String, password : String) : User
+    + register(user : User) : boolean
+}
+
+class MovieService {
+    + getNowShowing() : List<Movie>
+    + getComingSoon() : List<Movie>
+    + searchByTitle(text : String) : List<Movie>
+}
+
+class ShowtimeService {
+    + getShowtimesByMovie(movieId : String) : List<Showtime>
+    + getShowtimeById(id : String) : Showtime
+}
+
+class SeatService {
+    + getOccupiedSeats(showtimeId : String) : List<String>
+    + isSeatAvailable(showtimeId : String, seatLabel : String) : boolean
+}
+
+class PurchaseService {
+    + purchase(userId : String, showtimeId : String, seats : List<String>) : Purchase
+}
+
+Repository <|.. MovieRepository
+Repository <|.. UserRepository
+Repository <|.. RoomRepository
+Repository <|.. ShowtimeRepository
+Repository <|.. TicketRepository
+Repository <|.. PurchaseRepository
+
+MovieService --> MovieRepository
+AuthService --> UserRepository
+ShowtimeService --> ShowtimeRepository
+ShowtimeService --> MovieRepository
+SeatService --> ShowtimeRepository
+PurchaseService --> PurchaseRepository
+PurchaseService --> TicketRepository
+PurchaseService --> ShowtimeRepository
+PurchaseService --> UserRepository
+
+User "1" --> "0..*" Purchase
+Purchase "1" --> "1..*" Ticket
+Ticket --> Showtime
+Showtime --> Movie
+Showtime --> Room
+Room "1" --> "0..*" Seat
+@enduml

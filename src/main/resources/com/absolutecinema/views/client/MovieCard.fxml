@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane minHeight="260.0" minWidth="180.0" prefHeight="260.0" prefWidth="180.0" styleClass="movie-card" stylesheets="@../../styles/movie-card.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MovieCardController">
+   <children>
+      <Region fx:id="featuredImage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="movie-poster">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </Region>
+      <Region fx:id="featuredImage1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="movie-overlay" />
+      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+         <children>
+            <Label fx:id="lblTitulo" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="movie-title" text="TítuloPelícula" wrapText="true" VBox.vgrow="ALWAYS" />
+            <Label fx:id="lblGenero" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="movie-genre" text="GéneroPelícula" wrapText="true" />
+            <HBox fx:id="hbxFeaturedMovieStars" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="2.0" styleClass="movie-rating">
+               <children>
+                  <Label fx:id="lblRatingNumerico" text="RatingPelícula">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="10.0" right="10.0" />
+         </padding>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </VBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</StackPane>
