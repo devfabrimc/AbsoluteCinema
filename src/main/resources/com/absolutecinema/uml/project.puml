@@ -412,5 +412,4 @@ Showtime --> Movie
 Showtime --> Room
 Room "1" --> "0..*" Seat
 
-
 @enduml
