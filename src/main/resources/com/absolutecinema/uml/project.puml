@@ -175,77 +175,96 @@ Repository <|.. PurchaseRepository
 '==================================================
 
 class AuthService{
-    +login(username,password)
-    +register(...)
-    +logout()
-    +usernameExists(username)
-    +emailExists(email)
+    - userRepository : UserRepository
+
+    + login(username : String, password : String) : User
+    + register(fullName : String, email : String, username : String, password : String) : boolean
+    + logout() : void
+    + usernameExists(username : String) : boolean
+    + emailExists(email : String) : boolean
 }
 
 class MovieService{
-    +getNowShowing()
-    +getComingSoon()
-    +searchByTitle(text)
-    +filterByGenre(genre)
-    +getMovieById(id)
-    +getAllMovies()
+    - movieRepository : MovieRepository
+
+    + getNowShowing() : List<Movie>
+    + getComingSoon() : List<Movie>
+    + searchByTitle(title : String) : List<Movie>
+    + filterByGenre(genre : Genre) : List<Movie>
+    + getMovieById(id : String) : Movie
+    + getAllMovies() : List<Movie>
 }
 
 class ShowtimeService{
-    +getShowtimesByMovie(movieId)
-    +getShowtimeById(id)
-    +getShowtimesByDate(date)
+    - showtimeRepository : ShowtimeRepository
+    - movieRepository : MovieRepository
+    - roomRepository : RoomRepository
+
+    + getShowtimesByMovie(movieId : String) : List<Showtime>
+    + getShowtimeById(id : String) : Showtime
+    + getShowtimesByDate(date : String) : List<Showtime>
 }
 
 class SeatService{
-    +getSeatsForShowtime(showtimeId)
-    +getReservedSeats(showtimeId)
-    +isSeatAvailable(showtimeId,seat)
+    - showtimeRepository : ShowtimeRepository
+    - roomRepository : RoomRepository
+
+    + getSeatsForShowtime(showtimeId : String) : List<Seat>
+    + getReservedSeats(showtimeId : String) : List<String>
+    + isSeatAvailable(showtimeId : String, seatLabel : String) : boolean
 }
 
 class PurchaseService{
-    +purchase(userId,showtimeId,seats)
-    +getPurchasesByUser(userId)
-    +getTicketsByPurchase(purchaseId)
+    - purchaseRepository : PurchaseRepository
+    - ticketRepository : TicketRepository
+    - showtimeRepository : ShowtimeRepository
+
+    + purchase(userId : String, showtimeId : String, seats : List<String>) : Purchase
+    + getPurchasesByUser(userId : String) : List<Purchase>
+    + getTicketsByPurchase(purchaseId : String) : List<Ticket>
 }
 
 class AdminService{
-    +addMovie(movie)
-    +updateMovie(movie)
-    +deleteMovie(movieId)
+    - movieRepository : MovieRepository
+    - showtimeRepository : ShowtimeRepository
+    - roomRepository : RoomRepository
 
-    +addShowtime(showtime)
-    +updateShowtime(showtime)
-    +deleteShowtime(showtimeId)
+    + addMovie(movie : Movie) : void
+    + updateMovie(movie : Movie) : void
+    + deleteMovie(movieId : String) : void
 
-    +addRoom(room)
-    +updateRoom(room)
-    +deleteRoom(roomId)
+    + addShowtime(showtime : Showtime) : void
+    + updateShowtime(showtime : Showtime) : void
+    + deleteShowtime(showtimeId : String) : void
 
-    +getAllMovies()
-    +getAllShowtimes()
-    +getAllRooms()
+    + addRoom(room : Room) : void
+    + updateRoom(room : Room) : void
+    + deleteRoom(roomId : String) : void
+
+    + getAllMovies() : List<Movie>
+    + getAllShowtimes() : List<Showtime>
+    + getAllRooms() : List<Room>
 }
 
 class SessionManager{
-    -currentUser : User
+    - currentUser : User
 
-    +login(user)
-    +logout()
-    +getCurrentUser()
-    +isLoggedIn()
-    +isAdmin()
+    + login(user : User) : void
+    + logout() : void
+    + getCurrentUser() : User
+    + isLoggedIn() : boolean
+    + isAdmin() : boolean
 }
 
 class PasswordUtils{
-    +hashPassword(password)
-    +verifyPassword(password,hash)
+    + hashPassword(password : String) : String
+    + verifyPassword(password : String, hash : String) : boolean
 }
 
 class TxtFileManager{
-    +readLines(path)
-    +writeLines(path,lines)
-    +appendLine(path,line)
+    + readLines(path : String) : List<String>
+    + writeLines(path : String, lines : List<String>) : void
+    + appendLine(path : String, line : String) : void
 }
 
 '==================================================
@@ -255,10 +274,42 @@ class TxtFileManager{
 class MenuController
 class LoginOverlayController
 class RegisterOverlayController
-class MovieDetailsController
-class SeatSelectionController
-class PurchaseController
-class ProfileController
+
+class MovieDetailsController{
+    - movieService : MovieService
+    - showtimeService : ShowtimeService
+
+    + initialize() : void
+    + loadMovie(movieId : String) : void
+    + loadShowtimes(movieId : String) : void
+    + goBack() : void
+}
+
+class SeatSelectionController{
+    - seatService : SeatService
+    - purchaseService : PurchaseService
+
+    + initialize() : void
+    + loadSeats(showtimeId : String) : void
+    + confirmSelection() : void
+}
+
+class PurchaseController{
+    - purchaseService : PurchaseService
+
+    + initialize() : void
+    + confirmPurchase() : void
+    + cancelPurchase() : void
+}
+
+class ProfileController{
+    - purchaseService : PurchaseService
+
+    + initialize() : void
+    + loadPurchases() : void
+    + viewTicket(ticketId : String) : void
+}
+
 class AdminDashboardController
 
 '==================================================
