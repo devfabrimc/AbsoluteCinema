@@ -15,26 +15,19 @@ import java.util.List;
 
 public class MovieCardController {
 
-    @FXML
-    private HBox hbxFeaturedMovieStars;
+    @FXML private HBox hbxFeaturedMovieStars;
 
-    @FXML
-    private Region featuredImage;
+    @FXML private Region featuredImage;
 
-    @FXML
-    private Label lblRatingNumerico;
+    @FXML private Label lblRatingNumerico;
 
-    @FXML
-    private Label lblTitulo;
+    @FXML private Label lblTitulo;
 
-    @FXML
-    private Label lblDay;
+    @FXML private Label lblDay;
 
-    @FXML
-    private Label lblGenero;
+    @FXML private Label lblGenero;
 
-    @FXML
-    private Label lblMonth;
+    @FXML private Label lblMonth;
 
     public void setDatos(Movie pelicula) {
         cargarTitulo(pelicula);

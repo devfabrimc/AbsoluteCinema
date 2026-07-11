@@ -9,26 +9,19 @@ import javafx.scene.layout.AnchorPane;
 
 public class LoginOverlayController {
 
-    @FXML
-    private AnchorPane rootPane;
+    @FXML private AnchorPane rootPane;
 
-    @FXML
-    private Button btnCloseLogin;
+    @FXML private Button btnCloseLogin;
 
-    @FXML
-    private Button btnLoginVerify;
+    @FXML private Button btnLoginVerify;
 
-    @FXML
-    private Label lblLoginMessage;
+    @FXML private Label lblLoginMessage;
 
-    @FXML
-    private TextField txtEmail;
+    @FXML private TextField txtEmail;
 
-    @FXML
-    private PasswordField txtPassword;
+    @FXML private PasswordField txtPassword;
 
-    @FXML
-    private Label lblOpenRegisterOverlay;
+    @FXML private Label lblOpenRegisterOverlay;
 
     private final AuthService authService = new AuthService();
     private MenuController parentController;
@@ -37,8 +30,7 @@ public class LoginOverlayController {
         this.parentController = parentController;
     }
 
-    @FXML
-    public void initialize() {
+    @FXML public void initialize() {
         lblLoginMessage.setManaged(false);
         btnCloseLogin.setOnAction(event -> closeModal());
 
