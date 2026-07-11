@@ -55,18 +55,6 @@ class User {
   - username : String
   - passwordHash : String
   - role : Role
-  + User(id, fullName, email, username, passwordHash, role)
-  + getId() : String
-  + getFullName() : String
-  + getEmail() : String
-  + getUsername() : String
-  + getPasswordHash() : String
-  + getRole() : Role
-  + setFullName(fullName : String) : void
-  + setEmail(email : String) : void
-  + setUsername(username : String) : void
-  + setPasswordHash(passwordHash : String) : void
-  + setRole(role : Role) : void
 }
 
 class Movie {
@@ -80,26 +68,6 @@ class Movie {
   - imagePath : String
   - bannerPath : String
   - status : MovieStatus
-  + Movie(id, title, synopsis, genre, durationMinutes, rating, score, imagePath, bannerPath, status)
-  + getId() : String
-  + getTitle() : String
-  + getSynopsis() : String
-  + getGenre() : Genre
-  + getDurationMinutes() : int
-  + getRating() : String
-  + getScore() : double
-  + getImagePath() : String
-  + getBannerPath() : String
-  + getStatus() : MovieStatus
-  + setTitle(title : String) : void
-  + setSynopsis(synopsis : String) : void
-  + setGenre(genre : Genre) : void
-  + setDurationMinutes(durationMinutes : int) : void
-  + setRating(rating : String) : void
-  + setScore(score : double) : void
-  + setImagePath(imagePath : String) : void
-  + setBannerPath(bannerPath : String) : void
-  + setStatus(status : MovieStatus) : void
 }
 
 class Room {
@@ -107,25 +75,12 @@ class Room {
   - name : String
   - rows : int
   - columns : int
-  + Room(id, name, rows, columns)
-  + getId() : String
-  + getName() : String
-  + getRows() : int
-  + getColumns() : int
-  + setName(name : String) : void
-  + setRows(rows : int) : void
-  + setColumns(columns : int) : void
-  + getCapacity() : int
 }
 
 class Seat {
   - row : int
   - column : int
   - label : String
-  + Seat(row, column, label)
-  + getRow() : int
-  + getColumn() : int
-  + getLabel() : String
 }
 
 class Showtime {
@@ -138,19 +93,6 @@ class Showtime {
   - format : Format
   - price : double
   - occupiedSeats : List<String>
-  + Showtime(id, movieId, roomId, date, time, language, format, price, occupiedSeats)
-  + getId() : String
-  + getMovieId() : String
-  + getRoomId() : String
-  + getDate() : String
-  + getTime() : String
-  + getLanguage() : Language
-  + getFormat() : Format
-  + getPrice() : double
-  + getOccupiedSeats() : List<String>
-  + addOccupiedSeat(seatLabel : String) : void
-  + removeOccupiedSeat(seatLabel : String) : void
-  + isSeatOccupied(seatLabel : String) : boolean
 }
 
 class Ticket {
@@ -161,14 +103,6 @@ class Ticket {
   - roomName : String
   - seatLabel : String
   - price : double
-  + Ticket(id, purchaseId, showtimeId, movieTitle, roomName, seatLabel, price)
-  + getId() : String
-  + getPurchaseId() : String
-  + getShowtimeId() : String
-  + getMovieTitle() : String
-  + getRoomName() : String
-  + getSeatLabel() : String
-  + getPrice() : double
 }
 
 class Purchase {
@@ -177,12 +111,6 @@ class Purchase {
   - ticketIds : List<String>
   - total : double
   - purchaseDate : String
-  + Purchase(id, userId, ticketIds, total, purchaseDate)
-  + getId() : String
-  + getUserId() : String
-  + getTicketIds() : List<String>
-  + getTotal() : double
-  + getPurchaseDate() : String
 }
 
 ' =========================
