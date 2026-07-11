@@ -1,6 +1,6 @@
-1;Interestelar;Aventura,Ciencia Ficción,Drama;169;8.7;Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.;portadas/interestelar.png
+MOV001;Interestelar;Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.;AVENTURA,CIENCIA_FICCION,DRAMA;169;PG-13;8.7;portadas/images/interestelar.png;portadas/images/interestelar
 
-2;Sueño de fuga;Drama;142;9.3;El banquero Andy Dufresne es arrestado por matar a su esposa y amante. Tras una dura adaptación, intenta mejorar las condiciones de la prisión y dar esperanza a sus compañeros.;portadas/Sueñodefuga.png
+MV002;Sueño de fuga;Drama;142;9.3;El banquero Andy Dufresne es arrestado por matar a su esposa y amante. Tras una dura adaptación, intenta mejorar las condiciones de la prisión y dar esperanza a sus compañeros.;portadas/Sueñodefuga.png
 
 3;Batman: El caballero de la noche;Acción,Drama,Crimen,Suspenso;152;9.1;Cuando el Joker emerge causando caos y violencia en Gotham, el caballero de la noches deberá aceptar una de las pruebas psicológicas y físicas más difíciles para poder luchar con las injusticias del enemigo.;portadas/batmanCaballeroNoche.png
 
