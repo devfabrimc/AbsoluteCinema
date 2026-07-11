@@ -1,7 +1,6 @@
 package com.absolutecinema.controller.client;
 
-import com.absolutecinema.model.MovieBase;
-import com.absolutecinema.model.MovieRelease;
+import com.absolutecinema.model.Movie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

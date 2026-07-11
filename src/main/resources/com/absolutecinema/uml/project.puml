@@ -1,183 +1,166 @@
 @startuml
 
-title AbsoluteCinema - UML final del proyecto
+title AbsoluteCinema - UML Final
 
-' =========================
+'==================================================
 ' ENUMS
-' =========================
+'==================================================
+
 enum Role {
-  ADMIN
-  CUSTOMER
+    ADMIN
+    CUSTOMER
 }
 
 enum MovieStatus {
-  NOW_SHOWING
-  COMING_SOON
+    NOW_SHOWING
+    COMING_SOON
 }
 
 enum Genre {
-  ACCION
-  ANIMACION
-  AVENTURA
-  BIOGRAFIA
-  CIENCIA_FICCION
-  COMEDIA
-  CRIMEN
-  DRAMA
-  FANTASIA
-  HISTORIA
-  HORROR
-  ROMANCE
-  SUSPENSO
-  TERROR
+    ACCION
+    ANIMACION
+    AVENTURA
+    BIOGRAFIA
+    CIENCIA_FICCION
+    COMEDIA
+    CRIMEN
+    DRAMA
+    FANTASIA
+    HISTORIA
+    HORROR
+    ROMANCE
+    SUSPENSO
+    TERROR
 }
 
 enum Language {
-  SUB
-  LAT
-  ESP
-  ENG
+    SUB
+    LAT
+    ESP
+    ENG
 }
 
 enum Format {
-  TWO_D
-  THREE_D
-  IMAX
+    TWO_D
+    THREE_D
+    IMAX
 }
 
-' =========================
-' MODEL
-' =========================
-class User {
-  - id : String
-  - fullName : String
-  - email : String
-  - username : String
-  - passwordHash : String
-  - role : Role
+'==================================================
+' MODELS
+'==================================================
+
+class User{
+    -id : String
+    -fullName : String
+    -email : String
+    -username : String
+    -passwordHash : String
+    -role : Role
+
+    +isAdmin() : boolean
 }
 
-class Movie {
-  - id : String
-  - title : String
-  - synopsis : String
-  - genre : Genre
-  - durationMinutes : int
-  - rating : String
-  - score : double
-  - imagePath : String
-  - bannerPath : String
-  - status : MovieStatus
+class Movie{
+    -id : String
+    -title : String
+    -synopsis : String
+    -genre : Genre
+    -durationMinutes : int
+    -rating : String
+    -score : double
+    -imagePath : String
+    -bannerPath : String
+    -status : MovieStatus
+
+    +isNowShowing() : boolean
+    +isComingSoon() : boolean
 }
 
-class Room {
-  - id : String
-  - name : String
-  - rows : int
-  - columns : int
+class Room{
+    -id : String
+    -name : String
+    -rows : int
+    -columns : int
 }
 
-class Seat {
-  - row : int
-  - column : int
-  - label : String
+class Seat{
+    -row : int
+    -column : int
+    -label : String
 }
 
-class Showtime {
-  - id : String
-  - movieId : String
-  - roomId : String
-  - date : String
-  - time : String
-  - language : Language
-  - format : Format
-  - price : double
-  - occupiedSeats : List<String>
+class Showtime{
+    -id : String
+    -movieId : String
+    -roomId : String
+    -date : String
+    -time : String
+    -language : Language
+    -format : Format
+    -price : double
+    -reservedSeats : List<String>
 }
 
-class Ticket {
-  - id : String
-  - purchaseId : String
-  - showtimeId : String
-  - movieTitle : String
-  - roomName : String
-  - seatLabel : String
-  - price : double
+class Ticket{
+    -id : String
+    -purchaseId : String
+    -showtimeId : String
+    -seatLabel : String
+    -price : double
 }
 
-class Purchase {
-  - id : String
-  - userId : String
-  - ticketIds : List<String>
-  - total : double
-  - purchaseDate : String
+class Purchase{
+    -id : String
+    -userId : String
+    -purchaseDate : String
+    -total : double
 }
 
-' =========================
-' REPOSITORY
-' =========================
-interface Repository<T> {
-  + findAll() : List<T>
-  + findById(id : String) : T
-  + save(object : T) : void
-  + update(object : T) : void
-  + delete(id : String) : void
+'==================================================
+' REPOSITORIES
+'==================================================
+
+interface Repository<T>{
+    +findAll() : List<T>
+    +findById(id:String) : T
+    +save(object:T)
+    +update(object:T)
+    +delete(id:String)
 }
 
-class MovieRepository {
-  + findAll() : List<Movie>
-  + findById(id : String) : Movie
-  + save(movie : Movie) : void
-  + update(movie : Movie) : void
-  + delete(id : String) : void
-  + findByStatus(status : MovieStatus) : List<Movie>
-  + findByTitle(title : String) : List<Movie>
+class MovieRepository{
+    +findByStatus(status)
+    +findByTitle(title)
+    +findByGenre(genre)
+    +getLastId()
 }
 
-class UserRepository {
-  + findAll() : List<User>
-  + findById(id : String) : User
-  + save(user : User) : void
-  + update(user : User) : void
-  + delete(id : String) : void
-  + findByUsername(username : String) : User
-  + findByEmail(email : String) : User
+class UserRepository{
+    +findByUsername(username)
+    +findByEmail(email)
+    +getLastId()
 }
 
-class RoomRepository {
-  + findAll() : List<Room>
-  + findById(id : String) : Room
-  + save(room : Room) : void
-  + update(room : Room) : void
-  + delete(id : String) : void
+class RoomRepository{
+    +getLastId()
 }
 
-class ShowtimeRepository {
-  + findAll() : List<Showtime>
-  + findById(id : String) : Showtime
-  + save(showtime : Showtime) : void
-  + update(showtime : Showtime) : void
-  + delete(id : String) : void
-  + findByMovieId(movieId : String) : List<Showtime>
-  + findByDate(date : String) : List<Showtime>
+class ShowtimeRepository{
+    +findByMovieId(movieId)
+    +findByDate(date)
+    +findByRoom(roomId)
+    +getLastId()
 }
 
-class TicketRepository {
-  + findAll() : List<Ticket>
-  + findById(id : String) : Ticket
-  + save(ticket : Ticket) : void
-  + update(ticket : Ticket) : void
-  + delete(id : String) : void
-  + findByPurchaseId(purchaseId : String) : List<Ticket>
+class TicketRepository{
+    +findByPurchaseId(purchaseId)
+    +getLastId()
 }
 
-class PurchaseRepository {
-  + findAll() : List<Purchase>
-  + findById(id : String) : Purchase
-  + save(purchase : Purchase) : void
-  + update(purchase : Purchase) : void
-  + delete(id : String) : void
-  + findByUserId(userId : String) : List<Purchase>
+class PurchaseRepository{
+    +findByUserId(userId)
+    +getLastId()
 }
 
 Repository <|.. MovieRepository
@@ -187,157 +170,167 @@ Repository <|.. ShowtimeRepository
 Repository <|.. TicketRepository
 Repository <|.. PurchaseRepository
 
-' =========================
+'==================================================
 ' SERVICES
-' =========================
-class AuthService {
-  - userRepository : UserRepository
-  + login(username : String, password : String) : User
-  + register(fullName : String, email : String, username : String, password : String) : boolean
-  + usernameExists(username : String) : boolean
-  + emailExists(email : String) : boolean
+'==================================================
+
+class AuthService{
+    +login(username,password)
+    +register(...)
+    +logout()
+    +usernameExists(username)
+    +emailExists(email)
 }
 
-class MovieService {
-  - movieRepository : MovieRepository
-  + getNowShowing() : List<Movie>
-  + getComingSoon() : List<Movie>
-  + searchByTitle(text : String) : List<Movie>
-  + getMovieById(id : String) : Movie
-  + getAllMovies() : List<Movie>
+class MovieService{
+    +getNowShowing()
+    +getComingSoon()
+    +searchByTitle(text)
+    +filterByGenre(genre)
+    +getMovieById(id)
+    +getAllMovies()
 }
 
-class ShowtimeService {
-  - showtimeRepository : ShowtimeRepository
-  - movieRepository : MovieRepository
-  - roomRepository : RoomRepository
-  + getShowtimesByMovie(movieId : String) : List<Showtime>
-  + getShowtimeById(id : String) : Showtime
-  + getShowtimesByDate(date : String) : List<Showtime>
+class ShowtimeService{
+    +getShowtimesByMovie(movieId)
+    +getShowtimeById(id)
+    +getShowtimesByDate(date)
 }
 
-class SeatService {
-  - showtimeRepository : ShowtimeRepository
-  - roomRepository : RoomRepository
-  + getOccupiedSeats(showtimeId : String) : List<String>
-  + isSeatAvailable(showtimeId : String, seatLabel : String) : boolean
-  + getSeatsForShowtime(showtimeId : String) : List<Seat>
+class SeatService{
+    +getSeatsForShowtime(showtimeId)
+    +getReservedSeats(showtimeId)
+    +isSeatAvailable(showtimeId,seat)
 }
 
-class PurchaseService {
-  - purchaseRepository : PurchaseRepository
-  - ticketRepository : TicketRepository
-  - showtimeRepository : ShowtimeRepository
-  - movieRepository : MovieRepository
-  - roomRepository : RoomRepository
-  + purchase(userId : String, showtimeId : String, seats : List<String>) : Purchase
-  + getPurchasesByUser(userId : String) : List<Purchase>
-  + getTicketsByPurchase(purchaseId : String) : List<Ticket>
+class PurchaseService{
+    +purchase(userId,showtimeId,seats)
+    +getPurchasesByUser(userId)
+    +getTicketsByPurchase(purchaseId)
 }
 
-class AdminService {
-  - movieRepository : MovieRepository
-  - showtimeRepository : ShowtimeRepository
-  - roomRepository : RoomRepository
-  + addMovie(movie : Movie) : void
-  + updateMovie(movie : Movie) : void
-  + deleteMovie(movieId : String) : void
-  + addShowtime(showtime : Showtime) : void
-  + updateShowtime(showtime : Showtime) : void
-  + deleteShowtime(showtimeId : String) : void
-  + getAllMovies() : List<Movie>
-  + getAllShowtimes() : List<Showtime>
-  + getAllRooms() : List<Room>
+class AdminService{
+    +addMovie(movie)
+    +updateMovie(movie)
+    +deleteMovie(movieId)
+
+    +addShowtime(showtime)
+    +updateShowtime(showtime)
+    +deleteShowtime(showtimeId)
+
+    +addRoom(room)
+    +updateRoom(room)
+    +deleteRoom(roomId)
+
+    +getAllMovies()
+    +getAllShowtimes()
+    +getAllRooms()
 }
 
-class SessionManager {
-  - currentUser : User
-  + login(user : User) : void
-  + logout() : void
-  + getCurrentUser() : User
-  + isLoggedIn() : boolean
-  + isAdmin() : boolean
+class SessionManager{
+    -currentUser : User
+
+    +login(user)
+    +logout()
+    +getCurrentUser()
+    +isLoggedIn()
+    +isAdmin()
 }
 
-class PasswordUtils {
-  + hashPassword(password : String) : String
-  + verifyPassword(password : String, hash : String) : boolean
+class PasswordUtils{
+    +hashPassword(password)
+    +verifyPassword(password,hash)
 }
 
-class TxtFileManager {
-  + readLines(path : String) : List<String>
-  + writeLines(path : String, lines : List<String>) : void
-  + appendLine(path : String, line : String) : void
+class TxtFileManager{
+    +readLines(path)
+    +writeLines(path,lines)
+    +appendLine(path,line)
 }
 
-' =========================
-' CONTROLLERS (MVC - vista general)
-' =========================
-class MenuController {
-  - movieService : MovieService
-  - authService : AuthService
-  + initialize() : void
-  + loadNowShowing() : void
-  + loadComingSoon() : void
-  + openLogin() : void
-  + openRegister() : void
-}
+'==================================================
+' CONTROLLERS
+'==================================================
 
-class LoginOverlayController {
-  - authService : AuthService
-  - sessionManager : SessionManager
-  + onLogin() : void
-  + close() : void
-}
+class MenuController
+class LoginOverlayController
+class RegisterOverlayController
+class MovieDetailsController
+class SeatSelectionController
+class PurchaseController
+class ProfileController
+class AdminDashboardController
 
-class RegisterOverlayController {
-  - authService : AuthService
-  + onRegister() : void
-  + close() : void
-}
+'==================================================
+' DEPENDENCIES
+'==================================================
 
-class AdminDashboardController {
-  - adminService : AdminService
-  + initialize() : void
-  + loadMovies() : void
-  + loadShowtimes() : void
-  + createMovie() : void
-  + editMovie() : void
-  + deleteMovie() : void
-}
-
-' =========================
-' RELACIONES
-' =========================
-MovieService --> MovieRepository
 AuthService --> UserRepository
 AuthService --> PasswordUtils
+
+MovieService --> MovieRepository
+
 ShowtimeService --> ShowtimeRepository
 ShowtimeService --> MovieRepository
 ShowtimeService --> RoomRepository
+
 SeatService --> ShowtimeRepository
 SeatService --> RoomRepository
+
 PurchaseService --> PurchaseRepository
 PurchaseService --> TicketRepository
 PurchaseService --> ShowtimeRepository
-PurchaseService --> MovieRepository
-PurchaseService --> RoomRepository
+
 AdminService --> MovieRepository
 AdminService --> ShowtimeRepository
 AdminService --> RoomRepository
 
+MovieRepository --> TxtFileManager
+UserRepository --> TxtFileManager
+RoomRepository --> TxtFileManager
+ShowtimeRepository --> TxtFileManager
+TicketRepository --> TxtFileManager
+PurchaseRepository --> TxtFileManager
+
+MovieRepository --> Movie
+UserRepository --> User
+RoomRepository --> Room
+ShowtimeRepository --> Showtime
+TicketRepository --> Ticket
+PurchaseRepository --> Purchase
+
 MenuController --> MovieService
 MenuController --> AuthService
+
 LoginOverlayController --> AuthService
 LoginOverlayController --> SessionManager
+
 RegisterOverlayController --> AuthService
+
+MovieDetailsController --> ShowtimeService
+
+SeatSelectionController --> SeatService
+
+PurchaseController --> PurchaseService
+
+ProfileController --> PurchaseService
+
 AdminDashboardController --> AdminService
 
+'==================================================
+' RELACIONES
+'==================================================
+
 User "1" --> "0..*" Purchase
+
 Purchase "1" --> "1..*" Ticket
+
 Ticket --> Showtime
+
 Showtime --> Movie
+
 Showtime --> Room
+
 Room "1" --> "0..*" Seat
 
 @enduml
