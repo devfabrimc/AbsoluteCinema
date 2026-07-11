@@ -1,5 +1,0 @@
-1;Spider-Man: Un Nuevo Día;Acción,Aventura,Ciencia Ficción,Fantasía;150;29;JUL;portadas/spidermanBrandNewDay.png
-
-2;Vengadores: Doomsday;Acción,Aventura;150;30;ABR;portadas/doomsday.png
-
-3;Spider-Man: Beyond the Spider-Verse;Acción,Animación,Aventura,Ciencia Ficción,Comedia;0;18;JUN;portadas/spidermanBeyondSpiderVerse.png
