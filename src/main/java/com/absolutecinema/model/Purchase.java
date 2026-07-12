@@ -7,18 +7,16 @@ public class Purchase {
 
     private String id;
     private String userId;
-    private List<String> ticketIds;
-    private double total;
     private String purchaseDate;
+    private double total;
 
     // Constructor
 
-    public Purchase(String id, String userId, List<String> ticketIds, double total, String purchaseDate) {
+    public Purchase(String id, String userId, String purchaseDate, double total) {
         this.id = id;
         this.userId = userId;
-        this.ticketIds = ticketIds;
-        this.total = total;
         this.purchaseDate = purchaseDate;
+        this.total = total;
     }
 
     //Getters
@@ -29,10 +27,6 @@ public class Purchase {
 
     public String getUserId() {
         return userId;
-    }
-
-    public List<String> getTicketIds() {
-        return ticketIds;
     }
 
     public double getTotal() {
