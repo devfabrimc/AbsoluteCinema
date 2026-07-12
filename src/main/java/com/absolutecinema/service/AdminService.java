@@ -21,9 +21,9 @@ public class AdminService {
 
     public void deleteMovie(String movieId) {}
 
-    public void addShowtime(Object showtime) {}
+    public void addShowtime(Showtime showtime) {}
 
-    public void updateShowtime(Object showtime) {}
+    public void updateShowtime(Showtime showtime) {}
 
     public void deleteShowtime(String showtimeId) {}
 
