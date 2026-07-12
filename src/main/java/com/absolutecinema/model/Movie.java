@@ -106,4 +106,13 @@ public class Movie {
     public void setStatus(MovieStatus status) {
         this.status = status;
     }
+
+    // Métodos para validación de películas
+    public boolean isNowShowing(){
+        return status.equals(MovieStatus.NOW_SHOWING);
+    }
+
+    public boolean isComingSoon(){
+        return status.equals(MovieStatus.COMING_SOON);
+    }
 }

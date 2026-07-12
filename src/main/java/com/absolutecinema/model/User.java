@@ -66,4 +66,9 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    // Método para validar si es administrador
+    public boolean isAdmin(){
+        return role.equals(Role.ADMIN);
+    }
 }

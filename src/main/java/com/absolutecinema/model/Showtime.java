@@ -13,11 +13,11 @@ public class Showtime {
     private Language language;
     private Format format;
     private double price;
-    private List<String> occupiedSeats;
+    private List<String> reservedSeats;
 
     // Constructor
 
-    public Showtime(String id, String movieId, String roomId, String date, String time, Language language, Format format, double price, List<String> occupiedSeats) {
+    public Showtime(String id, String movieId, String roomId, String date, String time, Language language, Format format, double price, List<String> reservedSeats) {
         this.id = id;
         this.movieId = movieId;
         this.roomId = roomId;
@@ -26,7 +26,7 @@ public class Showtime {
         this.language = language;
         this.format = format;
         this.price = price;
-        this.occupiedSeats = occupiedSeats;
+        this.reservedSeats = reservedSeats;
     }
 
     // Getters y Setters
@@ -63,20 +63,20 @@ public class Showtime {
         return price;
     }
 
-    public List<String> getOccupiedSeats() {
-        return occupiedSeats;
+    public List<String> getReservedSeats() {
+        return reservedSeats;
     }
 
     // Métodos para la manipulación de la disponibilidad de asientos
-    public void addOccupiedSeat(String seatLabel){
-        occupiedSeats.add(seatLabel);
+    public void addReservedSeat(String seatLabel){
+        reservedSeats.add(seatLabel);
     }
 
-    public void removeOccupiedSeat(String seatLabel){
-        occupiedSeats.remove(seatLabel);
+    public void removeReservedSeat(String seatLabel){
+        reservedSeats.remove(seatLabel);
     }
 
-    public boolean isSeatOccupied(String seatLabel){
-        return occupiedSeats.contains(seatLabel);
+    public boolean isSeatReserved(String seatLabel){
+        return reservedSeats.contains(seatLabel);
     }
 }

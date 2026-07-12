@@ -1,0 +1,3 @@
+ROM001;Sala 1;8;10
+ROM002;Sala 2;10;12
+ROM003;Sala VIP;6;8
