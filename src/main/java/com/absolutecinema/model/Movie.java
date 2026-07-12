@@ -29,6 +29,24 @@ public class Movie {
         this.status = status;
     }
 
+    public static Movie printformat(String line) {
+
+        String[] data = line.split(";");
+
+        return new Movie(
+                data[0],
+                data[1],
+                data[2],
+                Genre.valueOf(data[3]),
+                Integer.parseInt(data[4]),
+                data[5],
+                Double.parseDouble(data[6]),
+                data[7],
+                data[8],
+                MovieStatus.valueOf(data[9])
+        );
+    }
+
     // Getters y setters
 
     public String getId() {
