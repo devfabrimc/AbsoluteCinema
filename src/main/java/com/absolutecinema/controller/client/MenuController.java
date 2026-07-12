@@ -1,6 +1,8 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.model.Movie;
 import com.absolutecinema.model.MovieRelease;
+import com.absolutecinema.service.MovieService;
 import com.absolutecinema.utils.Paths;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
