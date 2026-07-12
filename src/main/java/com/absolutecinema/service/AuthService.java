@@ -2,7 +2,6 @@ package com.absolutecinema.service;
 
 import com.absolutecinema.model.Role;
 import com.absolutecinema.model.User;
-import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.repository.UserRepository;
 import com.absolutecinema.utils.PasswordUtils;
 import com.absolutecinema.utils.SessionManager;
