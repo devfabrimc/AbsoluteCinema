@@ -1,5 +1,7 @@
 package com.absolutecinema.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Showtime {
@@ -27,6 +29,29 @@ public class Showtime {
         this.format = format;
         this.price = price;
         this.reservedSeats = reservedSeats;
+    }
+
+    public static Showtime printformat(String line) {
+
+        String[] data = line.split(";");
+
+        List<String> reservedSeats = new ArrayList<>();
+
+        if (!data[8].isEmpty()) {
+            reservedSeats = Arrays.asList(data[8].split(","));
+        }
+
+        return new Showtime(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                Language.valueOf(data[5]),
+                Format.valueOf(data[6]),
+                Double.parseDouble(data[7]),
+                new ArrayList<>(reservedSeats)
+        );
     }
 
     // Getters y Setters

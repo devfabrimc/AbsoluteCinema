@@ -1,7 +1,6 @@
 package com.absolutecinema.repository;
 
 import com.absolutecinema.model.Room;
-import com.absolutecinema.model.User;
 import com.absolutecinema.utils.TxtFileManager;
 
 import java.util.ArrayList;
