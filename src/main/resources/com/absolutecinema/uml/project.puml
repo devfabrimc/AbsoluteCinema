@@ -57,8 +57,6 @@ class User{
     -username : String
     -passwordHash : String
     -role : Role
-
-    +isAdmin() : boolean
 }
 
 class Movie{
@@ -72,9 +70,6 @@ class Movie{
     -imagePath : String
     -bannerPath : String
     -status : MovieStatus
-
-    +isNowShowing() : boolean
-    +isComingSoon() : boolean
 }
 
 class Room{

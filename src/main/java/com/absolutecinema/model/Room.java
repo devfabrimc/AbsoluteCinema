@@ -17,6 +17,18 @@ public class Room {
         this.columns = columns;
     }
 
+    public static Room printformat(String line) {
+
+        String[] data = line.split(";");
+
+        return new Room(
+                data[0],
+                data[1],
+                Integer.parseInt(data[2]),
+                Integer.parseInt(data[3])
+        );
+    }
+
     // Getters y Setters
 
     public String getId() {

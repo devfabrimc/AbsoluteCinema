@@ -21,6 +21,20 @@ public class User {
         this.role = role;
     }
 
+    public static User printformat(String line) {
+
+        String[] data = line.split(";");
+
+        return new User(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                Role.valueOf(data[5])
+        );
+    }
+
     // Getters y Setters
 
     public String getId() {
