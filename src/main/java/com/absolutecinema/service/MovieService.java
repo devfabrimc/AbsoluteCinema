@@ -45,4 +45,24 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public List<Movie> filterMovies(String title, Genre genre) {
+        List<Movie> movies = movieRepository.findAll();
+
+        if (title != null && !title.isBlank()) {
+            String search = title.trim().toLowerCase();
+            movies = movies.stream()
+                    .filter(movie ->
+                            movie.getTitle().toLowerCase().contains(search))
+                    .toList();
+        }
+
+        if (genre != Genre.TODOS) {
+            movies = movies.stream()
+                    .filter(movie ->
+                            movie.getGenre() == genre)
+                    .toList();
+        }
+        return movies;
+    }
+
 }

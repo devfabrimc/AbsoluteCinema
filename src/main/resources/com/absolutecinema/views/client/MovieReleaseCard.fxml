@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="140.0" minWidth="280.0" prefHeight="140.0" prefWidth="280.0" styleClass="upcoming-card" stylesheets="@../../styles/movie-release-card.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MovieCardController">
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="140.0" minWidth="280.0" prefHeight="140.0" prefWidth="280.0" styleClass="upcoming-card" stylesheets="@../../styles/movie-release-card.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MovieReleaseCardController">
    <children>
       <Region fx:id="featuredImage" prefHeight="138.0" prefWidth="278.0" StackPane.alignment="BOTTOM_CENTER" />
       <Region fx:id="featuredImage1" styleClass="upcoming-overlay" />

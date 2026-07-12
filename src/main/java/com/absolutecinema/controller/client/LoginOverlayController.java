@@ -1,5 +1,9 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.model.User;
+import com.absolutecinema.repository.UserRepository;
+import com.absolutecinema.service.AuthService;
+import com.absolutecinema.utils.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +27,8 @@ public class LoginOverlayController {
 
     @FXML private Label lblOpenRegisterOverlay;
 
-    private final AuthService authService = new AuthService();
+    private final AuthService authService = new AuthService(new UserRepository());
+    private final SessionManager sessionManager = new SessionManager();
     private MenuController parentController;
     
     public void setParentController(MenuController parentController) {
@@ -48,13 +53,13 @@ public class LoginOverlayController {
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText();
 
-        User user = authService.authenticate(email, password);
+        User user = authService.login(email, password);
 
         if (user != null) {
-            SessionManager.iniciarSesión(user);
+            sessionManager.login(user);
 
             if (parentController != null) {
-                parentController.updateNavbarAfterLogin(user.getNombre());
+                parentController.updateNavbarAfterLogin(user.getUsername());
             }
 
             closeModal();

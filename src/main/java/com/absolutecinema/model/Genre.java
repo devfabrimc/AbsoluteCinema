@@ -1,6 +1,7 @@
 package com.absolutecinema.model;
 
 public enum Genre {
+    TODOS,
     ACCION,
     ANIMACION,
     AVENTURA,

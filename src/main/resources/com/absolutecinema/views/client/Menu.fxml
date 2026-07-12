@@ -28,7 +28,7 @@
                            <children>
                               <StackPane fx:id="stkFeaturedImageSection" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Region id="featured_image" fx:id="rgnFeaturedImage" style="-fx-background-image: url(&quot;/com/absolutecinema/images/portadas/spidermanBrandNewDay.png&quot;);" StackPane.alignment="CENTER" />
+                                    <Region id="featured_image" fx:id="rgnFeaturedImage" style="-fx-background-image: url(&quot;/com/absolutecinema/images/portadas/banners/spidermanBrandNewDay.png&quot;);" StackPane.alignment="CENTER" />
                                     <Region id="overlay-container" />
                                     <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="866.0" spacing="20.0" StackPane.alignment="CENTER_LEFT">
                                        <children>

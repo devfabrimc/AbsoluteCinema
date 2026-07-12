@@ -1,5 +1,8 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.repository.UserRepository;
+import com.absolutecinema.service.AuthService;
+import com.absolutecinema.utils.PasswordUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,7 +24,7 @@ public class RegisterOverlayController {
     @FXML
     private Label lblOpenLoginOverlay;
 
-    private final AuthService authService = new AuthService();
+    private final AuthService authService = new AuthService(new UserRepository());
     private MenuController parentController;
 
     public void setParentController(MenuController parentController) {
@@ -54,7 +57,7 @@ public class RegisterOverlayController {
             return;
         }
 
-        if (authService.isEmailAlreadyRegistered(email)) {
+        if (authService.emailExists(email)) {
             showErrorMessage("Esta correo electrónico ya está registrado.");
             return;
         }
@@ -64,7 +67,7 @@ public class RegisterOverlayController {
             return;
         }
 
-        authService.createUser(new User(name, email, SecurityUtils.hashSHA256(password), Role.CUSTOMER));
+        authService.register(name, email, name, PasswordUtils.hashPassword(password));
 
         closeModal();
     }
