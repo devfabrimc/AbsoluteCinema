@@ -16,9 +16,9 @@ public class AuthService {
     }
 
     //Metodo de login
-    public User login (String username, String password){
-        //Creamos un usuario con username para buscarlo en el repositorio
-        User user = userRepository.findByUsername(username);
+    public User login (String email, String password){
+        //Creamos un usuario con el email para buscarlo en el repositorio
+        User user = userRepository.findByEmail(email);
         //Validamos si existe el usuario
         if (user == null){
             //Decimos que el usuario no está en el repositorio

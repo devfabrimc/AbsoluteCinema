@@ -11,9 +11,16 @@ public class SeatService {
     private ShowtimeRepository showtimeRepository;
     private RoomRepository roomRepository;
 
-    //Metodo para tener todos los asientos de una funcion
-    public List<Seat> getSeatsForShowtime(String showtimeId) {
-        return Collections.emptyList();
+    //Constructor con inyección de dependencias
+    public SeatService(RoomRepository roomRepository,
+                       ShowtimeRepository showtimeRepository){
+        this.roomRepository = roomRepository;
+        this.showtimeRepository = showtimeRepository;
+    }
+
+    //Metodo para tener todos los asientos de una función
+    public List<Seat> getSeatsForShowtime(String showtimeId) {return Collections.emptyList();
+
     }
     //Metodo para ver los asientos ocupados
     public List<Seat> getOccupiedSeats(String showtimeId) {
