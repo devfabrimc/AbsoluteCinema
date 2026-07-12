@@ -32,6 +32,9 @@ public class PasswordUtils {
     }
 
     public static boolean verifyPassword(String password, String hash) {
-        return false;
+        //Aplicamos la encriptación a la constraseña que ingrese el usuario
+        String currentPasswordHash = hashPassword(password);
+        //Comparamos dicho hash con el del parámetro y lo retornamos
+        return currentPasswordHash.equals(hash);
     }
 }
