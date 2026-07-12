@@ -13,7 +13,8 @@ import javafx.scene.layout.AnchorPane;
 public class RegisterOverlayController {
 
     @FXML private AnchorPane rootPane;
-    @FXML private TextField txtName;
+    @FXML private TextField txtFullName;
+    @FXML private TextField txtUsername;
     @FXML private TextField txtEmail;
     @FXML private PasswordField txtPassword;
     @FXML private PasswordField txtConfirmPassword;
@@ -47,12 +48,14 @@ public class RegisterOverlayController {
     }
 
     private void handleRegistration() {
-        String name = txtName.getText().trim();
+        String fullName = txtFullName.getText().trim();
+        String username = txtUsername.getText().trim();
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText().trim();
         String confirmPassword = txtConfirmPassword.getText().trim();
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (fullName.isEmpty() || username.isEmpty() || email.isEmpty() ||
+                password.isEmpty() || confirmPassword.isEmpty()) {
             showErrorMessage("Todos los campos son obligatorios.");
             return;
         }
@@ -67,7 +70,7 @@ public class RegisterOverlayController {
             return;
         }
 
-        authService.register(name, email, name, PasswordUtils.hashPassword(password));
+        authService.register(fullName, email, username, PasswordUtils.hashPassword(password));
 
         closeModal();
     }
@@ -79,7 +82,7 @@ public class RegisterOverlayController {
     }
 
     private void closeModal() {
-        txtName.clear();
+        txtFullName.clear();
         txtEmail.clear();
         txtPassword.clear();
         txtConfirmPassword.clear();
@@ -90,7 +93,7 @@ public class RegisterOverlayController {
     }
 
     public void openModal() {
-        txtName.clear();
+        txtFullName.clear();
         txtEmail.clear();
         txtPassword.clear();
         txtConfirmPassword.clear();

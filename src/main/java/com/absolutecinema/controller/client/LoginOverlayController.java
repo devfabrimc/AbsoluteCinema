@@ -28,7 +28,6 @@ public class LoginOverlayController {
     @FXML private Label lblOpenRegisterOverlay;
 
     private final AuthService authService = new AuthService(new UserRepository());
-    private final SessionManager sessionManager = new SessionManager();
     private MenuController parentController;
     
     public void setParentController(MenuController parentController) {
@@ -56,7 +55,7 @@ public class LoginOverlayController {
         User user = authService.login(email, password);
 
         if (user != null) {
-            sessionManager.login(user);
+            SessionManager.getInstance().login(user);
 
             if (parentController != null) {
                 parentController.updateNavbarAfterLogin(user.getUsername());

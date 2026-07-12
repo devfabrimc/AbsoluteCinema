@@ -53,7 +53,7 @@
                      <children>
                         <StackPane HBox.hgrow="ALWAYS">
                            <children>
-                              <TextField fx:id="txtName" promptText="Nombre de Usuario" styleClass="login-input" />
+                              <TextField fx:id="txtFullName" promptText="Nombre Completo" styleClass="login-input" />
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);" StackPane.alignment="CENTER_LEFT">
                                  <StackPane.margin>
                                     <Insets left="10.0" />
@@ -77,6 +77,23 @@
                                  </StackPane.margin>
                                  <image>
                                     <Image url="@../../images/email.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <StackPane HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="txtUsername" promptText="Alias de Usuario" styleClass="login-input" />
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);" StackPane.alignment="CENTER_LEFT">
+                                 <StackPane.margin>
+                                    <Insets left="10.0" />
+                                 </StackPane.margin>
+                                 <image>
+                                    <Image url="@../../images/user.png" />
                                  </image>
                               </ImageView>
                            </children>
