@@ -19,6 +19,18 @@ public class Purchase {
         this.total = total;
     }
 
+    public static Purchase printformat(String line) {
+
+        String[] data = line.split(";");
+
+        return new Purchase(
+                data[0],
+                data[1],
+                data[2],
+                Double.parseDouble(data[3])
+        );
+    }
+
     //Getters
 
     public String getId() {

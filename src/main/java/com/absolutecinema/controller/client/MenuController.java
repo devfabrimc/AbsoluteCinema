@@ -158,7 +158,7 @@ public class MenuController implements Initializable {
         hbxMovieCard.getChildren().clear();
         try {
             for (Movie movie : movies) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.PELICULA_CARD_VIEW));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.MOVIE_CARD_VIEW));
                 StackPane card = loader.load();
 
                 MovieCardController controller = loader.getController();
@@ -175,7 +175,7 @@ public class MenuController implements Initializable {
         hbxMovieReleaseCard.getChildren().clear();
         try {
             for (MovieRelease movie : upcomingMovies) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.PELICULA_PROX_VIEW));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.MOVIE_PROX_VIEW));
                 StackPane card = loader.load();
 
                 MovieCardController controller = loader.getController();

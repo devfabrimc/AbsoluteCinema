@@ -1,13 +1,14 @@
 package com.absolutecinema.repository;
 
 import com.absolutecinema.model.User;
+import com.absolutecinema.utils.Paths;
 import com.absolutecinema.utils.TxtFileManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository implements Repository<User> {
-    private static final String filepath = "resources/data/users.txt";
+    private static final String filepath = Paths.USER_REPOSITORY;
     private final TxtFileManager fileManager = new TxtFileManager();
 
     @Override

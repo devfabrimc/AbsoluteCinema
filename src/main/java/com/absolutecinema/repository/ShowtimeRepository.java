@@ -1,13 +1,14 @@
 package com.absolutecinema.repository;
 
 import com.absolutecinema.model.Showtime;
+import com.absolutecinema.utils.Paths;
 import com.absolutecinema.utils.TxtFileManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShowtimeRepository implements Repository<Showtime> {
-    private static final String filePath = "resources/data/showtimes.txt";
+    private static final String filePath = Paths.SHOWTIME_REPOSITORY;
     private final TxtFileManager fileManager = new TxtFileManager();
 
     @Override

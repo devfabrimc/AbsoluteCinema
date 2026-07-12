@@ -19,6 +19,19 @@ public class Ticket {
         this.price = price;
     }
 
+    public static Ticket printformat(String line) {
+
+        String[] data = line.split(";");
+
+        return new Ticket(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                Double.parseDouble(data[4])
+        );
+    }
+
     // Getters
 
     public String getId() {

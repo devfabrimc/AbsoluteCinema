@@ -3,6 +3,7 @@ package com.absolutecinema.repository;
 import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
 import com.absolutecinema.model.MovieStatus;
+import com.absolutecinema.utils.Paths;
 import com.absolutecinema.utils.TxtFileManager;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class MovieRepository implements Repository<Movie> {
     // Declaramos la ruta del archivo que se encuentran las películas
-    private static final String filePath = "resources/data/movies.txt";
+    private static final String filePath = Paths.MOVIE_REPOSITORY;
 
     private final TxtFileManager fileManager = new TxtFileManager();
 

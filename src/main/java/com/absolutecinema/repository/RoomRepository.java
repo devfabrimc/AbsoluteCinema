@@ -1,13 +1,14 @@
 package com.absolutecinema.repository;
 
 import com.absolutecinema.model.Room;
+import com.absolutecinema.utils.Paths;
 import com.absolutecinema.utils.TxtFileManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RoomRepository implements Repository<Room>{
-    private static final String filePath = "resources/data/rooms.txt";
+    private static final String filePath = Paths.ROOM_REPOSITORY;
     private final TxtFileManager fileManager =  new TxtFileManager();
 
     @Override
