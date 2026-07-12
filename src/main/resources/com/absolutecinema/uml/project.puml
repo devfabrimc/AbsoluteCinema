@@ -17,6 +17,7 @@ enum MovieStatus {
 }
 
 enum Genre {
+    TODOS
     ACCION
     ANIMACION
     AVENTURA
@@ -188,6 +189,7 @@ class MovieService{
     + filterByGenre(genre : Genre) : List<Movie>
     + getMovieById(id : String) : Movie
     + getAllMovies() : List<Movie>
+    + filterMovies(title : String, genre : Genre) : List<Movie>
 }
 
 class ShowtimeService{
@@ -260,6 +262,10 @@ class TxtFileManager{
     + readLines(path : String) : List<String>
     + writeLines(path : String, lines : List<String>) : void
     + appendLine(path : String, line : String) : void
+}
+
+class GenreFormatter {
+    + format(genre : Genre) : String
 }
 
 '==================================================

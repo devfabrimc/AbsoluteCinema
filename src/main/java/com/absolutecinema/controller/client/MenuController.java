@@ -1,8 +1,10 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
-import com.absolutecinema.model.MovieRelease;
+import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.service.MovieService;
+import com.absolutecinema.utils.GenreFormatter;
 import com.absolutecinema.utils.Paths;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -16,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +31,7 @@ public class MenuController implements Initializable {
     @FXML private Button btnSearchFilters;
     @FXML private Button btnFeaturedShopTicket;
     @FXML private Button btnFeaturedViewDetails;
-    @FXML private ComboBox<String> cmbGenres;
+    @FXML private ComboBox<Genre> cmbGenres;
     @FXML private Region rgnFeaturedImage;
     @FXML private Label lblFeaturedTitle;
     @FXML private Label lblFeaturedMeta;
@@ -53,7 +56,7 @@ public class MenuController implements Initializable {
     @FXML private LoginOverlayController loginOverlayController;
     @FXML private RegisterOverlayController registerOverlayController;
 
-    private final MovieService movieService = new MovieService();
+    private final MovieService movieService = new MovieService(new MovieRepository());
     private List<Label> navLabels;
 
     @Override
@@ -67,8 +70,8 @@ public class MenuController implements Initializable {
         initFilterListeners();
 
         loadGenres();
-        loadCatalog(movieService.obtenerCartelera());
-        loadUpcomingReleases(movieService.obtenerProximosEstrenos());
+        loadCatalog(movieService.getNowShowing());
+        loadUpcomingReleases(movieService.getComingSoon());
     }
 
     public void openLoginOverlay() {
@@ -126,34 +129,33 @@ public class MenuController implements Initializable {
     private void initFilterListeners() {
         btnSearchFilters.setOnAction(event -> applyFilters());
         txtSearchMovie.setOnAction(event -> applyFilters());
+        cmbGenres.setOnAction(event -> applyFilters());
     }
 
     private void loadGenres() {
-        cmbGenres.getItems().clear();
-        cmbGenres.getItems().add("Todos los géneros");
-        cmbGenres.getItems().addAll(movieService.obtenerGeneros());
-        cmbGenres.getSelectionModel().selectFirst();
+
+        cmbGenres.getItems().setAll(Genre.values());
+
+        cmbGenres.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Genre genre) {
+                return genre == null ? "" : GenreFormatter.format(genre);
+            }
+
+            @Override
+            public Genre fromString(String string) {
+                return Genre.TODOS;
+            }
+        });
+        cmbGenres.getSelectionModel().select(Genre.TODOS);
     }
 
     private void applyFilters() {
-        String queryText = txtSearchMovie.getText().trim().toLowerCase();
-        String selectedGenre = cmbGenres.getValue();
-
-        List<Movie> filteredMovies = movieService.obtenerCartelera();
-
-        if (!queryText.isBlank()) {
-            filteredMovies = filteredMovies.stream()
-                    .filter(movie -> movie.getTitulo().toLowerCase().contains(queryText))
-                    .toList();
-        }
-
-        if (!"Todos los géneros".equals(selectedGenre)) {
-            filteredMovies = filteredMovies.stream()
-                    .filter(movie -> movie.getGeneros().contains(selectedGenre))
-                    .toList();
-        }
-
-        loadCatalog(filteredMovies);
+        List<Movie> movies = movieService.filterMovies(
+                txtSearchMovie.getText(),
+                cmbGenres.getValue()
+        );
+        loadCatalog(movies);
     }
 
     private void loadCatalog(List<Movie> movies) {
@@ -164,29 +166,33 @@ public class MenuController implements Initializable {
                 StackPane card = loader.load();
 
                 MovieCardController controller = loader.getController();
-                controller.setDatos(movie);
+                controller.setMovie(movie);
 
                 hbxMovieCard.getChildren().add(card);
             }
         } catch (IOException e) {
-            System.err.println("ERROR: No se pudo completar la lista del catálogo de películas.");
+            System.err.println("ERROR: El catálogo de películas no pudo completarse.");
         }
     }
 
-    private void loadUpcomingReleases(List<MovieRelease> upcomingMovies) {
+    private void loadUpcomingReleases(List<Movie> movies) {
         hbxMovieReleaseCard.getChildren().clear();
+
         try {
-            for (MovieRelease movie : upcomingMovies) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.MOVIE_PROX_VIEW));
+            for (Movie movie : movies) {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource(Paths.MOVIE_PROX_VIEW)
+                );
                 StackPane card = loader.load();
-
-                MovieCardController controller = loader.getController();
-                controller.setDatos(movie);
-
+                MovieReleaseCardController controller =
+                        loader.getController();
+                controller.setMovie(movie);
                 hbxMovieReleaseCard.getChildren().add(card);
             }
+
         } catch (IOException e) {
-            System.err.println("ERROR: No se pudo completar la lista de próximos lanzamientos.");
+            System.err.println("ERROR: El catálogo de próximas películas no pudo completarse.");
+            e.printStackTrace();
         }
     }
 
