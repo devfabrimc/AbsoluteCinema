@@ -173,7 +173,7 @@ Repository <|.. PurchaseRepository
 class AuthService{
     - userRepository : UserRepository
 
-    + login(username : String, password : String) : User
+    + login(email : String, password : String) : User
     + register(fullName : String, email : String, username : String, password : String) : boolean
     + logout() : void
     + usernameExists(username : String) : boolean
