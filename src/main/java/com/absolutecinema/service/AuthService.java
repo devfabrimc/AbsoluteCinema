@@ -5,6 +5,7 @@ import com.absolutecinema.model.User;
 import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.repository.UserRepository;
 import com.absolutecinema.utils.PasswordUtils;
+import com.absolutecinema.utils.SessionManager;
 
 public class AuthService {
 
@@ -29,6 +30,8 @@ public class AuthService {
         boolean isPasswordValid = PasswordUtils.verifyPassword(password, user.getPasswordHash());
         if (isPasswordValid){
             //Contraseña correcta
+            //Iniciamos sesión usando SessionManager
+            SessionManager.getInstance().login(user);
             return user;
         }
         //Contraseña incorrecta
@@ -67,7 +70,8 @@ public class AuthService {
     }
     //Metodo de logout
     public void logout(){
-        System.out.println("Sesion finalizada...");
+        //Cerramos sesión usando SessionManager
+        SessionManager.getInstance().logout();
     }
     //Metodo verifica si el username ya existe
     public boolean usernameExists(String username){
