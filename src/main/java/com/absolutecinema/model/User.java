@@ -85,4 +85,15 @@ public class User {
     public boolean isAdmin(){
         return role.equals(Role.ADMIN);
     }
+
+    // Método toString
+    @Override
+    public String toString() {
+        return id + ";" +
+                fullName + ";" +
+                email + ";" +
+                username + ";" +
+                passwordHash + ";" +
+                role.name();
+    }
 }
