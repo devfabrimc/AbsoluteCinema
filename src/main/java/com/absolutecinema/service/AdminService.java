@@ -3,6 +3,9 @@ package com.absolutecinema.service;
 import com.absolutecinema.model.Movie;
 import com.absolutecinema.model.Showtime;
 import com.absolutecinema.model.Room;
+import com.absolutecinema.repository.MovieRepository;
+import com.absolutecinema.repository.RoomRepository;
+import com.absolutecinema.repository.ShowtimeRepository;
 
 import java.util.Collections;
 import java.util.List;

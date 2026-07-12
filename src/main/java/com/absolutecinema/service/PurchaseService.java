@@ -2,6 +2,7 @@ package com.absolutecinema.service;
 
 import com.absolutecinema.model.Purchase;
 import com.absolutecinema.model.Ticket;
+import com.absolutecinema.repository.ShowtimeRepository;
 
 import java.util.Collections;
 import java.util.List;

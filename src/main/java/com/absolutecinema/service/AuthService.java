@@ -1,6 +1,7 @@
 package com.absolutecinema.service;
 
 import com.absolutecinema.model.User;
+import com.absolutecinema.repository.UserRepository;
 
 public class AuthService {
 

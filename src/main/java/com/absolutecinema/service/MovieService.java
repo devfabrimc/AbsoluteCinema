@@ -1,6 +1,7 @@
 package com.absolutecinema.service;
 
 import com.absolutecinema.model.Movie;
+import com.absolutecinema.repository.MovieRepository;
 
 import java.util.Collections;
 import java.util.List;
