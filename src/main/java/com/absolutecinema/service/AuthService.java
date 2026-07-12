@@ -1,14 +1,21 @@
 package com.absolutecinema.service;
 
 import com.absolutecinema.model.User;
+import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.repository.UserRepository;
 
 public class AuthService {
 
     private UserRepository userRepository;
 
-    //Metodo de User
+    //Constructor con inyección de dependencias
+    public AuthService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
+    //Metodo de login
     public User login (String username, String password){
+
         return null;
     }
     //Metodo de registro

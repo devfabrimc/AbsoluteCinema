@@ -9,7 +9,10 @@ import java.util.List;
 public class MovieService {
 
     private MovieRepository movieRepository;
-
+    //Constructor con inyección de dependencias
+    public MovieService(MovieRepository movieRepository){
+        this.movieRepository = movieRepository;
+    }
     //Metodo que devuelve la lista de películas en cartelera
     public List<Movie> getNowShowing(){
         return Collections.emptyList();
