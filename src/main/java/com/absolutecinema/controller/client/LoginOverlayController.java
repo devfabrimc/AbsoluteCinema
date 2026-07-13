@@ -52,34 +52,45 @@ public class LoginOverlayController {
         String email = txtEmail.getText().trim();
         String password = txtPassword.getText();
 
+        if (email.isEmpty() || password.isEmpty()) {
+            showErrorMessage("Todos los campos son obligatorios.");
+            return;
+        }
+        
         User user = authService.login(email, password);
 
         if (user != null) {
-            SessionManager.getInstance().login(user);
-
             if (parentController != null) {
                 parentController.updateNavbarAfterLogin(user.getUsername());
             }
 
             closeModal();
         } else {
-            lblLoginMessage.setText("Correo electrónico o contraseña incorrectos.");
-            lblLoginMessage.setVisible(true);
-            lblLoginMessage.setManaged(true);
+            showErrorMessage("Correo electrónico o contraseña incorrectos.");
         }
     }
 
-    private void closeModal() {
+    private void showErrorMessage(String message) {
+        lblLoginMessage.setManaged(true);
+        lblLoginMessage.setVisible(true);
+        lblLoginMessage.setText(message);
+    }
+
+    private void resetForm() {
         txtEmail.clear();
         txtPassword.clear();
         lblLoginMessage.setText("");
+        lblLoginMessage.setVisible(false);
+        lblLoginMessage.setManaged(false);
+    }
+
+    private void closeModal() {
+        resetForm();
         rootPane.setVisible(false);
     }
 
     public void openModal() {
-        txtEmail.clear();
-        txtPassword.clear();
-        lblLoginMessage.setText("");
+        resetForm();
         rootPane.setVisible(true);
     }
 }

@@ -70,7 +70,7 @@ public class RegisterOverlayController {
             return;
         }
 
-        authService.register(fullName, email, username, PasswordUtils.hashPassword(password));
+        authService.register(fullName, email, username, password);
 
         closeModal();
     }
@@ -81,7 +81,7 @@ public class RegisterOverlayController {
         lblRegisterMessage.setText(message);
     }
 
-    private void closeModal() {
+    private void resetForm() {
         txtFullName.clear();
         txtEmail.clear();
         txtPassword.clear();
@@ -89,17 +89,15 @@ public class RegisterOverlayController {
         lblRegisterMessage.setText("");
         lblRegisterMessage.setVisible(false);
         lblRegisterMessage.setManaged(false);
+    }
+
+    private void closeModal() {
+        resetForm();
         rootPane.setVisible(false);
     }
 
     public void openModal() {
-        txtFullName.clear();
-        txtEmail.clear();
-        txtPassword.clear();
-        txtConfirmPassword.clear();
-        lblRegisterMessage.setText("");
-        lblRegisterMessage.setVisible(false);
-        lblRegisterMessage.setManaged(false);
+        resetForm();
         rootPane.setVisible(true);
     }
 }
