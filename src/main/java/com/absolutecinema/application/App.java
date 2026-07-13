@@ -36,6 +36,7 @@ public class App extends Application {
             setTitle(" | Menú Principal");
         } catch (IOException e) {
             System.err.println("ERROR: ¡No se pudo cargar el archivo!");
+            e.printStackTrace();
         }
     }
 
