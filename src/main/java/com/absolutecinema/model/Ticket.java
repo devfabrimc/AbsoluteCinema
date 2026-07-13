@@ -53,4 +53,13 @@ public class Ticket {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return id + ";" +
+                purchaseId + ";" +
+                showtimeId + ";" +
+                seatLabel + ";" +
+                String.format("%.2f", price);
+    }
 }

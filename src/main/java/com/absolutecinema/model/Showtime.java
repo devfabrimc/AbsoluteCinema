@@ -104,4 +104,24 @@ public class Showtime {
     public boolean isSeatReserved(String seatLabel){
         return reservedSeats.contains(seatLabel);
     }
+
+    // Método toString
+    @Override
+    public String toString() {
+        /* Declaramos una variable para convertir a la lista
+           a una cadena separada por comas
+         */
+        String seatsString = String.join(",", reservedSeats);
+
+        return id + ";" +
+                movieId + ";" +
+                roomId + ";" +
+                date + ";" +
+                time + ";" +
+                language.name() + ";" +
+                format.name() + ";" +
+                price + ";" +
+                seatsString;
+
+    }
 }

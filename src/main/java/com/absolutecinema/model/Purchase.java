@@ -48,4 +48,13 @@ public class Purchase {
     public String getPurchaseDate() {
         return purchaseDate;
     }
+
+    // Método toString
+    @Override
+    public String toString() {
+        return id + ";" +
+                userId + ";" +
+                purchaseDate + ";" +
+                String.format("%.2f", total);
+    }
 }

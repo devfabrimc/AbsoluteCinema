@@ -64,4 +64,12 @@ public class Room {
         return getRows() * getColumns();
     }
 
+    // Método toString
+    @Override
+    public String toString() {
+        return id + ";" +
+                name + ";" +
+                rows + ";" +
+                columns;
+    }
 }

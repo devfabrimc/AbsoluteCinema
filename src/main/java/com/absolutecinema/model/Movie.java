@@ -133,4 +133,19 @@ public class Movie {
     public boolean isComingSoon(){
         return status.equals(MovieStatus.COMING_SOON);
     }
+
+    // Método toString
+    @Override
+    public String toString() {
+        return id + ";" +
+                title + ";" +
+                synopsis + ";" +
+                genre.name() + ";" +
+                durationMinutes + ";" +
+                rating + ";" +
+                score + ";" +
+                imagePath + ";" +
+                bannerPath + ";" +
+                status.name();
+    }
 }
