@@ -21,20 +21,6 @@ public class User {
         this.role = role;
     }
 
-    public static User printformat(String line) {
-
-        String[] data = line.split(";");
-
-        return new User(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                data[4],
-                Role.valueOf(data[5])
-        );
-    }
-
     // Getters y Setters
 
     public String getId() {
@@ -95,5 +81,27 @@ public class User {
                 username + ";" +
                 passwordHash + ";" +
                 role.name();
+    }
+
+    /*  Método para crear una instancia de User
+        a partir de una cadena de texto.
+        Formato que se espera (separado por ";"):
+        id;fullName;email;username;passwordHash;role
+
+        Parámetro: line, la cadena de texto que se
+        debe procesar.
+     */
+    public static User fromString(String line) {
+
+        String[] data = line.split(";");
+
+        return new User(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                Role.valueOf(data[5])
+        );
     }
 }
