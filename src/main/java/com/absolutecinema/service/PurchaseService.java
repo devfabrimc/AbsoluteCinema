@@ -48,7 +48,7 @@ public class PurchaseService {
         Purchase newPurchase = new Purchase(lastPurchaseId, userId, LocalDate.now().toString(),total );
         //Guardado de Purchase
         purchaseRepository.save(newPurchase);
-
+        //xd
         //Creación del ID de los tickets individuales
         String lastTicketId = ticketRepository.getLastId();
         int nextTicketNum = Integer.parseInt(lastTicketId.substring(3)) + 1;
