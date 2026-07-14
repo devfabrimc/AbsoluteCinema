@@ -31,17 +31,15 @@ public class AdminService {
     public void updateMovie(Movie movie) {
         movieRepository.update(movie);
     }
-
-
     //Metodo para eliminar una película
     public void deleteMovie(String movieId) {
         movieRepository.delete(movieId);
     }
-
     //Metodo para agregar un showtime
     public void addShowtime(Showtime showtime) {
         showtimeRepository.save(showtime);
     }
+
 
     public void updateShowtime(Showtime showtime) {}
 
