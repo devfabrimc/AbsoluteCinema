@@ -14,6 +14,14 @@ public class AdminService {
     private MovieRepository movieRepository;
     private ShowtimeRepository showtimeRepository;
     private RoomRepository roomRepository;
+    // Constructor con inyección de dependencias
+    public AdminService(MovieRepository movieRepository,
+                        ShowtimeRepository showtimeRepository,
+                        RoomRepository roomRepository) {
+        this.movieRepository = movieRepository;
+        this.showtimeRepository = showtimeRepository;
+        this.roomRepository = roomRepository;
+    }
 
     public void addMovie(Movie movie) {}
 
