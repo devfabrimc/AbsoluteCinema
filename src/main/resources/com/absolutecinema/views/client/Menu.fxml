@@ -47,7 +47,7 @@
                                           <HBox fx:id="hbxFeaturedMovieStars" alignment="CENTER_LEFT" spacing="2.0" style="-fx-effect: innershadow(gaussian, #FF7A59, 30, 0.5, 0, 0);" />
                                           <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                              <children>
-                                                <Button id="featured_button" fx:id="btnFeaturedShopTicket" mnemonicParsing="false" text="COMPRAR ENTRADAS">
+                                                <Button fx:id="btnFeaturedShopTicket" mnemonicParsing="false" styleClass="primary_button" text="COMPRAR ENTRADAS">
                                                    <graphic>
                                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #000, 30, 0.5, 0, 0);">
                                                          <image>
@@ -235,7 +235,7 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Label>
-                        <Button id="featured_button" fx:id="btnMenuRegister" mnemonicParsing="false" text="REGISTRARSE">
+                        <Button fx:id="btnMenuRegister" mnemonicParsing="false" styleClass="primary_button" text="REGISTRARSE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

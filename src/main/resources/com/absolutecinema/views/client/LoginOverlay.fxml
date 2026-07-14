@@ -84,7 +84,7 @@
                      </children>
                   </HBox>
                   <Label fx:id="lblLoginMessage" styleClass="login-error" text="Message" visible="false" />
-                  <Button id="featured_button" fx:id="btnLoginVerify" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="INICIAR SESIÓN">
+                  <Button fx:id="btnLoginVerify" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="primary_button" text="INICIAR SESIÓN">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -96,7 +96,10 @@
                   <HBox alignment="CENTER" spacing="10.0">
                      <children>
                         <Label styleClass="modal-subtitle" text="¿Aún no tienes cuenta?" />
-                        <Label fx:id="lblOpenRegisterOverlay" styleClass="modal-text-link" text="Registrarse" />
+                        <Label fx:id="lblOpenRegisterOverlay" styleClass="modal-text-link" text="Registrarse">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Label>
                      </children>
                   </HBox>
                </children>

@@ -21,41 +21,33 @@ public class MovieReleaseCardController {
     @FXML
     private Label lblGenero;
 
+    @FXML
+    private Label lblScore;
+
     public void setMovie(Movie movie) {
-        cargarTitulo(movie);
+        setTitle(movie);
+        setGenre(movie);
+        setImage(movie);
+        setGrade(movie);
+    }
+
+    private void setTitle(Movie movie) {
+        lblTitulo.setText(movie.getTitle().trim());
+    }
+
+    private void setGenre(Movie movie){
         lblGenero.setText(GenreFormatter.format(movie.getGenre()));
-        cargarPortada(movie);
     }
 
-    private void cargarTitulo(Movie movie) {
-        lblTitulo.setText(movie.getTitle());
+    private void setGrade(Movie movie) {
+        if(movie.getScore() == 0.0) {
+            lblScore.setText("S/N");
+        }else{
+            lblScore.setText(Double.toString(movie.getScore()));
+        }
     }
 
-    private String formatearGenero(Genre genre){
-
-        return switch (genre){
-
-            case TODOS -> "Todos";
-            case ACCION -> "Acción";
-            case ANIMACION -> "Animación";
-            case AVENTURA -> "Aventura";
-            case BIOGRAFIA -> "Biografía";
-            case CIENCIA_FICCION -> "Ciencia ficción";
-            case COMEDIA -> "Comedia";
-            case CRIMEN -> "Crimen";
-            case DRAMA -> "Drama";
-            case FANTASIA -> "Fantasía";
-            case HISTORIA -> "Historia";
-            case HORROR -> "Horror";
-            case ROMANCE -> "Romance";
-            case SUSPENSO -> "Suspenso";
-            case TERROR -> "Terror";
-
-        };
-
-    }
-
-    private void cargarPortada(Movie movie){
+    private void setImage(Movie movie){
 
         String ruta="/com/absolutecinema/images/"+movie.getImagePath();
 
