@@ -8,6 +8,7 @@ import com.absolutecinema.repository.ShowtimeRepository;
 import com.absolutecinema.repository.TicketRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,23 +49,50 @@ public class PurchaseService {
         Purchase newPurchase = new Purchase(lastPurchaseId, userId, LocalDate.now().toString(),total );
         //Guardado de Purchase
         purchaseRepository.save(newPurchase);
-        //xd
+
         //Creación del ID de los tickets individuales
         String lastTicketId = ticketRepository.getLastId();
         int nextTicketNum = Integer.parseInt(lastTicketId.substring(3)) + 1;
-        //Iteramos sobre
+        //Iteramos sobre los asientos
+        for (String seatLabel : seats){
+            //Crear los ID consecutivos
+            String newTicketId = String.format("TCK%03d", nextTicketNum++);
+            //Creación del ticket
+            Ticket ticket = new Ticket(newTicketId, newPurchaseId, showtimeId, seatLabel, pricePerSeat);
+            //Guardado del ticket
+            ticketRepository.save(ticket);
 
+            //Marcar el asiento como ocupado en una función
+            //Verificamos que no sea una lista vacía para evitar errores
+            if (showtime.getReservedSeats() == null){
+                //Si lo es, la aseguramos preventivamente
+                showtime.addReservedSeat(seatLabel);
+            } else {
+                showtime.addReservedSeat(seatLabel);
+            }
+        }
+        //Guardamos los cambios
+        showtimeRepository.update(showtime);
 
-        return null;
+        //Devolvemos el Purchase
+        return newPurchase;
     }
-    //Metodo de compra por usuario
+    //Metodo que busca la compra segun el usuario
     public List<Purchase> getPurchasesByUser(String userId) {
-
-        return Collections.emptyList();
+        //Verificamos que el userID no sea nulo
+        if (userId == null){
+            //Si lo es devolvemos null
+            return null;
+        }
+        return purchaseRepository.findByUserId(userId);
     }
-    //Metodo compra de ticket
+    //Metodo que busca el ticket segun la compra
     public List<Ticket> getTicketsByPurchase(String purchaseId) {
-
-        return Collections.emptyList();
+        //Verificamos que el purchaseId no sea nulo
+        if (purchaseId == null){
+            //Si lo es devolvemos null
+            return null;
+        }
+        return ticketRepository.findByPurchaseId(purchaseId);
     }
 }
