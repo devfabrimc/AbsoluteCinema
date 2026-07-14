@@ -26,10 +26,9 @@ public class AdminService {
     public void addMovie(Movie movie) {
         movieRepository.save(movie);
     }
-
-    //Metodo para modificar una película
-    public void updateMovie(Movie movie) {
-        movieRepository.update(movie);
+    //Metodo para eliminar una película
+    public void deleteMovie(String movieId) {
+        movieRepository.delete(movieId);
     }
 
     public void deleteMovie(String movieId) {}
