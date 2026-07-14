@@ -23,7 +23,9 @@ public class AdminService {
         this.roomRepository = roomRepository;
     }
 
-    public void addMovie(Movie movie) {}
+    public void addMovie(Movie movie) {
+        movieRepository.save(movie);
+    }
 
     public void updateMovie(Movie movie) {}
 
