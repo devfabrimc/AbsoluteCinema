@@ -22,12 +22,15 @@ public class AdminService {
         this.showtimeRepository = showtimeRepository;
         this.roomRepository = roomRepository;
     }
-
+    //Metodo para agregar una pelicula
     public void addMovie(Movie movie) {
         movieRepository.save(movie);
     }
 
-    public void updateMovie(Movie movie) {}
+    //Metodo para modificar una película
+    public void updateMovie(Movie movie) {
+        movieRepository.update(movie);
+    }
 
     public void deleteMovie(String movieId) {}
 
