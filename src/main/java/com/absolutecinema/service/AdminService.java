@@ -41,7 +41,10 @@ public class AdminService {
     }
 
 
-    public void updateShowtime(Showtime showtime) {}
+    //Metodo para modificar un showtime
+    public void updateShowtime(Showtime showtime) {
+        showtimeRepository.update(showtime);
+    }
 
     public void deleteShowtime(String showtimeId) {}
 
