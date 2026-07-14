@@ -7,6 +7,11 @@ import com.absolutecinema.utils.TxtFileManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/*  Implemantamos el repositorio para la entidad User
+    La clase actúa como capa de persitencia, se encarga
+    de leer y escribir datos de los usuarios en el users.txt
+    mediante el uso de la clase TxtFileManager
+ */
 public class UserRepository implements Repository<User> {
     private static final String filepath = Paths.USER_REPOSITORY;
     private final TxtFileManager fileManager = new TxtFileManager();
@@ -16,7 +21,7 @@ public class UserRepository implements Repository<User> {
         List<User> users = new ArrayList<>();
 
         for(String line : fileManager.readLines(filepath)){
-            users.add(User.printformat(line));
+            users.add(User.fromString(line));
         }
 
         return users;
@@ -62,6 +67,12 @@ public class UserRepository implements Repository<User> {
         writeAll(users);
     }
 
+    /*  Método que busca por su nombre de usuario
+        (obviando mayúsculas o minúsculas).
+
+        Parámetro: username, el nombre usuario que
+        debe buscar
+     */
     public User findByUsername(String username) {
         for(User user : findAll()){
             if(user.getUsername().equalsIgnoreCase(username)){
@@ -72,6 +83,11 @@ public class UserRepository implements Repository<User> {
         return null;
     }
 
+    /*  Método que busca un usuario por su correo electrónico
+        (obviando mayúsculas o minúsculas).
+
+        Parametro: email, El correo que debe buscar
+     */
     public User findByEmail(String email) {
         for(User user : findAll()){
             if(user.getEmail().equalsIgnoreCase(email)){
@@ -81,6 +97,10 @@ public class UserRepository implements Repository<User> {
 
         return null;
     }
+
+    /*  Método para obtener el ID del último usuario
+        que está en el archivo.
+     */
 
     public String getLastId(){
         List<User> users = findAll();
@@ -92,6 +112,12 @@ public class UserRepository implements Repository<User> {
         return  users.get(users.size()-1).getId();
     }
 
+    /*  Método auxiliar para sobrescribir el archivo
+        con la lista actual de usuarios.
+
+        Parametros: users, la lista de usuarios a guardar
+        en el archivo.
+     */
     private void writeAll(List<User> users){
         List<String> lines = new ArrayList<>();
 
