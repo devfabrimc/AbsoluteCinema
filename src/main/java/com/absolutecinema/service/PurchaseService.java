@@ -8,8 +8,6 @@ import com.absolutecinema.repository.ShowtimeRepository;
 import com.absolutecinema.repository.TicketRepository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class PurchaseService {
