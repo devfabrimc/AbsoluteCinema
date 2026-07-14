@@ -19,8 +19,8 @@
                <children>
                   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="upcoming-date-box">
                      <children>
-                        <Label fx:id="lblDay" alignment="CENTER" styleClass="upcoming-date-day" text="DAY" textAlignment="CENTER" />
-                        <Label fx:id="lblMonth" alignment="CENTER" styleClass="upcoming-date-month" text="MONTH" textAlignment="CENTER" />
+                        <Label fx:id="lblScore" alignment="CENTER" styleClass="upcoming-date-day" text="DAY" textAlignment="CENTER" />
+                        <Label alignment="CENTER" styleClass="upcoming-date-month" text="PUNTOS" textAlignment="CENTER" />
                      </children>
                      <HBox.margin>
                         <Insets />

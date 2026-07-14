@@ -59,6 +59,9 @@ public class MenuController implements Initializable {
     private final MovieService movieService = new MovieService(new MovieRepository());
     private List<Label> navLabels;
 
+    private List<Movie> originalNowShowing;
+    private List<Movie> originalComingSoon;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hbxMovieCard.getChildren().clear();
@@ -68,10 +71,13 @@ public class MenuController implements Initializable {
         initOverlays();
         initNavigation();
         initFilterListeners();
-
         loadGenres();
-        loadCatalog(movieService.getNowShowing());
-        loadUpcomingReleases(movieService.getComingSoon());
+
+        this.originalNowShowing = movieService.getNowShowing();
+        this.originalComingSoon = movieService.getComingSoon();
+
+        loadCatalog(originalNowShowing);
+        loadUpcomingReleases(originalComingSoon);
     }
 
     public void openLoginOverlay() {
@@ -151,11 +157,14 @@ public class MenuController implements Initializable {
     }
 
     private void applyFilters() {
-        List<Movie> movies = movieService.filterMovies(
-                txtSearchMovie.getText(),
-                cmbGenres.getValue()
-        );
-        loadCatalog(movies);
+        String searchText = txtSearchMovie.getText();
+        Genre selectedGenre = cmbGenres.getValue();
+
+        List<Movie> filteredCatalog = movieService.filterMovies(originalNowShowing, searchText, selectedGenre);
+        loadCatalog(filteredCatalog);
+
+        List<Movie> filteredUpcoming = movieService.filterMovies(originalComingSoon, searchText, selectedGenre);
+        loadUpcomingReleases(filteredUpcoming);
     }
 
     private void loadCatalog(List<Movie> movies) {
