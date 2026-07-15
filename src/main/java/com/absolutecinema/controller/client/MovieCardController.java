@@ -1,16 +1,24 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.application.App;
 import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
 import com.absolutecinema.model.MovieStatus;
+import com.absolutecinema.utils.GenreFormatter;
+import com.absolutecinema.utils.Paths;
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -26,141 +34,79 @@ public class MovieCardController {
 
     @FXML private Label lblGenero;
 
-    @FXML private Label lblDay;
-
-    @FXML private Label lblMonth;
+    @FXML private StackPane movieCard;
 
     public void setMovie(Movie movie) {
+        setTitle(movie);
+        setImage(movie);
+        setGenre(movie);
+        setScore(movie.getScore());
+        movieCard.setOnMouseClicked(event -> {
+            MovieDetailsController.selectedMovieData = movie;
 
-        cargarTitulo(movie);
-        cargarPortada(movie);
-        cargarGenero(movie.getGenre());
-
-        if (movie.getStatus() == MovieStatus.NOW_SHOWING) {
-            mostrarCalificacion(movie.getScore());
-        } else {
-            mostrarProximamente();
-        }
+            App.app.setTitle(" | " + movie.getTitle());
+            App.app.setScene(Paths.MOVIE_DETAILS_VIEW);
+        });
     }
 
-    private void cargarTitulo(Movie movie) {
-        lblTitulo.setText(movie.getTitle());
+    private void setTitle(Movie movie) {
+        lblTitulo.setText(movie.getTitle().trim());
     }
 
-    private void cargarGenero(Genre genre) {
-
-        if (genre == null) {
-            lblGenero.setText("");
-            return;
-        }
-
-        String texto = switch (genre) {
-            case TODOS -> "Todos";
-            case ACCION -> "Acción";
-            case ANIMACION -> "Animación";
-            case AVENTURA -> "Aventura";
-            case BIOGRAFIA -> "Biografía";
-            case CIENCIA_FICCION -> "Ciencia ficción";
-            case COMEDIA -> "Comedia";
-            case CRIMEN -> "Crimen";
-            case DRAMA -> "Drama";
-            case FANTASIA -> "Fantasía";
-            case HISTORIA -> "Historia";
-            case HORROR -> "Horror";
-            case ROMANCE -> "Romance";
-            case SUSPENSO -> "Suspenso";
-            case TERROR -> "Terror";
-        };
-
-        lblGenero.setText(texto);
+    private void setGenre(Movie movie) {
+        lblGenero.setText(GenreFormatter.format(movie.getGenre()));
     }
 
-    private void mostrarCalificacion(double score) {
+    private void setImage(Movie movie) {
 
-        if (hbxFeaturedMovieStars != null) {
-            hbxFeaturedMovieStars.setVisible(true);
-            hbxFeaturedMovieStars.setManaged(true);
-        }
+        String path="/com/absolutecinema/images/"+movie.getImagePath();
 
-        if (lblDay != null) {
-            lblDay.setVisible(false);
-            lblDay.setManaged(false);
-        }
+        URL url=getClass().getResource(path);
 
-        if (lblMonth != null) {
-            lblMonth.setVisible(false);
-            lblMonth.setManaged(false);
-        }
-
-        pintarEstrellas(score);
-    }
-
-    private void mostrarProximamente() {
-
-        if (hbxFeaturedMovieStars != null) {
-            hbxFeaturedMovieStars.setVisible(false);
-            hbxFeaturedMovieStars.setManaged(false);
-        }
-
-        if (lblDay != null) {
-            lblDay.setVisible(false);
-            lblDay.setManaged(false);
-        }
-
-        if (lblMonth != null) {
-            lblMonth.setVisible(false);
-            lblMonth.setManaged(false);
-        }
-    }
-
-    private void cargarPortada(Movie movie) {
-
-        String ruta = "/com/absolutecinema/images/" + movie.getImagePath();
-
-        URL url = getClass().getResource(ruta);
-
-        if (url == null) {
-            System.err.println("No existe la imagen: " + ruta);
+        if(url==null){
+            System.err.println("No existe "+path);
             return;
         }
 
         featuredImage.setStyle(
-                "-fx-background-image: url('" + url.toExternalForm() + "');" +
-                        "-fx-background-size: cover;" +
-                        "-fx-background-position: center;" +
-                        "-fx-background-radius: 16;"
+                "-fx-background-image:url('"+url.toExternalForm()+"');"+
+                        "-fx-background-size:cover;"+
+                        "-fx-background-position:center;"
         );
 
-        Rectangle clip = new Rectangle();
+        Rectangle clip=new Rectangle();
 
         clip.widthProperty().bind(featuredImage.widthProperty());
+
         clip.heightProperty().bind(featuredImage.heightProperty());
 
         clip.setArcWidth(32);
+
         clip.setArcHeight(32);
 
         featuredImage.setClip(clip);
+
     }
 
-    private void pintarEstrellas(double score) {
+    private void setScore(double score) {
 
         hbxFeaturedMovieStars.getChildren().removeIf(node -> node instanceof ImageView);
 
-        double nota = score / 2.0;
+        double points = score / 2.0;
 
         for (int i = 1; i <= 5; i++) {
 
-            String ruta;
+            String path;
 
-            if (nota >= i) {
-                ruta = "/com/absolutecinema/images/star-full.png";
-            } else if (nota >= i - 0.5) {
-                ruta = "/com/absolutecinema/images/star-half.png";
+            if (points >= i) {
+                path = "/com/absolutecinema/images/star-full.png";
+            } else if (points >= i - 0.5) {
+                path = "/com/absolutecinema/images/star-half.png";
             } else {
-                ruta = "/com/absolutecinema/images/star-empty.png";
+                path = "/com/absolutecinema/images/star-empty.png";
             }
 
-            ImageView estrella = crearEstrella(ruta);
+            ImageView estrella = createStar(path);
 
             if (estrella != null) {
 
@@ -174,15 +120,15 @@ public class MovieCardController {
             }
         }
 
-        lblRatingNumerico.setText(String.format("%.1f", nota));
+        lblRatingNumerico.setText(String.format("%.1f", points));
     }
 
-    private ImageView crearEstrella(String ruta) {
+    private ImageView createStar(String path) {
 
-        InputStream stream = getClass().getResourceAsStream(ruta);
+        InputStream stream = getClass().getResourceAsStream(path);
 
         if (stream == null) {
-            System.err.println("No existe " + ruta);
+            System.err.println("No existe " + path);
             return null;
         }
 

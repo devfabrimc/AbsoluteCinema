@@ -19,6 +19,7 @@ public class App extends Application {
         app = this;
         stageWindow = stage;
         setScene(Paths.MENU_VIEW);
+        setTitle(" | Menú Principal");
     }
 
     public void setTitle(String title) {
@@ -30,10 +31,17 @@ public class App extends Application {
         try {
             AnchorPane pane = loader.load();
             Scene scene = new Scene(pane);
+
             stageWindow.setScene(scene);
             stageWindow.show();
-            stageWindow.setMaximized(true);
-            setTitle(" | Menú Principal");
+
+            if (stageWindow.isMaximized()) {
+                stageWindow.setMaximized(false);
+                stageWindow.setMaximized(true);
+            } else {
+                stageWindow.show();
+                stageWindow.setMaximized(true);
+            }
         } catch (IOException e) {
             System.err.println("ERROR: ¡No se pudo cargar el archivo!");
             e.printStackTrace();
