@@ -57,8 +57,8 @@ public class AdminService {
     public List<Showtime> getAllShowtimes() {
         return showtimeRepository.findAll();
     }
-
+    //Metodo para obtener todas las salas
     public List<Room> getAllRooms() {
-        return Collections.emptyList();
+        return  roomRepository.findAll();
     }
 }
