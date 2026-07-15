@@ -40,7 +40,6 @@ public class AdminService {
         showtimeRepository.save(showtime);
     }
 
-
     //Metodo para modificar un showtime
     public void updateShowtime(Showtime showtime) {
         showtimeRepository.update(showtime);
@@ -50,16 +49,16 @@ public class AdminService {
         showtimeRepository.delete(showtimeId);
     }
 
-    //Metodo para obtener todas las películas
+
     public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
+        return Collections.emptyList();
     }
-    //Metodo para obtener todos los showtimes
+
     public List<Showtime> getAllShowtimes() {
-        return showtimeRepository.findAll();
+        return Collections.emptyList();
     }
-    //Metodo para obtener todas las salas
+
     public List<Room> getAllRooms() {
-        return  roomRepository.findAll();
+        return Collections.emptyList();
     }
 }
