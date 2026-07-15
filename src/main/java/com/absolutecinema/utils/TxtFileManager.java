@@ -37,6 +37,7 @@ public class TxtFileManager {
         que es para la ruta del archivo
         y las línes a escribir, respectivamente
      */
+
     public void writeLines(String path, List<String> lines) {
         Path filePath = Paths.get(path);
         try {
@@ -58,6 +59,7 @@ public class TxtFileManager {
        que es para la ruta del archivo
        y las líneas a agregar, respectivamente
      */
+
     public void appendLine(String path, String lines) {
         Path filePath = Paths.get(path);
         try {

@@ -7,20 +7,36 @@ import com.absolutecinema.utils.TxtFileManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/*  Implementación del repositorio para la gestión de la persistencia
+    de objetos de la clase Ticket, usando el tickets.txt como fuente de datos
+ */
+
 public class TicketRepository implements Repository<Ticket>{
+    // Declaramos la ruta del archivo que se encuentran los tickets
     public static final String filePath = Paths.TICKET_REPOSITORY;
+
+    // Es el gestor encargado de la lectura y escritura de archivos
     public final TxtFileManager fileManager = new TxtFileManager();
+
+    // ------- Métodos sobrescritos de la Interfaz Repository -------
+
+    /*  Lee todos los tickets del tickets.txt.
+        Convierte cada línea en un objeto Ticket
+        utilizando el método estático de la clase Ticket
+     */
 
     @Override
     public List<Ticket> findAll() {
         List<Ticket> tickets = new ArrayList<>();
 
         for (String line : fileManager.readLines(filePath)){
-            tickets.add(Ticket.printformat(line));
+            tickets.add(Ticket.fromString(line));
         }
 
         return tickets;
     }
+
+    // Busca un ticket en específico comparando cada uno de los IDs.
 
     @Override
     public Ticket findById(String id) {
@@ -33,10 +49,17 @@ public class TicketRepository implements Repository<Ticket>{
         return null;
     }
 
+    // Agrega un nuevo ticket al final del tickets.txt.
+
     @Override
     public void save(Ticket ticket) {
         fileManager.appendLine(filePath, ticket.toString());
     }
+
+    /*  Actualiza un ticket existente.
+        Cargando todos los tickets, reemplaza la que
+        coincide por ID en la lista y reescribe el tickets.txt.
+     */
 
     @Override
     public void update(Ticket ticket) {
@@ -52,6 +75,10 @@ public class TicketRepository implements Repository<Ticket>{
         writeAll(tickets);
     }
 
+    /*  Elimina un ticket por su ID.
+        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo.
+     */
+
     @Override
     public void delete(String id) {
         List<Ticket> tickets = findAll();
@@ -60,6 +87,10 @@ public class TicketRepository implements Repository<Ticket>{
 
         writeAll(tickets);
     }
+
+    // ------- Método de búsqueda específica -------
+
+    //  Busca todos los tickets asociados a un ID de compra en específico.
 
     public List<Ticket> findByPurchaseId(String purchaseId) {
         List<Ticket> result = new ArrayList<>();
@@ -73,6 +104,10 @@ public class TicketRepository implements Repository<Ticket>{
         return result;
     }
 
+    /*  Obtiene el último ID que se generó en el archivo
+        para facilitar la creación de nuevos registros.
+     */
+
     public String getLastId() {
         List<Ticket> tickets = findAll();
 
@@ -81,6 +116,12 @@ public class TicketRepository implements Repository<Ticket>{
         }
         return tickets.get(tickets.size() - 1).getId();
     }
+
+    /*  Método auxiliar privado para la sincronización de la lista
+        de objetos con el tickets.txt.
+        Convierte la lista de objetos a una lista de strings
+        por medio del "toString" y los almacena.
+     */
 
     private void writeAll(List<Ticket> tickets){
         List<String> lines = new ArrayList<>();

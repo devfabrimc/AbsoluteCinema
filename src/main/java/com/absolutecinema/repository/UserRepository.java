@@ -7,14 +7,23 @@ import com.absolutecinema.utils.TxtFileManager;
 import java.util.ArrayList;
 import java.util.List;
 
-/*  Implemantamos el repositorio para la entidad User
-    La clase actúa como capa de persitencia, se encarga
-    de leer y escribir datos de los usuarios en el users.txt
-    mediante el uso de la clase TxtFileManager
+/*  Implementación del repositorio para la gestión de la persistencia
+    de objetos de la clase User, usando el users.txt como fuente de datos
  */
+
 public class UserRepository implements Repository<User> {
+    // Declaramos la ruta del archivo que se encuentran los usuarios
     private static final String filepath = Paths.USER_REPOSITORY;
+
+    // Es el gestor encargado de la lectura y escritura de archivos
     private final TxtFileManager fileManager = new TxtFileManager();
+
+    // ------- Métodos sobrescritos de la Interfaz Repository -------
+
+    /*  Lee todos los usuarios del users.txt.
+        Convierte cada línea en un objeto User
+        utilizando el método estático de la clase User
+     */
 
     @Override
     public List<User> findAll() {
@@ -26,6 +35,8 @@ public class UserRepository implements Repository<User> {
 
         return users;
     }
+
+    // Busca un usuario en específico comparando cada uno de los IDs.
 
     @Override
     public User findById(String id) {
@@ -39,10 +50,17 @@ public class UserRepository implements Repository<User> {
         return null;
     }
 
+    // Agrega un nuevo usuario al final del users.txt
+
     @Override
     public void save(User user) {
         fileManager.appendLine(filepath, user.toString());
     }
+
+    /*  Actualiza un usuario que ya existe.
+        Cargando todos los usuarios, reemplaza el que
+        coincide por ID en la lista y reescribe el users.txt
+     */
 
     @Override
     public void update(User user) {
@@ -58,6 +76,11 @@ public class UserRepository implements Repository<User> {
         writeAll(users);
     }
 
+
+    /*  Elimina un usuario por su ID.
+        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo
+     */
+
     @Override
     public void delete(String id) {
         List<User> users = findAll();
@@ -67,12 +90,10 @@ public class UserRepository implements Repository<User> {
         writeAll(users);
     }
 
-    /*  Método que busca por su nombre de usuario
-        (obviando mayúsculas o minúsculas).
+    // ------- Métodos de búsquedas específicas -------
 
-        Parámetro: username, el nombre usuario que
-        debe buscar
-     */
+    // Busca o filtra los usuarios mediante su nombre de usuario
+
     public User findByUsername(String username) {
         for(User user : findAll()){
             if(user.getUsername().equalsIgnoreCase(username)){
@@ -83,11 +104,8 @@ public class UserRepository implements Repository<User> {
         return null;
     }
 
-    /*  Método que busca un usuario por su correo electrónico
-        (obviando mayúsculas o minúsculas).
+    // Busca a los usuarios por su correo, ignorando mayúsculas y minúsculas
 
-        Parametro: email, El correo que debe buscar
-     */
     public User findByEmail(String email) {
         for(User user : findAll()){
             if(user.getEmail().equalsIgnoreCase(email)){
@@ -98,8 +116,8 @@ public class UserRepository implements Repository<User> {
         return null;
     }
 
-    /*  Método para obtener el ID del último usuario
-        que está en el archivo.
+    /*  Obtiene el último ID que se generó en el archivo
+        para facilitar la creación de nuevos registros.
      */
 
     public String getLastId(){
@@ -112,12 +130,12 @@ public class UserRepository implements Repository<User> {
         return  users.get(users.size()-1).getId();
     }
 
-    /*  Método auxiliar para sobrescribir el archivo
-        con la lista actual de usuarios.
-
-        Parametros: users, la lista de usuarios a guardar
-        en el archivo.
+    /*  Método auxiliar privado para la sincronización de la lista
+        de objetos con el users.txt.
+        Convierte la lista de objetos a una lista de strings
+        por medio del "toString" y los almacena.
      */
+
     private void writeAll(List<User> users){
         List<String> lines = new ArrayList<>();
 

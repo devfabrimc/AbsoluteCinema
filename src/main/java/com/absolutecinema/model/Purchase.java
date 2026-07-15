@@ -1,7 +1,5 @@
 package com.absolutecinema.model;
 
-import java.util.List;
-
 public class Purchase {
     // Atributos
 
@@ -19,17 +17,7 @@ public class Purchase {
         this.total = total;
     }
 
-    public static Purchase printformat(String line) {
 
-        String[] data = line.split(";");
-
-        return new Purchase(
-                data[0],
-                data[1],
-                data[2],
-                Double.parseDouble(data[3])
-        );
-    }
 
     //Getters
 
@@ -41,20 +29,42 @@ public class Purchase {
         return userId;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
     public String getPurchaseDate() {
         return purchaseDate;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
     // Método toString
+
     @Override
     public String toString() {
         return id + ";" +
                 userId + ";" +
                 purchaseDate + ";" +
                 String.format("%.2f", total);
+    }
+
+    /*  Método para crear una instancia de Purchase
+        a partir de una cadena de texto.
+        Formato que se espera (separado por ";"):
+        id;userId;purchaseDate;total
+
+        Parámetro: line, la cadena de texto que se
+        debe procesar.
+     */
+
+    public static Purchase fromString(String line) {
+
+        String[] data = line.split(";");
+
+        return new Purchase(
+                data[0],
+                data[1],
+                data[2],
+                Double.parseDouble(data[3])
+        );
     }
 }
