@@ -40,13 +40,15 @@ public class AdminService {
         showtimeRepository.save(showtime);
     }
 
-
     //Metodo para modificar un showtime
     public void updateShowtime(Showtime showtime) {
         showtimeRepository.update(showtime);
     }
+    //Metodo para eliminar un showtime
+    public void deleteShowtime(String showtimeId) {
+        showtimeRepository.delete(showtimeId);
+    }
 
-    public void deleteShowtime(String showtimeId) {}
 
     public List<Movie> getAllMovies() {
         return Collections.emptyList();
