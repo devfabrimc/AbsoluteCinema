@@ -31,29 +31,6 @@ public class Showtime {
         this.reservedSeats = reservedSeats;
     }
 
-    public static Showtime printformat(String line) {
-
-        String[] data = line.split(";");
-
-        List<String> reservedSeats = new ArrayList<>();
-
-        if (!data[8].isEmpty()) {
-            reservedSeats = Arrays.asList(data[8].split(","));
-        }
-
-        return new Showtime(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                data[4],
-                Language.valueOf(data[5]),
-                Format.valueOf(data[6]),
-                Double.parseDouble(data[7]),
-                new ArrayList<>(reservedSeats)
-        );
-    }
-
     // Getters y Setters
 
     public String getId() {
@@ -93,6 +70,7 @@ public class Showtime {
     }
 
     // Métodos para la manipulación de la disponibilidad de asientos
+
     public void addReservedSeat(String seatLabel){
         reservedSeats.add(seatLabel);
     }
@@ -106,11 +84,14 @@ public class Showtime {
     }
 
     // Método toString
+
     @Override
     public String toString() {
+
         /* Declaramos una variable para convertir a la lista
            a una cadena separada por comas
          */
+
         String seatsString = String.join(",", reservedSeats);
 
         return id + ";" +
@@ -122,6 +103,37 @@ public class Showtime {
                 format.name() + ";" +
                 price + ";" +
                 seatsString;
+    }
 
+    /*  Método para crear una instancia de Showtime
+        a partir de una cadena de texto.
+        Formato que se espera (separado por ";"):
+        id;movieId;roomId;date;time;language;price;reservedSeats
+
+        Parámetro: line, la cadena de texto que se
+        debe procesar.
+     */
+
+    public static Showtime fromString(String line) {
+
+        String[] data = line.split(";");
+
+        List<String> reservedSeats = new ArrayList<>();
+
+        if (!data[8].isEmpty()) {
+            reservedSeats = Arrays.asList(data[8].split(","));
+        }
+
+        return new Showtime(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                Language.valueOf(data[5]),
+                Format.valueOf(data[6]),
+                Double.parseDouble(data[7]),
+                new ArrayList<>(reservedSeats)
+        );
     }
 }

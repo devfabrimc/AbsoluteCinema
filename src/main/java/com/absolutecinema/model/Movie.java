@@ -29,24 +29,6 @@ public class Movie {
         this.status = status;
     }
 
-    public static Movie printformat(String line) {
-
-        String[] data = line.split(";");
-
-        return new Movie(
-                data[0],
-                data[1],
-                data[2],
-                Genre.valueOf(data[3]),
-                Integer.parseInt(data[4]),
-                data[5],
-                Double.parseDouble(data[6]),
-                data[7],
-                data[8],
-                MovieStatus.valueOf(data[9])
-        );
-    }
-
     // Getters y setters
 
     public String getId() {
@@ -135,6 +117,7 @@ public class Movie {
     }
 
     // Método toString
+
     @Override
     public String toString() {
         return id + ";" +
@@ -147,5 +130,32 @@ public class Movie {
                 imagePath + ";" +
                 bannerPath + ";" +
                 status.name();
+    }
+
+    /*  Método para crear una instancia de Movie
+        a partir de una cadena de texto.
+        Formato que se espera (separado por ";"):
+        id;title;synopsis;genre;durationMinutes;rating;score;imagePath;bannerPath;status
+
+        Parámetro: line, la cadena de texto que se
+        debe procesar.
+     */
+
+    public static Movie fromString(String line) {
+
+        String[] data = line.split(";");
+
+        return new Movie(
+                data[0],
+                data[1],
+                data[2],
+                Genre.valueOf(data[3]),
+                Integer.parseInt(data[4]),
+                data[5],
+                Double.parseDouble(data[6]),
+                data[7],
+                data[8],
+                MovieStatus.valueOf(data[9])
+        );
     }
 }

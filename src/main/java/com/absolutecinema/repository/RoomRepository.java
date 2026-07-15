@@ -7,9 +7,23 @@ import com.absolutecinema.utils.TxtFileManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/*  Implementación del repositorio para la gestión de la persistencia
+    de objetos de la clase Room, usando el rooms.txt como fuente de datos
+ */
+
 public class RoomRepository implements Repository<Room>{
+    // Declaramos la ruta del archivo que se encuentran las salas
     private static final String filePath = Paths.ROOM_REPOSITORY;
+
+    // Es el gestor encargado de la lectura y escritura de archivos
     private final TxtFileManager fileManager =  new TxtFileManager();
+
+    // ------- Métodos sobrescritos de la Interfaz Repository -------
+
+    /*  Lee todos las salas del rooms.txt.
+        Convierte cada línea en un objeto Room
+        utilizando el método estático de la clase Room
+     */
 
     @Override
     public List<Room> findAll() {
@@ -21,6 +35,8 @@ public class RoomRepository implements Repository<Room>{
 
         return rooms;
     }
+
+    // Busca una sala en específica comparando cada uno de los IDs.
 
     @Override
     public Room findById(String id) {
@@ -34,10 +50,17 @@ public class RoomRepository implements Repository<Room>{
         return null;
     }
 
+    // Agrega una nueva sala al final del rooms.txt.
+
     @Override
     public void save(Room room) {
         fileManager.appendLine(filePath, room.toString());
     }
+
+    /*  Actualiza una sala existente.
+        Cargando todos las salas, reemplaza la que
+        coincide por ID en la lista y reescribe el rooms.txt.
+     */
 
     @Override
     public void update(Room room) {
@@ -53,6 +76,10 @@ public class RoomRepository implements Repository<Room>{
         writeAll(rooms);
     }
 
+    /*  Elimina una sala por su ID.
+        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo.
+     */
+
     @Override
     public void delete(String id) {
         List<Room> rooms = findAll();
@@ -61,6 +88,12 @@ public class RoomRepository implements Repository<Room>{
 
         writeAll(rooms);
     }
+
+    // ------- Método de búsqueda específica -------
+
+    /*  Obtiene el último ID que se generó en el archivo
+        para facilitar la creación de nuevos registros.
+     */
 
     public String getLastId(){
         List<Room> rooms = findAll();
@@ -71,6 +104,12 @@ public class RoomRepository implements Repository<Room>{
 
         return  rooms.get(rooms.size()-1).getId();
     }
+
+    /*  Método auxiliar privado para la sincronización de la lista
+        de objetos con el rooms.txt.
+        Convierte la lista de objetos a una lista de strings
+        por medio del "toString" y los almacena.
+     */
 
     private void writeAll(List<Room> rooms){
         List<String> lines = new ArrayList<>();

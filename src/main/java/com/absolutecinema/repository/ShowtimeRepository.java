@@ -7,20 +7,36 @@ import com.absolutecinema.utils.TxtFileManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/*  Implementación del repositorio para la gestión de la persistencia
+    de objetos de la clase Showtime, usando el showtimes.txt como fuente de datos
+ */
+
 public class ShowtimeRepository implements Repository<Showtime> {
+    // Declaramos la ruta del archivo que se encuentran los tickets
     private static final String filePath = Paths.SHOWTIME_REPOSITORY;
+
+    // Es el gestor encargado de la lectura y escritura de archivos
     private final TxtFileManager fileManager = new TxtFileManager();
+
+    // ------- Métodos sobrescritos de la Interfaz Repository -------
+
+    /*  Lee todos los tickets del showtimes.txt.
+        Convierte cada línea en un objeto Showtime
+        utilizando el método estático de la clase Showtime
+     */
 
     @Override
     public List<Showtime> findAll() {
         List<Showtime> showtimes = new ArrayList<>();
 
         for(String line : fileManager.readLines(filePath)){
-            showtimes.add(Showtime.printformat(line));
+            showtimes.add(Showtime.fromString(line));
         }
 
         return showtimes;
     }
+
+    // Busca una función en específica comparando cada uno de los IDs.
 
     @Override
     public Showtime findById(String id) {
@@ -34,10 +50,17 @@ public class ShowtimeRepository implements Repository<Showtime> {
         return null;
     }
 
+    // Agrega una nueva función al final del showtimes.txt.
+
     @Override
     public void save(Showtime showtime) {
         fileManager.appendLine(filePath, showtime.toString());
     }
+
+    /*  Actualiza una función existente.
+        Cargando todas las funciones, reemplaza la que
+        coincide por ID en la lista y reescribe el showtimes.txt.
+     */
 
     @Override
     public void update(Showtime showtime) {
@@ -53,6 +76,10 @@ public class ShowtimeRepository implements Repository<Showtime> {
         writeAll(showtimes);
     }
 
+    /*  Elimina una función por su ID.
+        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo.
+     */
+
     @Override
     public void delete(String id) {
         List<Showtime> showtimes = findAll();
@@ -61,6 +88,10 @@ public class ShowtimeRepository implements Repository<Showtime> {
 
         writeAll(showtimes);
     }
+
+    // ------- Método de búsqueda específica -------
+
+    //  Busca todas las funciones asociadas a un ID de película en específico.
 
     public List<Showtime> findByMovieId(String movieId){
         List<Showtime> result = new ArrayList<>();
@@ -72,6 +103,8 @@ public class ShowtimeRepository implements Repository<Showtime> {
 
         return result;
     }
+
+    // Busca todas las funciones programadas para una fecha específica.
 
     public List<Showtime> findByDate(String date){
         List<Showtime>  result = new ArrayList<>();
@@ -85,6 +118,8 @@ public class ShowtimeRepository implements Repository<Showtime> {
         return result;
     }
 
+    // Busca todas las funciones que se llevaran a cabo en una sala específica.
+
     public List<Showtime> findByRoom(String roomId){
         List<Showtime> result = new ArrayList<>();
 
@@ -97,6 +132,10 @@ public class ShowtimeRepository implements Repository<Showtime> {
         return result;
     }
 
+    /*  Obtiene el último ID que se generó en el archivo
+        para facilitar la creación de nuevos registros.
+     */
+
     public String getLastId() {
         List<Showtime> showtimes = findAll();
 
@@ -105,6 +144,12 @@ public class ShowtimeRepository implements Repository<Showtime> {
         }
         return showtimes.get(showtimes.size() - 1).getId();
     }
+
+    /*  Método auxiliar privado para la sincronización de la lista
+        de objetos con el showtimes.txt.
+        Convierte la lista de objetos a una lista de strings
+        por medio del "toString" y los almacena.
+     */
 
     private void writeAll(List<Showtime> showtimes){
         List<String> lines = new ArrayList<>();

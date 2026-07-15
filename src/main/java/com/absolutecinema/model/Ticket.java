@@ -19,19 +19,6 @@ public class Ticket {
         this.price = price;
     }
 
-    public static Ticket printformat(String line) {
-
-        String[] data = line.split(";");
-
-        return new Ticket(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                Double.parseDouble(data[4])
-        );
-    }
-
     // Getters
 
     public String getId() {
@@ -61,5 +48,27 @@ public class Ticket {
                 showtimeId + ";" +
                 seatLabel + ";" +
                 String.format("%.2f", price);
+    }
+
+    /*  Método para crear una instancia de Ticket
+        a partir de una cadena de texto.
+        Formato que se espera (separado por ";"):
+        id;purchaseId;showtimeId;seatLabel;price
+
+        Parámetro: line, la cadena de texto que se
+        debe procesar.
+     */
+
+    public static Ticket fromString(String line) {
+
+        String[] data = line.split(";");
+
+        return new Ticket(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                Double.parseDouble(data[4])
+        );
     }
 }
