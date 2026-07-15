@@ -40,6 +40,7 @@ public class AdminService {
         showtimeRepository.save(showtime);
     }
 
+
     //Metodo para modificar un showtime
     public void updateShowtime(Showtime showtime) {
         showtimeRepository.update(showtime);
@@ -57,8 +58,8 @@ public class AdminService {
     public List<Showtime> getAllShowtimes() {
         return showtimeRepository.findAll();
     }
-
+    //Metodo para obtener todas las salas
     public List<Room> getAllRooms() {
-        return Collections.emptyList();
+        return  roomRepository.findAll();
     }
 }
