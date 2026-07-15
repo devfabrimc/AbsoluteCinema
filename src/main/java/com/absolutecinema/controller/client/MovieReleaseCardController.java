@@ -12,17 +12,13 @@ import java.net.URL;
 
 public class MovieReleaseCardController {
 
-    @FXML
-    private Region featuredImage;
+    @FXML private Region featuredImage;
 
-    @FXML
-    private Label lblTitulo;
+    @FXML private Label lblTitulo;
 
-    @FXML
-    private Label lblGenero;
+    @FXML private Label lblGenero;
 
-    @FXML
-    private Label lblScore;
+    @FXML private Label lblScore;
 
     public void setMovie(Movie movie) {
         setTitle(movie);

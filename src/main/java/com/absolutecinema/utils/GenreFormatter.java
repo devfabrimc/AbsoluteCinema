@@ -4,9 +4,6 @@ import com.absolutecinema.model.Genre;
 
 public final class GenreFormatter {
 
-    private GenreFormatter() {
-    }
-
     public static String format(Genre genre) {
         return switch (genre) {
             case TODOS -> "Todos los géneros";
