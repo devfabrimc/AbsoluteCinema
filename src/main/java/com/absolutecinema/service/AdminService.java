@@ -49,13 +49,13 @@ public class AdminService {
         showtimeRepository.delete(showtimeId);
     }
 
-
+    //Metodo para obtener todas las películas
     public List<Movie> getAllMovies() {
-        return Collections.emptyList();
+        return movieRepository.findAll();
     }
-
+    //Metodo para obtener todos los showtimes
     public List<Showtime> getAllShowtimes() {
-        return Collections.emptyList();
+        return showtimeRepository.findAll();
     }
 
     public List<Room> getAllRooms() {
