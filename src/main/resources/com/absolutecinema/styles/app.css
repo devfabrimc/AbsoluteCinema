@@ -29,7 +29,7 @@
 }
 
 .logo-subtitle {
-    -fx-text-fill: #FFF;
+    -fx-text-fill: #F5F1E8;
     -fx-font-size: 28px;
     -fx-font-weight: 700;
     -fx-letter-spacing: 2px;
@@ -121,7 +121,7 @@
 }
 
 #featured_title {
-    -fx-text-fill: #FAF7F2;
+    -fx-text-fill: #F5F1E8;
     -fx-font-size: 54px;
     -fx-font-weight: 900;
 }
@@ -236,11 +236,11 @@
     -fx-font-size: 14px;
 }
 
-.combo-box .arrow-button {
+.arrow-button {
     -fx-background-color: transparent;
 }
 
-.combo-box .arrow {
+.arrow {
     -fx-background-color: #D6A85A;
 }
 
