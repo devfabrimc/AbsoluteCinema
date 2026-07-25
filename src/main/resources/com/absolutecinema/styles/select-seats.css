@@ -1,0 +1,108 @@
+.back-button {
+    -fx-background-color: rgba(255,255,255,0.03);
+    -fx-border-color: rgba(255,255,255,0.22);
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #F5F1E8;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+    -fx-padding: 8 32 8 32;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-border-color: rgba(214,168,90,0.45);
+}
+
+.header-title {
+    -fx-font-size: 40;
+    -fx-text-fill: #F5F1E8;
+    -fx-font-weight: 900;
+}
+
+.container {
+    -fx-background-color: #10161F;
+    -fx-border-color: rgba(255,255,255,0.22);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 20, 0.3, 0, 4);
+}
+
+.image {
+    -fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);
+}
+
+.subtitle {
+    -fx-text-fill: rgba(255,255,255,0.55);
+    -fx-font-size: 17;
+    -fx-font-weight: 800;
+}
+
+.subtitle-text {
+    -fx-text-fill: #F5F1E8;
+    -fx-font-size: 20;
+    -fx-font-weight: 800;
+}
+
+.selected-seats {
+    -fx-text-fill: #D6A85A;
+    -fx-font-size: 20;
+    -fx-font-weight: 900;
+}
+
+.form .text {
+    -fx-font-size: 22;
+}
+
+.form .total {
+    -fx-text-fill: #D6A85A;
+    -fx-font-size: 22;
+    -fx-font-weight: 900;
+}
+
+.form .subtitle {
+    -fx-text-fill: #F5F1E8;
+    -fx-font-size: 24;
+    -fx-font-weight: 900;
+}
+
+.toggle-button {
+    -fx-background-color: #1E2732;
+    -fx-border-color: #333a48;
+    -fx-border-width: 3;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #F5F1E8;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+}
+
+.toggle-button:hover {
+    -fx-background-color: rgba(214,168,90,0.10);
+    -fx-border-color: #D6A85A;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #D8A64A;
+    -fx-border-color: transparent;
+}
+
+.toggle-button .seat-occupied {
+    -fx-background-color: #5A606A;
+    -fx-text-fill: #555555;
+    -fx-opacity: 0.6;
+    -fx-cursor: default;
+}
+
+.leyend-text {
+    -fx-font-size: 18;
+    -fx-font-weight: 800;
+}
+
+.info-text {
+    -fx-font-size: 15;
+    -fx-font-weight: 600;
+}

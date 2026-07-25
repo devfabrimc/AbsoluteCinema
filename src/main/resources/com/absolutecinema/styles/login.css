@@ -42,11 +42,6 @@
     -fx-border-color: #D6A85A;
 }
 
-.login-error {
-    -fx-text-fill: #ea4444;
-    -fx-font-size: 16px;
-}
-
 .modal-text-link {
     -fx-text-fill: #E6B35C;
 }

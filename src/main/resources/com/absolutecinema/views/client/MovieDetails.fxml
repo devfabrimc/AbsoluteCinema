@@ -76,7 +76,7 @@
                                                 <Label styleClass="subtitle" text="FUNCIONES DISPONIBLES" />
                                              </children>
                                           </HBox>
-                                          <Accordion fx:id="functionsAccordion" prefWidth="600.0">
+                                          <Accordion fx:id="functionsAccordion" prefWidth="800.0">
                                              <VBox.margin>
                                                 <Insets top="10.0" />
                                              </VBox.margin>
@@ -111,7 +111,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
                   <Region HBox.hgrow="ALWAYS" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>

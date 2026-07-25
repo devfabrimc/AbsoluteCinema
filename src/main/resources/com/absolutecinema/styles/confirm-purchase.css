@@ -1,0 +1,73 @@
+.modal-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    -fx-background-color: #131518;
+    -fx-border-color: #2a2c30;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 30;
+    -fx-spacing: 8;
+}
+
+.modal-title {
+    -fx-text-fill: #F8F5EF;
+    -fx-font-size: 22;
+    -fx-font-weight: 700;
+    -fx-padding: 0 16 0 16;
+}
+
+.modal-subtitle {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 18;
+}
+
+.close-btn {
+    -fx-background-color: transparent;
+    -fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);
+}
+
+.movie-title {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 18;
+    -fx-font-weight: 900;
+}
+
+.movie-meta {
+    -fx-text-fill: #D3B98B;
+    -fx-font-size: 15;
+}
+
+.icon {
+    -fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);
+}
+
+.movie-subtitle {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 15;
+}
+
+.movie-info-text {
+    -fx-text-fill: #D6A85A;
+    -fx-font-size: 15;
+    -fx-font-weight: 900;
+}
+
+.selected-seats {
+    -fx-text-fill: #D6A85A;
+    -fx-font-size: 20;
+    -fx-font-weight: 900;
+}
+
+.info-text {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 16;
+}
+
+.total-text {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 20;
+    -fx-font-weight: 700;
+}

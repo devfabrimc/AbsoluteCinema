@@ -2,3 +2,4 @@ USR001;Administrador;admin@absolutecinema.com;admin;240be518fabd2724ddb6f04eeb1d
 USR002;Miguel Mosquera;miguel@gmail.com;miguel;miguel123;CUSTOMER
 USR003;Miguel;Vera;Vermos1821;85778f58f670469f570449001be6e57e20d03345d922f560c9cad17acd7ab79e;CUSTOMER
 USR004;eduardo;admin@absolutecinema.com;edu;240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9;ADMIN
+USR005;Fabricio Rengifo;fabriciokk93@gmail.com;FabriMC;67db9d0d0013ae949abe8d9ef1788a3c61d8e2415405817e8fcb779cf3845886;ADMIN

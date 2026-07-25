@@ -2,6 +2,7 @@ package com.absolutecinema.controller.client;
 
 import com.absolutecinema.application.App;
 import com.absolutecinema.model.Movie;
+import com.absolutecinema.model.Room;
 import com.absolutecinema.model.Showtime;
 import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.repository.RoomRepository;
@@ -12,7 +13,6 @@ import com.absolutecinema.utils.GenreFormatter;
 import com.absolutecinema.utils.Paths;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
@@ -29,6 +29,10 @@ import javafx.scene.shape.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class MovieDetailsController implements Initializable {
@@ -75,30 +79,40 @@ public class MovieDetailsController implements Initializable {
     }
 
     private void loadShowTimes() {
-        // 1. Limpiamos el acordeón
         functionsAccordion.getPanes().clear();
 
         var showtimes = showtimeService.getShowtimeByMovie(selectedMovieData.getId());
+        LocalDateTime now = LocalDateTime.now();
+
+        DateTimeFormatter limitDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter limitHour = DateTimeFormatter.ofPattern("HH:mm");
 
         for (var showtime : showtimes) {
-            String date = showtime.getDate();
+            try {
+                LocalDate fechaFuncion = LocalDate.parse(showtime.getDate(), limitDate);
+                LocalTime horaFuncion = LocalTime.parse(showtime.getTime(), limitHour);
+                LocalDateTime fechaHoraFuncion = LocalDateTime.of(fechaFuncion, horaFuncion);
 
-            // 2. Buscamos si ya creamos un TitledPane para esta fecha
+                if (fechaHoraFuncion.isBefore(now)) {
+                    continue;
+                }
+            } catch (Exception e) {
+                System.err.println("Error en la fecha/hora de la función " + showtime.getId() + ": " + e.getMessage());
+                continue;
+            }
+
+            String date = showtime.getDate();
             TitledPane existingPane = findPaneByTitle(date);
 
             if (existingPane == null) {
-                // Si no existe, lo creamos y lo añadimos al acordeón
                 existingPane = createTitledPane(date);
                 functionsAccordion.getPanes().add(existingPane);
             }
 
-            // 3. Aquí deberías agregar el horario específico (ej. "14:30")
-            // al contenido visual de ese "existingPane" (como un VBox o ListView interno)
             addShowtimeToPaneContent(existingPane, showtime);
         }
     }
 
-    // Método auxiliar para buscar si ya existe el panel de esa fecha
     private TitledPane findPaneByTitle(String title) {
         for (TitledPane pane : functionsAccordion.getPanes()) {
             if (pane.getText().equals(title)) {
@@ -129,12 +143,13 @@ public class MovieDetailsController implements Initializable {
             screenIcon = new ImageView(new Image(new FileInputStream(Paths.SCREEN_IMAGE)));
             screenIcon.setFitHeight(24);
             screenIcon.setFitWidth(24);
+            screenIcon.getStyleClass().add("showtime-icon");
         } catch (FileNotFoundException e) {
             System.err.println("ERROR: No se encontró la ruta:  " + Paths.SCREEN_IMAGE);
         }
-        screenIcon.getStyleClass().add("showtime-icon");
 
-        String infoText = roomRepository.findById(showtime.getRoomId()).getName() + "  -  " + showtime.getTime();
+        Room room = roomRepository.findById(showtime.getRoomId());
+        String infoText = room.getName() + "  [ " + showtime.getFormat().getDisplayName() + " - " + showtime.getLanguage() + " ]  -  " + showtime.getTime();
         Label infoLabel = new Label(infoText);
         infoLabel.getStyleClass().add("showtime-info-label");
 
@@ -147,7 +162,7 @@ public class MovieDetailsController implements Initializable {
             Image image = new Image(new FileInputStream(Paths.TICKET_IMAGE));
             ticketButton = new ImageView(image);
         }catch (FileNotFoundException e){
-            System.err.println("Error: No se encontró la imagen.");
+            System.err.println("Error: No se encontró la imagen: " + Paths.TICKET_IMAGE);
         }
         ticketButton.setFitHeight(25);
         ticketButton.setFitWidth(25);
@@ -160,13 +175,15 @@ public class MovieDetailsController implements Initializable {
             handleBuyAction(showtime);
         });
 
-        // 7. Armamos la fila y la agregamos al contenedor
         row.getChildren().addAll(screenIcon, infoLabel, spacer, buyButton);
         container.getChildren().add(row);
     }
 
     private void handleBuyAction(Showtime showtime) {
-        System.out.println("Comprando para la función: " + showtime.getId());
+        SelectSeatsController.selectedShowtime = showtime;
+
+        App.app.setScene(Paths.SELECT_SEATS_VIEW);
+        App.app.setTitle(" | Seleccionando asientos");
     }
 
     private void setImage(Movie movie) {
