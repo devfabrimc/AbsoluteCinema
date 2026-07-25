@@ -68,7 +68,7 @@ public class Ticket {
                 data[1],
                 data[2],
                 data[3],
-                Double.parseDouble(data[4])
+                Double.parseDouble(data[4].replace(",", "."))
         );
     }
 }

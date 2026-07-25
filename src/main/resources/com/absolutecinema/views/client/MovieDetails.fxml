@@ -37,7 +37,7 @@
                                     </StackPane>
                                     <VBox spacing="20.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Region fx:id="imgBanner" prefHeight="250.0" styleClass="images" />
+                                          <Region fx:id="imgBanner" prefHeight="250.0" />
                                           <Label fx:id="lblTitle" styleClass="title" text="MovieTitle" />
                                           <HBox alignment="CENTER_LEFT" spacing="10.0">
                                              <children>

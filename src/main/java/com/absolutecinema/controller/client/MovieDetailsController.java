@@ -59,6 +59,7 @@ public class MovieDetailsController implements Initializable {
         if (movie != null) {
             lblTitle.setText(movie.getTitle().toUpperCase());
             setImage(movie);
+            setImageCover(movie);
             lblSynopsis.setText(movie.getSynopsis());
             lblScore.setText(movie.getScore() + "/10");
             lblMeta.setText(GenreFormatter.format(movie.getGenre()) + "  •  " + movie.getRating() + "  •  " + DurationFormatter.format(movie.getDurationMinutes()));
@@ -213,6 +214,35 @@ public class MovieDetailsController implements Initializable {
         clip.setArcHeight(32);
 
         imgCover.setClip(clip);
+    }
+
+    private void setImageCover(Movie movie) {
+        String path = "/com/absolutecinema/images/" + movie.getBannerPath();
+
+        URL url = getClass().getResource(path);
+
+        if(url==null){
+            System.err.println("No existe "+path);
+            return;
+        }
+
+        imgBanner.setStyle(
+                "-fx-background-image:url('"+url.toExternalForm()+"');"+
+                        "-fx-background-size: cover;"+
+                        "-fx-background-position: center;"
+        );
+
+        Rectangle clip=new Rectangle();
+
+        clip.widthProperty().bind(imgBanner.widthProperty());
+
+        clip.heightProperty().bind(imgBanner.heightProperty());
+
+        clip.setArcWidth(32);
+
+        clip.setArcHeight(32);
+
+        imgBanner.setClip(clip);
     }
 
     @FXML
