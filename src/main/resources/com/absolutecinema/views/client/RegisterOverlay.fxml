@@ -130,7 +130,7 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <Label fx:id="lblRegisterMessage" styleClass="login-error" text="Message" visible="false" />
+                  <Label fx:id="lblRegisterMessage" styleClass="error-message" text="Message" visible="false" />
                   <Button fx:id="btnRegisterVerify" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="primary_button" text="REGISTRARSE">
                      <cursor>
                         <Cursor fx:constant="HAND" />

@@ -6,6 +6,8 @@ public class Paths {
     public static final String MOVIE_CARD_VIEW = "/com/absolutecinema/views/client/MovieCard.fxml";
     public static final String MOVIE_PROX_VIEW = "/com/absolutecinema/views/client/MovieReleaseCard.fxml";
     public static final String MOVIE_DETAILS_VIEW = "/com/absolutecinema/views/client/MovieDetails.fxml";
+    public static final String SELECT_SEATS_VIEW = "/com/absolutecinema/views/client/SelectSeats.fxml";
+    public static final String ADMIN_VIEW = "/com/absolutecinema/views/admin/AdminDashboard.fxml";
 
     // TXT Path
     public static final String MOVIE_REPOSITORY = "src/main/resources/com/absolutecinema/data/movies.txt";
@@ -14,4 +16,8 @@ public class Paths {
     public static final String SHOWTIME_REPOSITORY =  "src/main/resources/com/absolutecinema/data/showtimes.txt";
     public static final String TICKET_REPOSITORY = "src/main/resources/com/absolutecinema/data/tickets.txt";
     public static final String PURCHASE_REPOSITORY = "src/main/resources/com/absolutecinema/data/purchases.txt";
+
+    // Images Path
+    public static final String TICKET_IMAGE = "src/main/resources/com/absolutecinema/images/ticket.png";
+    public static final String SCREEN_IMAGE = "src/main/resources/com/absolutecinema/images/screen.png";
 }

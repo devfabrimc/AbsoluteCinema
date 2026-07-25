@@ -1,11 +1,13 @@
 package com.absolutecinema.controller.client;
 
+import com.absolutecinema.application.App;
 import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
 import com.absolutecinema.repository.MovieRepository;
 import com.absolutecinema.service.MovieService;
 import com.absolutecinema.utils.GenreFormatter;
 import com.absolutecinema.utils.Paths;
+import com.absolutecinema.utils.SessionManager;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -99,6 +101,12 @@ public class MenuController implements Initializable {
         lblUserWelcomeMessage.setVisible(true);
         lblUserWelcomeMessage.setManaged(true);
         lblUserWelcomeMessage.setText("Hola, " + userName);
+
+        if(SessionManager.getInstance().isAdmin()){
+            App.app.setScene(Paths.ADMIN_VIEW);
+            App.app.setTitle(" | Panel de Administrador");
+        }
+
     }
 
     private void initOverlays() {

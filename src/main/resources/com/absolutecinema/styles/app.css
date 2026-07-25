@@ -29,7 +29,7 @@
 }
 
 .logo-subtitle {
-    -fx-text-fill: #FFF;
+    -fx-text-fill: #F5F1E8;
     -fx-font-size: 28px;
     -fx-font-weight: 700;
     -fx-letter-spacing: 2px;
@@ -121,7 +121,7 @@
 }
 
 #featured_title {
-    -fx-text-fill: #FAF7F2;
+    -fx-text-fill: #F5F1E8;
     -fx-font-size: 54px;
     -fx-font-weight: 900;
 }
@@ -236,11 +236,11 @@
     -fx-font-size: 14px;
 }
 
-.combo-box .arrow-button {
+.arrow-button {
     -fx-background-color: transparent;
 }
 
-.combo-box .arrow {
+.arrow {
     -fx-background-color: #D6A85A;
 }
 
@@ -347,20 +347,20 @@
     -fx-padding: 0;
 }
 
-.footer {
-    -fx-background-color: #0A0E14;
-    -fx-border-color: rgba(255,255,255,0.05) transparent transparent transparent;
-    -fx-border-width: 1 0 0 0;
-    -fx-padding: 28 40 28 40;
+
+.error-message {
+    -fx-text-fill: #ea4444;
+    -fx-font-size: 16px;
 }
 
-.footer-title {
-    -fx-text-fill: #F6E7C1;
-    -fx-font-size: 22px;
-    -fx-font-weight: 800;
+.separator:vertical .line {
+    -fx-border-color: rgba(255,255,255,0.55);
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 0 1;
 }
 
-.footer-text {
-    -fx-text-fill: #95A1B1;
-    -fx-font-size: 14px;
+.separator:horizontal .line {
+    -fx-border-color: rgba(255,255,255,0.55);
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
 }

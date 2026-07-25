@@ -35,13 +35,8 @@ public class App extends Application {
             stageWindow.setScene(scene);
             stageWindow.show();
 
-            if (stageWindow.isMaximized()) {
-                stageWindow.setMaximized(false);
-                stageWindow.setMaximized(true);
-            } else {
-                stageWindow.show();
-                stageWindow.setMaximized(true);
-            }
+            stageWindow.setMaximized(false);
+            stageWindow.setMaximized(true);
         } catch (IOException e) {
             System.err.println("ERROR: ¡No se pudo cargar el archivo!");
             e.printStackTrace();

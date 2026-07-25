@@ -44,7 +44,7 @@ public class PurchaseService {
         String newPurchaseId = String.format("PUR%03d", nextPurchaseNum);
 
         //Creación de Purchase
-        Purchase newPurchase = new Purchase(lastPurchaseId, userId, LocalDate.now().toString(),total );
+        Purchase newPurchase = new Purchase(newPurchaseId, userId, LocalDate.now().toString(), total);
         //Guardado de Purchase
         purchaseRepository.save(newPurchase);
 

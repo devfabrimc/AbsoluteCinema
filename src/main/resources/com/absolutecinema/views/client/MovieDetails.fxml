@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,13 +41,16 @@
                                           <Label fx:id="lblTitle" styleClass="title" text="MovieTitle" />
                                           <HBox alignment="CENTER_LEFT" spacing="10.0">
                                              <children>
-                                                <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 200, 0.5, 0, 0);">
+                                                <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 200, 0.5, 0, 0);">
                                                    <image>
                                                       <Image url="@../../images/star-full.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Label fx:id="lblScore" styleClass="score" text="Score" />
                                              </children>
+                                             <VBox.margin>
+                                                <Insets top="-10.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <Label fx:id="lblMeta" styleClass="meta" text="MovieMeta" />
                                           <Label fx:id="lblSynopsis" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" prefWidth="750.0" styleClass="synopsis" text="SynopsisInfo" wrapText="true" VBox.vgrow="ALWAYS">
@@ -64,9 +66,9 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <HBox alignment="CENTER">
+                                          <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 200, 0.5, 0, 0);">
+                                                <ImageView fitHeight="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 200, 0.5, 0, 0);">
                                                    <image>
                                                       <Image url="@../../images/calendar-plus.png" />
                                                    </image>
@@ -74,18 +76,10 @@
                                                 <Label styleClass="subtitle" text="FUNCIONES DISPONIBLES" />
                                              </children>
                                           </HBox>
-                                          <Accordion fx:id="functionsAccordion" visible="false">
-                                            <panes>
-                                              <TitledPane animated="false" text="untitled 1">
-                                                   <content>
-                                                      <VBox>
-                                                         <children>
-                                                            <HBox />
-                                                         </children>
-                                                      </VBox>
-                                                   </content>
-                                                </TitledPane>
-                                            </panes>
+                                          <Accordion fx:id="functionsAccordion" prefWidth="800.0">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </Accordion>
                                        </children>
                                     </VBox>
@@ -117,7 +111,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
                   <Region HBox.hgrow="ALWAYS" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
