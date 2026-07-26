@@ -364,3 +364,13 @@
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
 }
+
+.set-visible {
+    -fx-managed: true;
+    -fx-visible: true;
+}
+
+.set-unvisible {
+    -fx-managed: false;
+    -fx-visible: false;
+}

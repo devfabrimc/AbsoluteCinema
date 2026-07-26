@@ -26,24 +26,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdminDashboardController implements Initializable {
+public class AdminMoviesController implements Initializable {
     @FXML
     private ComboBox<MovieStatus> cbxMovieStatus;
-
-    @FXML
-    private Label lblMovieAmount;
-
-    @FXML
-    private Label lblMovieDescription;
-
-    @FXML
-    private Label lblRoomAmount;
-
-    @FXML
-    private Label lblShowtimeAmount;
-
-    @FXML
-    private Label lblUsersAmount;
 
     @FXML
     private TextField txtSearch;
@@ -67,13 +52,9 @@ public class AdminDashboardController implements Initializable {
     private DeleteMovieOverlayController deleteMovieOverlayController;
 
     private final MovieService movieService = new MovieService(new MovieRepository());
-    private final ShowtimeRepository showtimeRepository = new ShowtimeRepository();
-    private final RoomRepository roomRepository = new RoomRepository();
-    private final UserRepository userRepository = new UserRepository();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadDashboardMetrics();
         loadMovies();
         loadCbx();
         txtSearch.setOnAction(event -> loadMovies());
@@ -81,42 +62,20 @@ public class AdminDashboardController implements Initializable {
         addMovieOverlay.visibleProperty().addListener((obs, wasVisible, isVisible) -> {
             if (wasVisible && !isVisible) {
                 loadMovies();
-                loadDashboardMetrics();
             }
         });
 
         editMovieOverlay.visibleProperty().addListener((obs, wasVisible, isVisible) -> {
             if (wasVisible && !isVisible) {
                 loadMovies();
-                loadDashboardMetrics();
             }
         });
 
         deleteMovieOverlay.visibleProperty().addListener((obs, wasVisible, isVisible) -> {
             if (wasVisible && !isVisible) {
                 loadMovies();
-                loadDashboardMetrics();
             }
         });
-    }
-
-    private void loadDashboardMetrics() {
-        List<Movie> allMovies = movieService.getAllMovies();
-        long nowShowingCount = allMovies.stream()
-                .filter(m -> m.getStatus() == MovieStatus.NOW_SHOWING)
-                .count();
-
-        lblMovieAmount.setText(String.valueOf(allMovies.size()));
-        lblMovieDescription.setText("En cartelera: " + nowShowingCount);
-
-        int totalShowtimes = showtimeRepository.findAll().size();
-        lblShowtimeAmount.setText(String.valueOf(totalShowtimes));
-
-        int totalRooms = roomRepository.findAll().size();
-        lblRoomAmount.setText(String.valueOf(totalRooms));
-
-        int totalUsers = userRepository.findAll().size();
-        lblUsersAmount.setText(String.valueOf(totalUsers));
     }
 
     private void loadMovies() {
@@ -313,8 +272,8 @@ public class AdminDashboardController implements Initializable {
     }
 
     @FXML
-    void openMovieMenu() {
-        App.app.setScene(Paths.ADMIN_MOVIES_VIEW);
+    void openDashboardMenu() {
+        App.app.setScene(Paths.ADMIN_VIEW);
         App.app.setTitle(" | Películas");
     }
 

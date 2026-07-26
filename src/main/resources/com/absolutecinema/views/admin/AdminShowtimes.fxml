@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1200.0" styleClass="parent" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AdminDashboardController">
+<AnchorPane prefHeight="640.0" prefWidth="1200.0" styleClass="parent" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AdminShowtimesController">
    <children>
       <StackPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -28,7 +27,7 @@
                      <children>
                         <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox spacing="10.0" styleClass="container" HBox.hgrow="ALWAYS">
+                              <VBox spacing="10.0" styleClass="container">
                                  <children>
                                     <HBox maxWidth="1.7976931348623157E308" spacing="10.0">
                                        <children>
@@ -48,7 +47,7 @@
                                           <Insets bottom="35.0" />
                                        </padding>
                                     </HBox>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu-active" text="Dashboard">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openDashboardMenu" styleClass="btn-menu" text="Dashboard">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -66,7 +65,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openShowtimeMenu" styleClass="btn-menu" text="Funciones">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu-active" text="Funciones">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -108,106 +107,13 @@
                               </VBox>
                               <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label styleClass="page-title" text="PANEL DE ADMINISTRACIÓN" />
-                                    <Label styleClass="page-subtitle" text="Gestiona el contenido de AbsoluteCinema" />
-                                    <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="15.0">
-                                       <children>
-                                          <HBox alignment="CENTER" onMouseClicked="#openMovieMenu" spacing="20.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/movie.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <VBox spacing="5.0">
-                                                   <children>
-                                                      <Label styleClass="metric-title" text="PELÍCULAS" />
-                                                      <Label fx:id="lblMovieAmount" styleClass="metric-value-gold" text="18" />
-                                                      <Label fx:id="lblMovieDescription" styleClass="metric-description" text="En cartelera: 12" />
-                                                   </children>
-                                                </VBox>
-                                                <ImageView fitWidth="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #F5F1E8, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/simple-arrow.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER" onMouseClicked="#openShowtimeMenu" spacing="20.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/calendar-fill.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <VBox spacing="5.0">
-                                                   <children>
-                                                      <Label styleClass="metric-title" text="FUNCIONES" />
-                                                      <Label fx:id="lblShowtimeAmount" styleClass="metric-value-gold" text="46" />
-                                                      <Label styleClass="metric-description" text="Funciones programadas" />
-                                                   </children>
-                                                </VBox>
-                                                <ImageView fitWidth="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #F5F1E8, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/simple-arrow.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER" onMouseClicked="#openRoomsMenu" spacing="20.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/rooms.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <VBox spacing="5.0">
-                                                   <children>
-                                                      <Label styleClass="metric-title" text="SALAS" />
-                                                      <Label fx:id="lblRoomAmount" styleClass="metric-value-gold" text="5" />
-                                                      <Label styleClass="metric-description" text="Salas activas" />
-                                                   </children>
-                                                </VBox>
-                                                <ImageView fitWidth="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #F5F1E8, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/simple-arrow.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER" onMouseClicked="#openUsersMenu" spacing="20.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/users.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <VBox spacing="5.0">
-                                                   <children>
-                                                      <Label styleClass="metric-title" text="USUARIOS" />
-                                                      <Label fx:id="lblUsersAmount" styleClass="metric-value-gold" text="123" />
-                                                      <Label styleClass="metric-description" text="Registrados" />
-                                                   </children>
-                                                </VBox>
-                                                <ImageView fitWidth="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #F5F1E8, 100, 0.5, 0, 0);">
-                                                   <image>
-                                                      <Image url="@../../images/simple-arrow.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="20.0" top="20.0" />
-                                       </padding>
-                                    </HBox>
                                     <VBox>
                                        <children>
                                           <HBox alignment="CENTER">
                                              <children>
-                                                <Label styleClass="page-title" text="LISTA DE PELÍCULAS" />
+                                                <Label styleClass="page-title" text="FUNCIONES PROGRAMADAS" />
                                                 <Region HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" onAction="#addMovieOverlay" styleClass="primary_button" text="Nueva película">
+                                                <Button mnemonicParsing="false" onAction="#addShowtimeOverlay" styleClass="primary_button" text="Nueva función">
                                                    <graphic>
                                                       <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -220,8 +126,7 @@
                                           </HBox>
                                           <HBox spacing="15.0">
                                              <children>
-                                                <TextField fx:id="txtSearch" promptText="Buscar película..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
-                                                <ComboBox fx:id="cbxMovieStatus" promptText="Todos los estados" />
+                                                <TextField fx:id="txtSearch" promptText="Buscar función..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
                                              </children>
                                              <padding>
                                                 <Insets top="20.0" />
@@ -231,7 +136,7 @@
                                     </VBox>
                                     <ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
                                        <content>
-                                          <VBox fx:id="vbxMovies" prefHeight="200.0" prefWidth="100.0" />
+                                          <VBox fx:id="vbxShowtimes" prefHeight="200.0" prefWidth="100.0" />
                                        </content>
                                        <padding>
                                           <Insets top="20.0" />
@@ -306,9 +211,9 @@
             </HBox>
          </children>
       </StackPane>
-      <fx:include fx:id="addMovieOverlay" source="AddMovieOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <fx:include fx:id="editMovieOverlay" source="EditMovieOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <fx:include fx:id="deleteMovieOverlay" source="DeleteMovieOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="addShowtimeOverlay" source="AddShowtimeOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="editShowtimeOverlay" source="EditShowtimeOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="deleteShowtimeOverlay" source="DeleteShowtimeOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
    <stylesheets>
       <URL value="@../../styles/admin-dashboard.css" />
