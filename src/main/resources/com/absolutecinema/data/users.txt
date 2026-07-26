@@ -1,1 +1,2 @@
 USR001;Administrador;admin@abscinema.com;AdminABS;074187db6e96e098b56042b470abc6354eed800cb86e4442bdd2655d77c77583;ADMIN
+USR002;Miguel;miguel@gmail.com;vermos;f8692fffbf93e1b18454603f29019d67df0aa3e13965077716a4313660facaba;CUSTOMER
