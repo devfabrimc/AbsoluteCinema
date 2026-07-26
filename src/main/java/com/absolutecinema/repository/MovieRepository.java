@@ -81,8 +81,13 @@ public class MovieRepository implements Repository<Movie> {
     @Override
     public void delete(String id) {
         List<Movie> movies = findAll();
-        movies.removeIf(movie -> movie.getId().equals(id));
+        boolean remove = movies.removeIf(movie -> movie.getId().equals(id));
 
+        if (remove) {
+            for (int i=0; i<movies.size(); i++) {
+                movies.get(i).setId(String.format("MOV%03d", i+1));
+            }
+        }
         writeAll(movies);
     }
 
