@@ -8,6 +8,8 @@ public class Paths {
     public static final String MOVIE_DETAILS_VIEW = "/com/absolutecinema/views/client/MovieDetails.fxml";
     public static final String SELECT_SEATS_VIEW = "/com/absolutecinema/views/client/SelectSeats.fxml";
     public static final String ADMIN_VIEW = "/com/absolutecinema/views/admin/AdminDashboard.fxml";
+    public static final String ADMIN_MOVIES_VIEW = "/com/absolutecinema/views/admin/AdminMovies.fxml";
+    public static final String ADMIN_SHOWTIMES_VIEW = "/com/absolutecinema/views/admin/AdminShowtimes.fxml";
 
     // TXT Path
     public static final String MOVIE_REPOSITORY = "src/main/resources/com/absolutecinema/data/movies.txt";

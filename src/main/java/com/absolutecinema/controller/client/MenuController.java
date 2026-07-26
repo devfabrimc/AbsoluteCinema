@@ -80,6 +80,16 @@ public class MenuController implements Initializable {
 
         loadCatalog(originalNowShowing);
         loadUpcomingReleases(originalComingSoon);
+
+        refreshData();
+    }
+
+    public void refreshData() {
+        this.originalNowShowing = movieService.getNowShowing();
+        this.originalComingSoon = movieService.getComingSoon();
+
+        loadCatalog(originalNowShowing);
+        loadUpcomingReleases(originalComingSoon);
     }
 
     public void openLoginOverlay() {

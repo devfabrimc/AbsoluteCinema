@@ -157,6 +157,10 @@
     -fx-cursor: hand;
 }
 
+.metric-card:hover {
+    -fx-border-color: #D6A85A;
+}
+
 .metric-title {
     -fx-text-fill: #F5F1E8;
     -fx-font-size: 16;

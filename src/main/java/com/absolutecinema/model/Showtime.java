@@ -116,11 +116,11 @@ public class Showtime {
 
     public static Showtime fromString(String line) {
 
-        String[] data = line.split(";");
+        String[] data = line.split(";", -1);
 
         List<String> reservedSeats = new ArrayList<>();
 
-        if (!data[8].isEmpty()) {
+        if (data.length > 8 && !data[8].isEmpty()) {
             reservedSeats = Arrays.asList(data[8].split(","));
         }
 
@@ -135,5 +135,37 @@ public class Showtime {
                 Double.parseDouble(data[7]),
                 new ArrayList<>(reservedSeats)
         );
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public void setFormat(Format format) {
+        this.format = format;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

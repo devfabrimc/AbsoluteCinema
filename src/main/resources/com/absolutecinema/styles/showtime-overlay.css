@@ -1,0 +1,129 @@
+.modal-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    -fx-background-color: #131518;
+    -fx-border-color: #2a2c30;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 30;
+    -fx-spacing: 8;
+}
+
+.modal-title {
+    -fx-text-fill: #F8F5EF;
+    -fx-font-size: 22;
+    -fx-font-weight: 700;
+    -fx-padding: 0 16 0 16;
+}
+
+.modal-subtitle {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 18;
+}
+
+.close-btn {
+    -fx-background-color: transparent;
+    -fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);
+}
+
+.info-text {
+    -fx-text-fill: #C9D0DA;
+    -fx-font-size: 16;
+}
+
+.input {
+    -fx-background-color: #1a1c20;
+    -fx-text-fill: white;
+    -fx-border-color: #3a3d44;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 10 10 10;
+}
+
+.input:hover {
+    -fx-border-color: rgba(214,168,90,0.45);
+}
+
+.input:focused {
+    -fx-border-color: #D6A85A;
+}
+
+.combo-box {
+    -fx-background-color: #1a1c20;
+    -fx-border-color: #3a3d44;
+    -fx-padding: 4;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.arrow {
+    -fx-background-color: #3a3d44;
+}
+
+.custom-date-picker {
+    -fx-background-color: transparent;
+}
+
+.custom-date-picker > .text-field {
+    -fx-background-color: #1a1c20;
+    -fx-border-color: #3a3d44;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-padding: 10;
+}
+
+.custom-date-picker > .text-field:focused {
+    -fx-border-color: #D7A651;
+}
+
+.custom-date-picker > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+}
+
+.custom-date-picker > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.showtime-subtitle {
+    -fx-text-fill: #F8F5EF;
+    -fx-font-size: 15;
+    -fx-font-weight: 900;
+}
+
+.showtime-info-text {
+    -fx-text-fill: #F8F5EF;
+    -fx-font-size: 15;
+}
+
+.icon {
+    -fx-effect: innershadow(gaussian, #F8F5EF, 100, 0.5, 0, 0);
+}
+
+.error-container {
+    -fx-background-color: rgba(234, 68, 68, 0.1);
+    -fx-border-color: #ea4444;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 15 20 15 20;
+    -fx-spacing: 10;
+}
+
+.error-title {
+    -fx-font-size: 16;
+    -fx-font-weight: 900;
+    -fx-text-fill: #F8F5EF;
+}
+
+.error-container .error-message {
+    -fx-font-size: 14;
+    -fx-text-fill: rgba(255, 255, 255, 0.55);
+}
