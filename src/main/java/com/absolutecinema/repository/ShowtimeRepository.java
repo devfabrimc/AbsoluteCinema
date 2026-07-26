@@ -84,7 +84,13 @@ public class ShowtimeRepository implements Repository<Showtime> {
     public void delete(String id) {
         List<Showtime> showtimes = findAll();
 
-        showtimes.removeIf(showtime -> showtime.getId().equals(id));
+        boolean remove = showtimes.removeIf(showtime -> showtime.getId().equals(id));
+
+        if(remove){
+            for (int i = 0; i < showtimes.size(); i++) {
+                showtimes.get(i).setId(String.format("SHW%03d", i+1));
+            }
+        }
 
         writeAll(showtimes);
     }

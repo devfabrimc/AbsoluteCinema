@@ -85,7 +85,13 @@ public class UserRepository implements Repository<User> {
     public void delete(String id) {
         List<User> users = findAll();
 
-        users.removeIf(user -> user.getId().equals(id));
+        boolean remove = users.removeIf(user -> user.getId().equals(id));
+
+        if(remove){
+            for (int i = 0; i < users.size(); i++) {
+                users.get(i).setId(String.format("USR%03d", i+1));
+            }
+        }
 
         writeAll(users);
     }

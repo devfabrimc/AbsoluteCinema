@@ -84,7 +84,13 @@ public class RoomRepository implements Repository<Room>{
     public void delete(String id) {
         List<Room> rooms = findAll();
 
-        rooms.removeIf(room -> room.getId().equals(id));
+        boolean remove = rooms.removeIf(room -> room.getId().equals(id));
+
+        if (remove) {
+            for (int i = 0; i < rooms.size(); i++) {
+                rooms.get(i).setId(String.format("ROM%03d", i+1));
+            }
+        }
 
         writeAll(rooms);
     }

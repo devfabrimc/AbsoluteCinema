@@ -47,6 +47,8 @@ public class User {
         return role;
     }
 
+    public void setId(String id) {this.id = id;}
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }

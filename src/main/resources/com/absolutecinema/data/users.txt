@@ -1,1 +1,1 @@
-USR005;Administrador;admin@abscinema.com;AdminABS;074187db6e96e098b56042b470abc6354eed800cb86e4442bdd2655d77c77583;ADMIN
+USR001;Administrador;admin@abscinema.com;AdminABS;074187db6e96e098b56042b470abc6354eed800cb86e4442bdd2655d77c77583;ADMIN

@@ -69,6 +69,38 @@ public class Showtime {
         return reservedSeats;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public void setFormat(Format format) {
+        this.format = format;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     // Métodos para la manipulación de la disponibilidad de asientos
 
     public void addReservedSeat(String seatLabel){
@@ -135,37 +167,5 @@ public class Showtime {
                 Double.parseDouble(data[7]),
                 new ArrayList<>(reservedSeats)
         );
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
-
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public void setFormat(Format format) {
-        this.format = format;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 }
