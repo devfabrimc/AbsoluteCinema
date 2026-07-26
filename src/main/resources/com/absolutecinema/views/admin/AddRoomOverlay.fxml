@@ -4,8 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -17,11 +15,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.EditShowtimeOverlayController">
+<AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AddRoomController">
    <children>
       <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/admin-overlays.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="600.0" styleClass="modal-content">
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="450.0" styleClass="modal-content">
                <children>
                   <HBox fillHeight="false">
                      <children>
@@ -44,13 +42,13 @@
                      <children>
                         <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
                            <image>
-                              <Image url="@../../images/edit.png" />
+                              <Image url="@../../images/plus.png" />
                            </image>
                         </ImageView>
                         <VBox alignment="BOTTOM_LEFT">
                            <children>
-                              <Label alignment="CENTER" style="-fx-padding: 0;" styleClass="modal-title" text="EDITAR FUNCIÓN" />
-                              <Label alignment="CENTER" styleClass="modal-subtitle" text="Modifica los datos de la función.">
+                              <Label alignment="CENTER" style="-fx-padding: 0;" styleClass="modal-title" text="NUEVA SALA" />
+                              <Label alignment="CENTER" styleClass="modal-subtitle" text="Completa la información de la nueva sala.">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -63,34 +61,22 @@
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin></Separator>
+                  <VBox>
+                     <children>
+                        <Label styleClass="info-text" text="Nombre de la sala" />
+                        <TextField fx:id="txtRoomName" promptText="Ej. Sala VIP" styleClass="input" />
+                     </children>
+                  </VBox>
                   <VBox spacing="20.0">
                      <children>
-                        <VBox>
-                           <children>
-                              <Label styleClass="info-text" text="Película" />
-                              <ComboBox fx:id="cbxMovies" maxWidth="1.7976931348623157E308" promptText="Seleccionar película" />
-                           </children>
-                        </VBox>
                         <HBox spacing="20.0">
                            <children>
                               <VBox maxWidth="1.7976931348623157E308" spacing="15.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label styleClass="info-text" text="Sala" />
-                                          <ComboBox fx:id="cbxRooms" maxWidth="1.7976931348623157E308" promptText="Seleccionar sala" />
-                                       </children>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Label styleClass="info-text" text="Fecha" />
-                                          <DatePicker fx:id="dpShowtimeDate" maxWidth="1.7976931348623157E308" promptText="Seleccionar fecha" styleClass="custom-date-picker" />
-                                       </children>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Label styleClass="info-text" text="Idioma" />
-                                          <ComboBox fx:id="cbxLanguage" maxWidth="1.7976931348623157E308" promptText="Seleccionar idioma" />
+                                          <Label styleClass="info-text" text="Filas" />
+                                          <TextField fx:id="txtRows" promptText="Ej. 20" styleClass="input" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -99,20 +85,8 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label styleClass="info-text" text="Formato" />
-                                          <ComboBox fx:id="cbxFormat" maxWidth="1.7976931348623157E308" promptText="Seleccionar formato" />
-                                       </children>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Label styleClass="info-text" text="Hora" />
-                                          <TextField fx:id="lblHour" promptText="Ej. 18:00" styleClass="input" />
-                                       </children>
-                                    </VBox>
-                                    <VBox>
-                                       <children>
-                                          <Label styleClass="info-text" text="Precio" />
-                                          <TextField fx:id="lblPrice" promptText="Ej. 9.50" styleClass="input" />
+                                          <Label styleClass="info-text" text="Columnas" />
+                                          <TextField fx:id="txtColumns" promptText="Ej. 10" styleClass="input" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -121,6 +95,26 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Separator opacity="0.1">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox styleClass="info-container">
+                     <children>
+                        <ImageView fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #447eea, 100, 0.5, 0, 0);">
+                           <image>
+                              <Image url="@../../images/info.png" />
+                           </image>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label styleClass="title-container" text="Esta sala contará con esta capacidad." />
+                              <Label fx:id="lblCapacity" styleClass="text-container" text="Capacidad: 20 asientos" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                   <Separator opacity="0.1">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
@@ -138,7 +132,7 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveShowtime" styleClass="primary_button" text="Guardar cambios" HBox.hgrow="ALWAYS">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveRoom" styleClass="primary_button" text="Guardar sala" HBox.hgrow="ALWAYS">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

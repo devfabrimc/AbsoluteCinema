@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1200.0" styleClass="parent" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AdminRoomsController">
+<AnchorPane prefHeight="640.0" prefWidth="1200.0" styleClass="parent" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AdminUsersController">
    <children>
       <StackPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -65,7 +66,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openShowtimesMenu" styleClass="btn-menu" text="Funciones">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openShowtimeMenu" styleClass="btn-menu" text="Funciones">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -74,7 +75,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu-active" text="Salas">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openRoomsMenu" styleClass="btn-menu" text="Salas">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -83,7 +84,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openUsersMenu" styleClass="btn-menu" text="Usuarios">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu-active" text="Usuarios">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -111,9 +112,9 @@
                                        <children>
                                           <HBox alignment="CENTER">
                                              <children>
-                                                <Label styleClass="page-title" text="SALAS" />
+                                                <Label styleClass="page-title" text="USUARIOS" />
                                                 <Region HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" onAction="#addShowtimeOverlay" styleClass="primary_button" text="Nueva sala">
+                                                <Button mnemonicParsing="false" onAction="#addUserOverlay" styleClass="primary_button" text="Nuevo usuario">
                                                    <graphic>
                                                       <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -126,7 +127,8 @@
                                           </HBox>
                                           <HBox spacing="15.0">
                                              <children>
-                                                <TextField fx:id="txtSearch" promptText="Buscar sala..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
+                                                <TextField fx:id="txtSearch" promptText="Buscar usuarios..." styleClass="search-bar" HBox.hgrow="ALWAYS" />
+                                                <ComboBox fx:id="cbxRoles" promptText="Todos los roles" />
                                              </children>
                                              <padding>
                                                 <Insets top="20.0" />
@@ -136,7 +138,7 @@
                                     </VBox>
                                     <ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
                                        <content>
-                                          <VBox fx:id="vbxRooms" prefHeight="200.0" prefWidth="100.0" />
+                                          <VBox fx:id="vbxUsers" prefHeight="200.0" prefWidth="100.0" />
                                        </content>
                                        <padding>
                                           <Insets top="20.0" />
@@ -211,9 +213,9 @@
             </HBox>
          </children>
       </StackPane>
-      <fx:include fx:id="addRoomOverlay" source="AddRoomOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <fx:include fx:id="editRoomOverlay" source="EdtiRoomOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <fx:include fx:id="deleteRoomOverlay" source="DeleteRoomOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="addUserOverlay" source="AddUserOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="editUserOverlay" source="EditUserOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="deleteUserOverlay" source="DeleteUserOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
    <stylesheets>
       <URL value="@../../styles/admin-dashboard.css" />

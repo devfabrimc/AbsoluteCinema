@@ -21,7 +21,7 @@
 
 <AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AddMovieOverlayController">
    <children>
-      <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/add-movie.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/admin-overlays.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="600.0" styleClass="modal-content">
                <children>

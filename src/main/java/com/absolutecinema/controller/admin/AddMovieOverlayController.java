@@ -4,7 +4,6 @@ import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
 import com.absolutecinema.model.MovieStatus;
 import com.absolutecinema.repository.MovieRepository;
-import com.absolutecinema.service.MovieService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -51,19 +50,23 @@ public class AddMovieOverlayController {
     private AnchorPane rootPane;
 
     @FXML
-    private ToggleGroup status;
-
-    @FXML
     private VBox uploadBoxBanner;
 
     @FXML
     private VBox uploadBoxImage;
 
-    private final MovieService movieService = new MovieService(new MovieRepository());
+    private final MovieRepository movieRepository = new MovieRepository();
 
     private String selectedImagePath = "";
     private String selectedBannerPath = "";
 
+    /**
+     * Inicializa los componentes visuales
+     * del formulario de registro de películas.
+     * Carga los géneros disponibles y configura
+     * los eventos para seleccionar imágenes
+     * del póster y banner.
+     */
     @FXML
     public void initialize() {
         cbxGenres.setItems(FXCollections.observableArrayList(Genre.values()));
@@ -83,6 +86,14 @@ public class AddMovieOverlayController {
         });
     }
 
+    /**
+     * Abre un selector de archivos para elegir
+     * una imagen desde el sistema.
+     * @param title título mostrado en la ventana
+     * del explorador de archivos.
+     * @return Archivo seleccionado por el usuario
+     * o null si cancela la operación.
+     */
     private File chooseImage(String title) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
@@ -92,12 +103,22 @@ public class AddMovieOverlayController {
         return fileChooser.showOpenDialog(rootPane.getScene().getWindow());
     }
 
+    /**
+     * Cierra la ventana y restablece
+     * todos los campos del formulario.
+     */
     @FXML
     void closeModal() {
         resetForm();
         rootPane.setVisible(false);
     }
 
+    /**
+     * Valída los datos ingresados y registra
+     * una nueva película en el repositorio.
+     * También copia las imágenes seleccionadas
+     * al directorio de recursos "images/portadas/".
+     */
     @FXML
     void saveMovie() {
         try {
@@ -120,8 +141,7 @@ public class AddMovieOverlayController {
 
             MovieStatus movieStatus = rbShowing.isSelected() ? MovieStatus.NOW_SHOWING : MovieStatus.COMING_SOON;
 
-            MovieRepository repo = new MovieRepository();
-            String lastId = repo.getLastId();
+            String lastId = movieRepository.getLastId();
             String newId = generateNextId(lastId);
 
             File posterFile = (selectedImagePath.isEmpty()) ? null : new File(selectedImagePath);
@@ -143,7 +163,7 @@ public class AddMovieOverlayController {
                     movieStatus
             );
 
-            repo.save(newMovie);
+            movieRepository.save(newMovie);
             resetForm();
             rootPane.setVisible(false);
 
@@ -154,6 +174,15 @@ public class AddMovieOverlayController {
         }
     }
 
+    /**
+     * Copia una imagen seleccionada por
+     * el usuario al directorio de recursos.
+     * @param sourceFile archivo original.
+     * @param movieId identificador de la película.
+     * @param type tipo de imagen (images o banners).
+     * @return Ruta relativa de la imagen almacenada.
+     * Si ocurre un error retorna una cadena vacía.
+     */
     private String saveImageToProject(File sourceFile, String movieId, String type) {
         if (sourceFile == null) return "";
 
@@ -178,6 +207,12 @@ public class AddMovieOverlayController {
         }
     }
 
+    /**
+     * Genera el siguiente identificador
+     * consecutivo para una película.
+     * @param lastId último identificador registrado.
+     * @return Nuevo identificador generado. MOV00#
+     */
     private String generateNextId(String lastId) {
         if (lastId == null || !lastId.startsWith("MOV")) {
             return "MOV001";
@@ -186,6 +221,10 @@ public class AddMovieOverlayController {
         return String.format("MOV%03d", numericPart + 1);
     }
 
+    /**
+     * Restablece todos los campos del
+     * formulario a sus valores iniciales.
+     */
     private void resetForm() {
         lblTitle.clear();
         lblSynopsis.clear();

@@ -109,7 +109,6 @@ public class EditMovieOverlayController {
             rbComingSoon.setSelected(true);
         }
 
-        // Limpiar rutas temporales al abrir otra película
         selectedImagePath = "";
         selectedBannerPath = "";
     }
@@ -140,7 +139,6 @@ public class EditMovieOverlayController {
             currentMovie.setScore(Double.parseDouble(lblScore.getText().trim()));
             currentMovie.setStatus(rbShowing.isSelected() ? MovieStatus.NOW_SHOWING : MovieStatus.COMING_SOON);
 
-            // Si el usuario seleccionó nuevas imágenes, se guardan reemplazando las anteriores usando el ID actual
             if (!selectedImagePath.isEmpty()) {
                 File posterFile = new File(selectedImagePath);
                 String finalPosterPath = saveImageToProject(posterFile, currentMovie.getId(), "images");
@@ -162,7 +160,7 @@ public class EditMovieOverlayController {
         } catch (NumberFormatException e) {
             lblErrorMessage.setManaged(true);
             lblErrorMessage.setVisible(true);
-            lblErrorMessage.setText("Duración y score deben ser numéricos.");
+            lblErrorMessage.setText("Duración y puntuación deben ser numéricos.");
         } catch (Exception e) {
             lblErrorMessage.setManaged(true);
             lblErrorMessage.setVisible(true);

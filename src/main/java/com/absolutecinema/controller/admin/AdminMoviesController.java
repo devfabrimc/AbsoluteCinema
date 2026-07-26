@@ -246,7 +246,6 @@ public class AdminMoviesController implements Initializable {
         btnEdit.getStyleClass().add("btn-action-edit");
         btnEdit.setOnAction(event -> {
             if (editMovieOverlayController != null) {
-                // Limpiamos el texto para quedarnos solo con el código (ej. "MOV001")
                 String cleanId = id.replace("ID: ", "").trim();
                 editMovieOverlayController.setMovie(movieService.getMovieById(cleanId));
                 editMovieOverlay.setVisible(true);
@@ -283,4 +282,17 @@ public class AdminMoviesController implements Initializable {
         App.app.setScene(Paths.ADMIN_SHOWTIMES_VIEW);
         App.app.setTitle(" | Funciones");
     }
+
+    @FXML
+    void openRoomsMenu() {
+        App.app.setScene(Paths.ADMIN_ROOMS_VIEW);
+        App.app.setTitle(" | Salas");
+    }
+
+    @FXML
+    void openUsersMenu() {
+        App.app.setScene(Paths.ADMIN_USERS_VIEW);
+        App.app.setTitle(" | Usuarios");
+    }
+
 }

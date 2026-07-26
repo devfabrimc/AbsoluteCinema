@@ -46,6 +46,12 @@ public class AddShowtimeController {
     private final MovieRepository movieRepository = new MovieRepository();
     private final RoomRepository roomRepository = new RoomRepository();
 
+    /**
+     * Inicializa el formulario de registro
+     * de funciones.
+     * Carga películas, salas, formatos
+     * e idiomas disponibles.
+     */
     @FXML
     public void initialize() {
         cbxFormat.setItems(FXCollections.observableArrayList(Format.values()));
@@ -67,6 +73,10 @@ public class AddShowtimeController {
         });
     }
 
+    /**
+     * Cierra la ventana y restablece
+     * todos los campos del formulario.
+     */
     @FXML
     void closeModal() {
         resetForm();
@@ -75,8 +85,14 @@ public class AddShowtimeController {
         lblErrorMessage.setManaged(false);
     }
 
+    /**
+     * Valída los datos ingresados y registra
+     * una nueva función.
+     * Genera un identificador único y almacena
+     * la función en el repositorio.
+     */
     @FXML
-    void saveMovie() {
+    void saveShowtime() {
         try {
             if (cbxMovies.getValue() == null || cbxRooms.getValue() == null ||
                     dpShowtimeDate.getValue() == null || lblHour.getText().isBlank() ||
@@ -117,12 +133,24 @@ public class AddShowtimeController {
         }
     }
 
+    /**
+     * Muestra un mensaje de error
+     * en la interfaz gráfica.
+     * @param message mensaje que se mostrará
+     * al usuario.
+     */
     private void showError(String message) {
         lblErrorMessage.setManaged(true);
         lblErrorMessage.setVisible(true);
         lblErrorMessage.setText(message);
     }
 
+    /**
+     * Genera el siguiente identificador
+     * consecutivo para una función.
+     * @param lastId último identificador registrado.
+     * @return nuevo identificador generado. SHW00#
+     */
     private String generateNextId(String lastId) {
         if (lastId == null || !lastId.startsWith("SHW")) {
             return "SHW001";
@@ -131,6 +159,10 @@ public class AddShowtimeController {
         return String.format("SHW%03d", numericPart + 1);
     }
 
+    /**
+     * Restablece todos los campos del
+     * formulario a sus valores iniciales.
+     */
     private void resetForm() {
         cbxMovies.setValue(null);
         cbxRooms.setValue(null);
@@ -143,6 +175,11 @@ public class AddShowtimeController {
         lblErrorMessage.setManaged(false);
     }
 
+    /**
+     * Configura el ComboBox de películas
+     * para mostrar únicamente el título
+     * de cada película.
+     */
     private void setupMovieComboBox() {
         cbxMovies.setCellFactory(param -> new ListCell<>() {
             @Override
@@ -160,6 +197,11 @@ public class AddShowtimeController {
         });
     }
 
+    /**
+     * Configura el ComboBox de salas
+     * para mostrar únicamente el nombre
+     * de cada sala.
+     */
     private void setupRoomComboBox() {
         cbxRooms.setCellFactory(param -> new ListCell<>() {
             @Override

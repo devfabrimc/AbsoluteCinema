@@ -75,7 +75,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu" text="Salas">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openRoomsMenu" styleClass="btn-menu" text="Salas">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>
@@ -84,7 +84,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn-menu" text="Usuarios">
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openUsersMenu" styleClass="btn-menu" text="Usuarios">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                                              <image>

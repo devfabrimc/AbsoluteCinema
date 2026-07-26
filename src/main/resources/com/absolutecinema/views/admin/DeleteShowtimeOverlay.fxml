@@ -19,7 +19,7 @@
 
 <AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.DeleteShowtimeOverlayController">
    <children>
-      <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/add-movie.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/admin-overlays.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="500.0" styleClass="modal-content">
                <children>
@@ -75,7 +75,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label styleClass="movie-subtitle" text="Sala">
+                        <Label styleClass="info-subtitle" text="Sala">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="icon" translateX="-5.0">
                                  <image>
@@ -87,8 +87,8 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="lblRoom" alignment="CENTER" styleClass="movie-info-text" text="Name" GridPane.columnIndex="1" />
-                        <Label styleClass="movie-subtitle" text="Fecha" GridPane.rowIndex="1">
+                        <Label fx:id="lblRoom" alignment="CENTER" styleClass="info-text" text="Name" GridPane.columnIndex="1" />
+                        <Label styleClass="info-subtitle" text="Fecha" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="icon" translateX="-5.0">
                                  <image>
@@ -100,8 +100,8 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="lblDate" alignment="CENTER" styleClass="movie-info-text" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label styleClass="movie-subtitle" text="Hora" GridPane.rowIndex="2">
+                        <Label fx:id="lblDate" alignment="CENTER" styleClass="info-text" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label styleClass="info-subtitle" text="Hora" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="icon" translateX="-5.0">
                                  <image>
@@ -113,7 +113,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label styleClass="movie-subtitle" text="Formato" GridPane.rowIndex="3">
+                        <Label styleClass="info-subtitle" text="Formato" GridPane.rowIndex="3">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="icon" translateX="-5.0">
                                  <image>
@@ -125,8 +125,8 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="lblHour" alignment="CENTER" styleClass="movie-info-text" text="Hour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="lblFormat" alignment="CENTER" styleClass="movie-info-text" text="Format" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lblHour" alignment="CENTER" styleClass="info-text" text="Hour" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblFormat" alignment="CENTER" styleClass="info-text" text="Format" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Separator opacity="0.1">
@@ -143,19 +143,21 @@
                         </ImageView>
                         <VBox>
                            <children>
-                              <Label styleClass="error-title" text="Esta acción no se puede deshacer." />
-                              <Label styleClass="error-message" text="Esta acción no se puede deshacer." />
+                              <Label styleClass="title-container" text="Esta acción no se puede deshacer." />
+                              <Label styleClass="text-container" text="Esta acción no se puede deshacer." />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
                   <Label fx:id="lblErrorMessage" text="ErrorMessage">
                      <styleClass>
-                        <String fx:value="error-message" />
+                        <String fx:value="text" />
                         <String fx:value="set-unvisible" />
-                     </styleClass>
-                  </Label>
-                  <Separator opacity="0.1" />
+                     </styleClass></Label>
+                  <Separator opacity="0.1">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin></Separator>
                   <HBox spacing="15.0">
                      <children>
                         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeModal" styleClass="secondary-button" text="Cancelar" HBox.hgrow="ALWAYS">

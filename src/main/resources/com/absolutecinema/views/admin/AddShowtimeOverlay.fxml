@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.EditShowtimeOverlayController">
+<AnchorPane fx:id="rootPane" stylesheets="@../../styles/app.css" visible="false" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.admin.AddShowtimeController">
    <children>
       <StackPane layoutX="10.0" layoutY="10.0" styleClass="modal-overlay" stylesheets="@../../styles/admin-overlays.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -44,13 +44,13 @@
                      <children>
                         <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D6A85A, 100, 0.5, 0, 0);">
                            <image>
-                              <Image url="@../../images/edit.png" />
+                              <Image url="@../../images/plus.png" />
                            </image>
                         </ImageView>
                         <VBox alignment="BOTTOM_LEFT">
                            <children>
-                              <Label alignment="CENTER" style="-fx-padding: 0;" styleClass="modal-title" text="EDITAR FUNCIÓN" />
-                              <Label alignment="CENTER" styleClass="modal-subtitle" text="Modifica los datos de la función.">
+                              <Label alignment="CENTER" style="-fx-padding: 0;" styleClass="modal-title" text="NUEVA FUNCIÓN" />
+                              <Label alignment="CENTER" styleClass="modal-subtitle" text="Completa la información de la nueva función.">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -138,7 +138,7 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveShowtime" styleClass="primary_button" text="Guardar cambios" HBox.hgrow="ALWAYS">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveShowtime" styleClass="primary_button" text="Guardar función" HBox.hgrow="ALWAYS">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -163,6 +163,18 @@ public class AdminShowtimesController implements Initializable {
     }
 
     @FXML
+    void openRoomsMenu() {
+        App.app.setScene(Paths.ADMIN_ROOMS_VIEW);
+        App.app.setTitle(" | Salas");
+    }
+
+    @FXML
+    void openUsersMenu() {
+        App.app.setScene(Paths.ADMIN_USERS_VIEW);
+        App.app.setTitle(" | Usuarios");
+    }
+
+    @FXML
     void btnBackOnAction() {
         App.app.setTitle(" | Menú principal");
         App.app.setScene(Paths.MENU_VIEW);
