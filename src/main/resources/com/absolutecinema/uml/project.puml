@@ -7,7 +7,7 @@
 enum Role {
     ADMIN
     CUSTOMER
-    hola
+
 }
 
 
