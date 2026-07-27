@@ -1,5 +1,7 @@
 @startuml
 
+title AbsoluteCinema - UML Final
+
 '==================================================
 ' ENUMS
 '==================================================
@@ -9,13 +11,10 @@ enum Role {
     CUSTOMER
 }
 
-
 enum MovieStatus {
-    ALL
     NOW_SHOWING
     COMING_SOON
 }
-
 
 enum Genre {
     TODOS
@@ -35,7 +34,6 @@ enum Genre {
     TERROR
 }
 
-
 enum Language {
     SUB
     LAT
@@ -43,113 +41,85 @@ enum Language {
     ENG
 }
 
-
 enum Format {
     TWO_D
     THREE_D
     IMAX
 }
 
-
-
 '==================================================
 ' MODELS
 '==================================================
 
-class User {
+class User{
     -id : String
     -fullName : String
     -email : String
     -username : String
     -passwordHash : String
     -role : Role
-
-    +User(id : String, fullName : String, email : String, username : String, passwordHash : String, role : Role)
-    +isAdmin() : boolean
-    +toString() : String
-    +{static} fromString(line : String) : User
 }
 
-
-
-class Movie {
-    -id : String
-    -title : String
-    -synopsis : String
-    -genre : Genre
-    -durationMinutes : int
-    -rating : String
-    -score : double
-    -imagePath : String
-    -bannerPath : String
-    -status : MovieStatus
+class Movie{
+    - id : String
+    - title : String
+    - synopsis : String
+    - genre : Genre
+    - durationMinutes : int
+    - rating : String
+    - score : double
+    - imagePath : String
+    - bannerPath : String
+    - status : MovieStatus
 }
 
-
-
-class Room {
-    -id : String
-    -name : String
-    -rows : int
-    -columns : int
+class Room{
+    - id : String
+    - name : String
+    - rows : int
+    - columns : int
+    + printformat(line : String) : Room
 }
 
-
-
-class Seat {
-    -row : int
-    -column : int
-    -label : String
+class Seat{
+    - row : int
+    - column : int
+    - label : String
 }
 
-
-
-class Showtime {
-    -id : String
-    -movieId : String
-    -roomId : String
-    -date : String
-    -time : String
-    -language : Language
-    -format : Format
-    -price : double
-    -reservedSeats : List<String>
+class Showtime{
+    - id : String
+    - movieId : String
+    - roomId : String
+    - date : String
+    - time : String
+    - language : Language
+    - format : Format
+    - price : double
+    - reservedSeats : List<String>
+    + addReservedSeats(seatLabel : String) : void
 }
 
-
-
-class Ticket {
+class Ticket{
     -id : String
     -purchaseId : String
     -showtimeId : String
     -seatLabel : String
     -price : double
-
-    +Ticket(id : String, purchaseId : String, showtimeId : String, seatLabel : String, price : double)
-    +toString() : String
-    +{static} fromString(line : String) : Ticket
 }
 
-
-
-class Purchase {
+class Purchase{
     -id : String
     -userId : String
     -purchaseDate : String
     -total : double
-
-    +Purchase(id : String, userId : String, purchaseDate : String, total : double)
-    +toString() : String
-    +{static} fromString(line : String) : Purchase
 }
-
-
 
 '==================================================
 ' REPOSITORIES
 '==================================================
 
-interface Repository<T> {
+interface Repository<T>{
     +findAll() : List<T>
     +findById(id:String) : T
     +save(object:T)
@@ -157,78 +127,58 @@ interface Repository<T> {
     +delete(id:String)
 }
 
-
-
-class MovieRepository {
-    +findByStatus(status : MovieStatus)
-    +findByTitle(title : String)
-    +findByGenre(genre : Genre)
-}
-
-
-
-class UserRepository {
-    -{static} filepath : String
-    -fileManager : TxtFileManager
-
-    +findAll() : List<User>
-    +findById(id : String) : User
-    +save(user : User) : void
-    +update(user : User) : void
-    +delete(id : String) : void
-    +findByUsername(username : String) : User
-    +findByEmail(email : String) : User
-    +getLastId() : String
-    -writeAll(users : List<User>) : void
-}
-
-
-
-class RoomRepository {
+class MovieRepository{
+    - filePath : String
+    - fileManager : TxtFileManager
+    + findAll() : List<Movie>
+    + findById(id : String) : Movie
+    + save(movie : Movie) : void
+    + update(movie : Movie) : void
+    + delete (id : String) : void
+    + findByStatus(status MovieStatus) : List<Movie>
+    - writeAll(movies : List<Movie>) : void
 
 }
 
-
-
-class ShowtimeRepository {
-    +findByMovieId(movieId : String)
-    +findByDate(date : String)
-    +findByRoom(roomId : String)
+class UserRepository{
+    +findByUsername(username)
+    +findByEmail(email)
+    +getLastId()
 }
 
-
-
-class TicketRepository {
-    +{static} filePath : String
-    +fileManager : TxtFileManager
-
-    +findAll() : List<Ticket>
-    +findById(id : String) : Ticket
-    +save(ticket : Ticket) : void
-    +update(ticket : Ticket) : void
-    +delete(id : String) : void
-    +findByPurchaseId(purchaseId : String) : List<Ticket>
-    +getLastId() : String
-    -writeAll(tickets : List<Ticket>) : void
+class RoomRepository{
+    - filePath = String
+    - fileManager = TxtFileManager
+    + findAll() : List<Room>
+    + findById(id : String) : Room
+    + save(room : Room) : void
+    + update(room : Room) : void
+    + delete (id : String) : void
+    + findByStatus(status MovieStatus) : List<Movie>
+    - writeAll(rooms : List<Room>) : void
 }
 
-
-
-class PurchaseRepository {
-    +{static} filePath : String
-    +fileManager : TxtFileManager
-
-    +findAll() : List<Purchase>
-    +findById(id : String) : Purchase
-    +save(purchase : Purchase) : void
-    +update(purchase : Purchase) : void
-    +delete(id : String) : void
-    +findByUserId(userId : String) : List<Purchase>
-    +getLastId() : String
-    -writeAll(purchases : List<Purchase>) : void
+class ShowtimeRepository{
+    - filePath : String
+    - fileManager : TxtFileManager
+    + findAll() : List<Showtime>
+    + findById(id : String) : Showtime
+    + save (showtime : Showtime) : void
+    + update (showtime : Showtime) : void
+    + delete (id : String) : void
+    + findMovieId(movieId : String) : List<Showtime>
+    - writeAll(showtimes : List<Showtime>) : void
 }
 
+class TicketRepository{
+    +findByPurchaseId(purchaseId)
+    +getLastId()
+}
 
+class PurchaseRepository{
+    +findByUserId(userId)
+    +getLastId()
+}
 
 Repository <|.. MovieRepository
 Repository <|.. UserRepository
@@ -237,154 +187,138 @@ Repository <|.. ShowtimeRepository
 Repository <|.. TicketRepository
 Repository <|.. PurchaseRepository
 
-
-
-'==================================================
-' ENUM RELATIONS
-'==================================================
-
-User --> Role
-
-Movie --> Genre
-Movie --> MovieStatus
-
-Showtime --> Language
-Showtime --> Format
-
-
-
 '==================================================
 ' SERVICES
 '==================================================
 
-class AuthService {
-    -userRepository : UserRepository
+class AuthService{
+    - userRepository : UserRepository
 
-    +AuthService(userRepository : UserRepository)
-    +login(email : String, password : String) : User
-    +register(fullName : String, email : String, username : String, password : String) : boolean
-    +usernameExists(username : String) : boolean
-    +emailExists(email : String) : boolean
+    + login(email : String, password : String) : User
+    + register(fullName : String, email : String, username : String, password : String) : boolean
+    + logout() : void
+    + usernameExists(username : String) : boolean
+    + emailExists(email : String) : boolean
 }
 
-
-
-class MovieService {
-    -movieRepository : MovieRepository
-
-    +getNowShowing() : List<Movie>
-    +getComingSoon() : List<Movie>
-    +searchByTitle(title : String) : List<Movie>
-    +filterByGenre(genre : Genre) : List<Movie>
-    +getMovieById(id : String) : Movie
-    +getAllMovies() : List<Movie>
-    +filterMovies(title : String, genre : Genre) : List<Movie>
+class MovieService{
+    - movieRepository : MovieRepository
+    + filterMovies(title : String, genre : Genre) : List<Movie>
 }
 
+class ShowtimeService{
+    - showtimeRepository : ShowtimeRepository
+    - movieRepository : MovieRepository
+    - roomRepository : RoomRepository
 
-
-class ShowtimeService {
-    -showtimeRepository : ShowtimeRepository
-    -movieRepository : MovieRepository
-    -roomRepository : RoomRepository
-
-    +getShowtimesByMovie(movieId : String) : List<Showtime>
-    +getShowtimeById(id : String) : Showtime
-    +getShowtimesByDate(date : String) : List<Showtime>
+    + getShowtimesByMovie(movieId : String) : List<Showtime>
 }
 
+class PurchaseService{
+    - purchaseRepository : PurchaseRepository
+    - ticketRepository : TicketRepository
+    - showtimeRepository : ShowtimeRepository
 
-
-class SeatService {
-    -showtimeRepository : ShowtimeRepository
-    -roomRepository : RoomRepository
-
-    +getSeatsForShowtime(showtimeId : String) : List<Seat>
-    +getReservedSeats(showtimeId : String) : List<String>
-    +isSeatAvailable(showtimeId : String, seatLabel : String) : boolean
+    + purchase(userId : String, showtimeId : String, seats : List<String>) : Purchase
+    + getPurchasesByUser(userId : String) : List<Purchase>
+    + getTicketsByPurchase(purchaseId : String) : List<Ticket>
 }
 
+class SessionManager{
+    - currentUser : User
 
-
-class PurchaseService {
-    -purchaseRepository : PurchaseRepository
-    -ticketRepository : TicketRepository
-    -showtimeRepository : ShowtimeRepository
-
-    +PurchaseService(purchaseRepository : PurchaseRepository, ticketRepository : TicketRepository, showtimeRepository : ShowtimeRepository)
-    +purchase(userId : String, showtimeId : String, seats : List<String>) : Purchase
+    + login(user : User) : void
+    + logout() : void
+    + isLoggedIn() : boolean
+    + isAdmin() : boolean
 }
 
-
-
-class AdminService {
-    -movieRepository : MovieRepository
-    -showtimeRepository : ShowtimeRepository
-    -roomRepository : RoomRepository
-
-    +addMovie(movie : Movie) : void
-    +updateMovie(movie : Movie) : void
-    +deleteMovie(movieId : String) : void
-
-    +addShowtime(showtime : Showtime) : void
-    +updateShowtime(showtime : Showtime) : void
-    +deleteShowtime(showtimeId : String) : void
-
-    +addRoom(room : Room) : void
-    +updateRoom(room : Room) : void
-    +deleteRoom(roomId : String) : void
-
-    +getAllMovies() : List<Movie>
-    +getAllShowtimes() : List<Showtime>
-    +getAllRooms() : List<Room>
+class PasswordUtils{
+    + hashPassword(password : String) : String
+    + verifyPassword(password : String, hash : String) : boolean
 }
 
-
-
-class SessionManager {
-    -currentUser : User
-
-    +login(user : User) : void
-    +logout() : void
-    +isLoggedIn() : boolean
-    +isAdmin() : boolean
+class TxtFileManager{
+    + readLines(path : String) : List<String>
+    + writeLines(path : String, lines : List<String>) : void
+    + appendLine(path : String, line : String) : void
 }
-
-
-
-class PasswordUtils {
-    +{static} hashPassword(password : String) : String
-    +{static} verifyPassword(password : String, hash : String) : boolean
-}
-
-
-
-class TxtFileManager {
-    +readLines(path : String) : List<String>
-    +writeLines(path : String, lines : List<String>) : void
-    +appendLine(path : String, lines : String) : void
-}
-
-
-
-'==================================================
-' UTILS
-'==================================================
 
 class GenreFormatter {
-    +format(genre : Genre) : String
+    + format(genre : Genre) : String
 }
-
-
 
 class DurationFormatter {
-    +format(duration : int) : String
+    + format(duration : int) : String
 }
 
+'==================================================
+' CONTROLLERS
+'==================================================
 
+class MenuController
+class LoginOverlayController
+class RegisterOverlayController
+
+class MovieDetailsController{
+    - movieRepository : MovieRepository
+    - roomRepository : RoomRepository
+    - showtimeRepository : ShowtimeRepository
+    - showtimeService : ShowtimeService
+
+    + initialize(location:URL, resources : ResourceBundle ) : void
+    - loadShowTimes() : void
+    - findPaneByTitle(title:String) : TitledPane
+    - addShowtimeToPaneContent(pane : TitledPane,showtime : Showtime) : void
+    - handleBuyAction(showtime : Showtime) : void
+
+}
+
+class SelectSeatsController{
+    - selectedShowtime : Showtime
+    - showtime : Showtime
+    - movie : Movie
+    - room : Room
+    - movieRepository : MovieRepository
+    - roomRepository : RoomRepository
+    - selectedSeats : List<String>
+
+    + initialize(location : URL, resourceBundle : ResourceBundle) : void
+    - loadSeats(rows : int, columns : int) : void
+    - updateSeatsLabel () : void
+}
+
+class PurchaseController{
+    - purchaseService : PurchaseService
+
+    + initialize() : void
+    + confirmPurchase() : void
+    + cancelPurchase() : void
+}
+
+class ProfileController{
+    - purchaseService : PurchaseService
+
+    + initialize() : void
+    + loadPurchases() : void
+    + viewTicket(ticketId : String) : void
+}
+
+class AdminDashboardController{
+    - movieService : MovieService
+    - roomRepository : RoomRepository
+    - showtimeRepository : ShowtimeRepository
+    - userRepository : UserRepository
+
+    + initialize(url : URL, resourceBundle : ResourceBundle) : void
+    - loadDashboardMetrics() : void
+    - loadMovies() : void
+    - loadCbx() : void
+    - createHeader() : HBox
+}
 
 '==================================================
-' DEPENDENCIAS
+' DEPENDENCIES
 '==================================================
 
 AuthService --> UserRepository
@@ -396,16 +330,9 @@ ShowtimeService --> ShowtimeRepository
 ShowtimeService --> MovieRepository
 ShowtimeService --> RoomRepository
 
-SeatService --> ShowtimeRepository
-SeatService --> RoomRepository
-
 PurchaseService --> PurchaseRepository
 PurchaseService --> TicketRepository
 PurchaseService --> ShowtimeRepository
-
-AdminService --> MovieRepository
-AdminService --> ShowtimeRepository
-AdminService --> RoomRepository
 
 MovieRepository --> TxtFileManager
 UserRepository --> TxtFileManager
@@ -414,175 +341,41 @@ ShowtimeRepository --> TxtFileManager
 TicketRepository --> TxtFileManager
 PurchaseRepository --> TxtFileManager
 
-GenreFormatter --> Genre
-
-
-
-'==================================================
-' CONTROLLERS
-'==================================================
-
-class MenuController {
-    -movieService : MovieService
-    -navLabels : List<Label>
-    -originalNowShowing : List<Movie>
-    -originalComingSoon : List<Movie>
-
-    +initialize(url : URL, resourceBundle : ResourceBundle) : void
-    +refreshData() : void
-    +openLoginOverlay() : void
-    +openRegisterOverlay() : void
-    +updateNavbarAfterLogin(userName : String) : void
-    +openAdminMenu() : void
-    +closeSession() : void
-
-    -initOverlays() : void
-    -initNavigation() : void
-    -initFilterListeners() : void
-    -loadGenres() : void
-    -applyFilters() : void
-    -loadCatalog(movies : List<Movie>) : void
-    -loadUpcomingReleases(movies : List<Movie>) : void
-    -ignoreVerticalScroll(event : ScrollEvent) : void
-    -animateScrollTo(scrollPane : ScrollPane, targetSection : Node) : void
-    -updateActiveLabel(selectedLabel : Label) : void
-}
-
-
-
-class LoginOverlayController {
-    -authService : AuthService
-    -parentController : MenuController
-
-    +initialize() : void
-
-    -handleLogin() : void
-    -showErrorMessage(message : String) : void
-    -resetForm() : void
-    -closeModal() : void
-}
-
-
-
-class RegisterOverlayController {
-    -authService : AuthService
-    -parentController : MenuController
-
-    +initialize() : void
-
-    -handleRegistration() : void
-    -showErrorMessage(message : String) : void
-    -resetForm() : void
-    -closeModal() : void
-}
-
-
-
-class MovieDetailsController {
-    -movieService : MovieService
-    -showtimeService : ShowtimeService
-
-    +initialize() : void
-    +loadMovie(movieId : String) : void
-    +loadShowtimes(movieId : String) : void
-    +goBack() : void
-}
-
-
-
-class SeatSelectionController {
-    -seatService : SeatService
-    -purchaseService : PurchaseService
-
-    +initialize() : void
-    +loadSeats(showtimeId : String) : void
-    +confirmSelection() : void
-}
-
-
-
-class PurchaseController {
-    -movie : Movie
-    -room : Room
-    -showtime : Showtime
-    -selectedSeats : List<String>
-    -showtimeRepository : ShowtimeRepository
-    -ticketRepository : TicketRepository
-    -purchaseRepository : PurchaseRepository
-    -purchaseService : PurchaseService
-
-    +initialize(location : URL, resources : ResourceBundle) : void
-    +setData(movie : Movie, room : Room, showtime : Showtime, selectedSeats : List<String>) : void
-}
-
-
-
-class AdminDashboardController {
-
-}
-
-
-
-'==================================================
-' CONTROLLER RELATIONS
-'==================================================
-
-MenuController --> MovieService
-MenuController --> SessionManager
-MenuController --> LoginOverlayController
-MenuController --> RegisterOverlayController
-MenuController --> GenreFormatter
-
-LoginOverlayController --> AuthService
-LoginOverlayController --> MenuController
-
-RegisterOverlayController --> AuthService
-RegisterOverlayController --> MenuController
-
-MovieDetailsController --> MovieService
-MovieDetailsController --> ShowtimeService
-
-SeatSelectionController --> SeatService
-SeatSelectionController --> PurchaseService
-
-PurchaseController --> PurchaseService
-PurchaseController --> ShowtimeRepository
-PurchaseController --> TicketRepository
-PurchaseController --> PurchaseRepository
-PurchaseController --> GenreFormatter
-PurchaseController --> DurationFormatter
-
-AdminDashboardController --> AdminService
-
-
-
-'==================================================
-' MODEL RELATIONS
-'==================================================
-
-User "1" --> "0..*" Purchase
-
-Purchase "1" --> "1..*" Ticket
-
-Ticket "*" --> "1" Showtime
-
-Showtime "*" --> "1" Movie
-
-Showtime "*" --> "1" Room
-
-Room "1" --> "0..*" Seat
-
-
-
-'==================================================
-' REPOSITORY MODEL RELATIONS
-'==================================================
-
 MovieRepository --> Movie
 UserRepository --> User
 RoomRepository --> Room
 ShowtimeRepository --> Showtime
 TicketRepository --> Ticket
 PurchaseRepository --> Purchase
+
+MenuController --> MovieService
+MenuController --> AuthService
+
+LoginOverlayController --> AuthService
+LoginOverlayController --> SessionManager
+
+RegisterOverlayController --> AuthService
+
+MovieDetailsController --> ShowtimeService
+
+PurchaseController --> PurchaseService
+
+ProfileController --> PurchaseService
+
+'==================================================
+' RELACIONES
+'==================================================
+
+User "1" --> "0..*" Purchase
+
+Purchase "1" --> "1..*" Ticket
+
+Ticket --> Showtime
+
+Showtime --> Movie
+
+Showtime --> Room
+
+Room "1" --> "0..*" Seat
 
 @enduml
