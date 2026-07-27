@@ -7,7 +7,8 @@ skinparam packageStyle rectangle
 skinparam nodesep 50
 skinparam ranksep 70
 
-title Absolute Cinema System - Diagrama de Clases Completo y Ordenado
+title Absolute Cinema System - Diagrama de Clases Completo y Detallado
+
 
 package "com.absolutecinema.model" {
 
@@ -142,6 +143,7 @@ package "com.absolutecinema.model" {
     }
 }
 
+
 User -right-> Role
 Movie -right-> Genre
 Movie -right-> MovieStatus
@@ -168,32 +170,63 @@ package "com.absolutecinema.repository" {
 
     class UserRepository implements Repository {
         - filePath: String
+        + findAll(): List<User>
+        + findById(id: String): Optional<User>
+        + save(user: User): User
+        + update(user: User): void
+        + deleteById(id: String): void
         + findByEmail(email: String): Optional<User>
     }
 
     class MovieRepository implements Repository {
         - filePath: String
+        + findAll(): List<Movie>
+        + findById(id: String): Optional<Movie>
+        + save(movie: Movie): Movie
+        + update(movie: Movie): void
+        + deleteById(id: String): void
     }
 
     class RoomRepository implements Repository {
         - filePath: String
+        + findAll(): List<Room>
+        + findById(id: String): Optional<Room>
+        + save(room: Room): Room
+        + update(room: Room): void
+        + deleteById(id: String): void
     }
 
     class ShowtimeRepository implements Repository {
         - filePath: String
+        + findAll(): List<Showtime>
+        + findById(id: String): Optional<Showtime>
+        + save(showtime: Showtime): Showtime
+        + update(showtime: Showtime): void
+        + deleteById(id: String): void
         + findByMovieId(movieId: String): List<Showtime>
     }
 
     class TicketRepository implements Repository {
         - filePath: String
+        + findAll(): List<Ticket>
+        + findById(id: String): Optional<Ticket>
+        + save(ticket: Ticket): Ticket
+        + update(ticket: Ticket): void
+        + deleteById(id: String): void
         + findByShowtimeId(showtimeId: String): List<Ticket>
     }
 
     class PurchaseRepository implements Repository {
         - filePath: String
+        + findAll(): List<Purchase>
+        + findById(id: String): Optional<Purchase>
+        + save(purchase: Purchase): Purchase
+        + update(purchase: Purchase): void
+        + deleteById(id: String): void
         + findByUserId(userId: String): List<Purchase>
     }
 }
+
 
 package "com.absolutecinema.service" {
 
@@ -236,7 +269,6 @@ ShowtimeService -down-> RoomRepository
 PurchaseService -down-> PurchaseRepository
 PurchaseService -down-> TicketRepository
 
-
 package "com.absolutecinema.utils" {
     class PasswordUtils {
         + {static} hashPassword(password: String): String
@@ -257,35 +289,157 @@ package "com.absolutecinema.utils" {
     }
 }
 
+
 package "com.absolutecinema.controller" {
 
     package "admin" {
-        class AdminDashboardController
-        class AdminMoviesController
-        class AdminRoomsController
-        class AdminShowtimesController
-        class AdminUsersController
-        class AddMovieOverlayController
-        class EditMovieOverlayController
-        class DeleteMovieOverlayController
+        class AdminDashboardController {
+            - movieService: MovieService
+            - showtimeService: ShowtimeService
+            - mainContainer: Pane
+            + initialize(): void
+            + handleNavMovies(): void
+            + handleNavShowtimes(): void
+            + handleNavRooms(): void
+            + handleNavUsers(): void
+        }
+
+        class AdminMoviesController {
+            - movieService: MovieService
+            - moviesTable: TableView<Movie>
+            + initialize(): void
+            + handleOpenAddModal(): void
+            + handleOpenEditModal(): void
+            + handleDeleteMovie(): void
+        }
+
+        class AdminRoomsController {
+            - roomRepository: RoomRepository
+            - roomsTable: TableView<Room>
+            + initialize(): void
+            + handleAddRoom(): void
+        }
+
+        class AdminShowtimesController {
+            - showtimeService: ShowtimeService
+            - showtimesTable: TableView<Showtime>
+            + initialize(): void
+            + handleAddShowtime(): void
+        }
+
+        class AdminUsersController {
+            - userRepository: UserRepository
+            - usersTable: TableView<User>
+            + initialize(): void
+        }
+
+        class AddMovieOverlayController {
+            - movieService: MovieService
+            - titleField: TextField
+            - synopsisArea: TextArea
+            - durationField: TextField
+            - genreCombo: ComboBox<Genre>
+            + handleSave(): void
+            + handleCancel(): void
+        }
+
+        class EditMovieOverlayController {
+            - movieService: MovieService
+            - titleField: TextField
+            - synopsisArea: TextArea
+            - selectedMovie: Movie
+            + setMovieData(movie: Movie): void
+            + handleUpdate(): void
+            + handleCancel(): void
+        }
+
+        class DeleteMovieOverlayController {
+            - movieService: MovieService
+            - targetMovieId: String
+            + setMovieId(id: String): void
+            + handleConfirmDelete(): void
+            + handleCancel(): void
+        }
     }
 
     package "client" {
-        class MenuController
-        class MovieDetailsController
-        class SelectSeatsController
-        class ConfirmPurchaseOverlayController
-        class LoginOverlayController
-        class RegisterOverlayController
+        class MenuController {
+            - movieService: MovieService
+            - sessionManager: SessionManager
+            - movieGrid: GridPane
+            - userLabel: Label
+            + initialize(): void
+            + handleSelectMovie(movie: Movie): void
+            + handleOpenLogin(): void
+            + handleLogout(): void
+        }
+
+        class MovieDetailsController {
+            - showtimeService: ShowtimeService
+            - selectedMovie: Movie
+            - titleLabel: Label
+            - synopsisLabel: Label
+            - showtimeCombo: ComboBox<Showtime>
+            + setMovie(movie: Movie): void
+            + handleProceedToSeats(): void
+        }
+
+        class SelectSeatsController {
+            - purchaseService: PurchaseService
+            - currentShowtime: Showtime
+            - seatsGrid: GridPane
+            - selectedSeats: List<Seat>
+            + setShowtime(showtime: Showtime): void
+            + handleSeatClick(row: int, col: int): void
+            + handleConfirmSelection(): void
+        }
+
+        class ConfirmPurchaseOverlayController {
+            - purchaseService: PurchaseService
+            - totalLabel: Label
+            - seatsSummaryLabel: Label
+            + handleFinalizePurchase(): void
+            + handleCancel(): void
+        }
+
+        class LoginOverlayController {
+            - authService: AuthService
+            - emailField: TextField
+            - passwordField: PasswordField
+            - errorLabel: Label
+            + handleLogin(): void
+            + handleOpenRegister(): void
+            + handleClose(): void
+        }
+
+        class RegisterOverlayController {
+            - authService: AuthService
+            - nameField: TextField
+            - emailField: TextField
+            - passwordField: PasswordField
+            + handleRegister(): void
+            + handleClose(): void
+        }
     }
 }
 
-
 AdminDashboardController -down-> MovieService
 AdminDashboardController -down-> ShowtimeService
+AdminMoviesController -down-> MovieService
+AdminRoomsController -down-> RoomRepository
+AdminShowtimesController -down-> ShowtimeService
+AdminUsersController -down-> UserRepository
+
+AddMovieOverlayController -down-> MovieService
+EditMovieOverlayController -down-> MovieService
+DeleteMovieOverlayController -down-> MovieService
+
 MenuController -down-> MovieService
-LoginOverlayController -down-> AuthService
+MovieDetailsController -down-> ShowtimeService
+SelectSeatsController -down-> PurchaseService
 ConfirmPurchaseOverlayController -down-> PurchaseService
+LoginOverlayController -down-> AuthService
+RegisterOverlayController -down-> AuthService
 
 Repository ..> TxtFileManager : usa
 AuthService ..> PasswordUtils : usa
