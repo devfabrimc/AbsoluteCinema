@@ -128,7 +128,7 @@
             </ScrollPane>
             <HBox alignment="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" styleClass="header" StackPane.alignment="TOP_CENTER">
                <children>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER_LEFT" minWidth="-Infinity">
                      <children>
                         <ImageView fitHeight="44.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #D7A651, 100, 0.5, 0, 0);" translateY="-5.0">
                            <image>
@@ -138,14 +138,14 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <VBox prefHeight="68.0" prefWidth="118.0">
+                        <VBox>
                            <children>
-                              <Label prefHeight="0.0" prefWidth="118.0" styleClass="logo-title" text="ABSOLUTE" textFill="WHITE" textOverrun="CLIP">
+                              <Label styleClass="logo-title" text="ABSOLUTE" textFill="WHITE" textOverrun="CLIP">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="0.0" prefWidth="118.0" styleClass="logo-subtitle" text="CINEMA" textFill="WHITE" textOverrun="CLIP" translateY="-8.0">
+                              <Label styleClass="logo-subtitle" text="CINEMA" textFill="WHITE" textOverrun="CLIP" translateY="-8.0">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -155,7 +155,7 @@
                      </children>
                   </HBox>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <HBox alignment="CENTER" spacing="40.0">
+                  <HBox alignment="CENTER" minWidth="-Infinity" spacing="40.0">
                      <children>
                         <Label fx:id="lblNavHome" styleClass="nav-button" text="INICIO" textFill="WHITE" textOverrun="CLIP">
                            <cursor>
@@ -175,7 +175,7 @@
                      </children>
                   </HBox>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                  <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" spacing="20.0">
                      <children>
                         <Button fx:id="btnMenuLogin" mnemonicParsing="false" styleClass="secondary-button" text="Iniciar Sesión">
                            <cursor>
