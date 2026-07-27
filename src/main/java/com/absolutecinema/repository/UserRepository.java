@@ -78,7 +78,7 @@ public class UserRepository implements Repository<User> {
 
 
     /*  Elimina un usuario por su ID.
-        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo
+        Filtrando la lista actual reordenando los IDs y sobrescribe el archivo
      */
 
     @Override

@@ -92,7 +92,7 @@ class Room{
     - name : String
     - rows : int
     - columns : int
-    + printformat(line : String) : Room
+    + fromString(line : String) : Room
 }
 
 

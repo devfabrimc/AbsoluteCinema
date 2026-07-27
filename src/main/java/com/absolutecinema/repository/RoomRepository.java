@@ -30,7 +30,7 @@ public class RoomRepository implements Repository<Room>{
         List<Room> rooms = new ArrayList<>();
 
         for (String line : fileManager.readLines(filePath)) {
-            rooms.add(Room.printformat(line));
+            rooms.add(Room.fromString(line));
         }
 
         return rooms;
@@ -77,7 +77,7 @@ public class RoomRepository implements Repository<Room>{
     }
 
     /*  Elimina una sala por su ID.
-        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo.
+        Filtrando la lista actual reordenando los IDs y sobrescribe el archivo.
      */
 
     @Override

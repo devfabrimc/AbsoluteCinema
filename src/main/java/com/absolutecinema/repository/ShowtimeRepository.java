@@ -77,7 +77,7 @@ public class ShowtimeRepository implements Repository<Showtime> {
     }
 
     /*  Elimina una función por su ID.
-        Filtrando la lista actual sin incluir el ID y sobrescribe el archivo.
+        Filtrando la lista actual reordenando los IDs y sobrescribe el archivo.
      */
 
     @Override

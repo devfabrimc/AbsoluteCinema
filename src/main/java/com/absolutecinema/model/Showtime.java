@@ -19,7 +19,8 @@ public class Showtime {
 
     // Constructor
 
-    public Showtime(String id, String movieId, String roomId, String date, String time, Language language, Format format, double price, List<String> reservedSeats) {
+    public Showtime(String id, String movieId, String roomId, String date, String time, Language language,
+                    Format format, double price, List<String> reservedSeats) {
         this.id = id;
         this.movieId = movieId;
         this.roomId = roomId;
@@ -116,8 +117,6 @@ public class Showtime {
            a una cadena separada por comas
          */
 
-        String seatsString = String.join(",", reservedSeats);
-
         return id + ";" +
                 movieId + ";" +
                 roomId + ";" +
@@ -126,7 +125,7 @@ public class Showtime {
                 language.name() + ";" +
                 format.name() + ";" +
                 price + ";" +
-                seatsString;
+                String.join(",", reservedSeats);
     }
 
     /*  Método para crear una instancia de Showtime
