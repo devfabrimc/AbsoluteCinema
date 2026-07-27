@@ -384,7 +384,7 @@ class DurationFormatter {
 
 
 '==================================================
-' DEPENDENCIAS
+' SERVICE RELATIONS
 '==================================================
 
 AuthService --> UserRepository
