@@ -66,7 +66,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.staticOverlay = noAccountOverlay;
-        staticOverlayController = noAccountOverlayController;
+        this.staticOverlayController = noAccountOverlayController;
 
         hbxMovieCard.getChildren().clear();
         lblUserWelcomeMessage.setVisible(false);
