@@ -58,14 +58,14 @@ public class DeleteShowtimeOverlayController {
     }
 
     @FXML
-    void closeModal(ActionEvent event) {
+    void closeModal() {
         rootPane.setVisible(false);
         lblErrorMessage.setVisible(false);
         lblErrorMessage.setManaged(false);
     }
 
     @FXML
-    void confirmDelete(ActionEvent event) {
+    void confirmDelete() {
         try {
             if (currentShowtime != null) {
                 List<Ticket> tickets = ticketRepository.findAll();

@@ -26,15 +26,4 @@ public class ShowtimeService {
     public List<Showtime> getShowtimeByMovie (String movieId){
         return showtimeRepository.findByMovieId(movieId);
     }
-
-    //Metodo que devuelve el showtime por Id
-    public Showtime getShowtimeById (String id){
-        return showtimeRepository.findById(id);
-    }
-
-    //Metodo que devuelve el showtime por fecha
-    public List<Showtime> getShowtimeByDate (String date){
-        return showtimeRepository.findByDate(date);
-    }
-
 }

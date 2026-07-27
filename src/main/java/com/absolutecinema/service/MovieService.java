@@ -25,16 +25,6 @@ public class MovieService {
         return movieRepository.findByStatus(MovieStatus.COMING_SOON);
     }
 
-    //Metodo que busca películas por el nombre
-    public List<Movie> searchByTitle(String title){
-        return movieRepository.findByTitle(title);
-    }
-
-    //Metodo que busca películas por el género
-    public List<Movie> filterByGenre(Genre genre){
-        return movieRepository.findByGenre(genre);
-    }
-
     //Metodo que busca una película por el ID
     public Movie getMovieById(String id){
         return movieRepository.findById(id);

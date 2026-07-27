@@ -29,14 +29,6 @@ public class Purchase {
         return userId;
     }
 
-    public String getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
     // Método toString
 
     @Override

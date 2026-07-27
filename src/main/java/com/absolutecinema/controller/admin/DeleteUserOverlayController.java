@@ -50,14 +50,14 @@ public class DeleteUserOverlayController {
     }
 
     @FXML
-    void closeModal(ActionEvent event) {
+    void closeModal() {
         rootPane.setVisible(false);
         lblErrorMessage.setVisible(false);
         lblErrorMessage.setManaged(false);
     }
 
     @FXML
-    void confirmDelete(ActionEvent event) {
+    void confirmDelete() {
         try {
             if (currentUser != null) {
                 List<Purchase> userPurchases = purchaseRepository.findByUserId(currentUser.getId());

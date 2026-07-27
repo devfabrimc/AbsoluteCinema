@@ -44,12 +44,12 @@ public class DeleteMovieOverlayController {
     }
 
     @FXML
-    void closeModal(ActionEvent event) {
+    void closeModal() {
         rootPane.setVisible(false);
     }
 
     @FXML
-    void confirmDelete(ActionEvent event) {
+    void confirmDelete() {
         if (currentMovie != null) {
             deleteAssociatedImages();
 

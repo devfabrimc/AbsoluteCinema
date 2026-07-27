@@ -75,22 +75,4 @@ public class PurchaseService {
         //Devolvemos el Purchase
         return newPurchase;
     }
-    //Metodo que busca la compra segun el usuario
-    public List<Purchase> getPurchasesByUser(String userId) {
-        //Verificamos que el userID no sea nulo
-        if (userId == null){
-            //Si lo es devolvemos null
-            return null;
-        }
-        return purchaseRepository.findByUserId(userId);
-    }
-    //Metodo que busca el ticket segun la compra
-    public List<Ticket> getTicketsByPurchase(String purchaseId) {
-        //Verificamos que el purchaseId no sea nulo
-        if (purchaseId == null){
-            //Si lo es devolvemos null
-            return null;
-        }
-        return ticketRepository.findByPurchaseId(purchaseId);
-    }
 }

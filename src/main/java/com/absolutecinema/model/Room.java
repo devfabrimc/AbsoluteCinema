@@ -74,25 +74,4 @@ public class Room {
                 rows + ";" +
                 columns;
     }
-
-    /*  Método para crear una instancia de Room
-        a partir de una cadena de texto.
-        Formato que se espera (separado por ";"):
-        id;name;rows;colums
-
-        Parámetro: line, la cadena de texto que se
-        debe procesar.
-     */
-
-    public static Room fromString(String line) {
-
-        String[] data = line.split(";");
-
-        return new Room(
-                data[0],
-                data[1],
-                Integer.parseInt(data[2]),
-                Integer.parseInt(data[3])
-        );
-    }
 }

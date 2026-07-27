@@ -95,9 +95,4 @@ public class RegisterOverlayController {
         resetForm();
         rootPane.setVisible(false);
     }
-
-    public void openModal() {
-        resetForm();
-        rootPane.setVisible(true);
-    }
 }

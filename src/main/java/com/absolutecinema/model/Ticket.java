@@ -33,14 +33,6 @@ public class Ticket {
         return showtimeId;
     }
 
-    public String getSeatLabel() {
-        return seatLabel;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
     @Override
     public String toString() {
         return id + ";" +

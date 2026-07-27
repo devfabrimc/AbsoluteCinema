@@ -109,17 +109,7 @@ public class Movie {
         this.status = status;
     }
 
-    // Métodos para validación de películas
-    public boolean isNowShowing(){
-        return status.equals(MovieStatus.NOW_SHOWING);
-    }
-
-    public boolean isComingSoon(){
-        return status.equals(MovieStatus.COMING_SOON);
-    }
-
     // Método toString
-
     @Override
     public String toString() {
         return id + ";" +

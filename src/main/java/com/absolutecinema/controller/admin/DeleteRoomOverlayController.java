@@ -52,14 +52,14 @@ public class DeleteRoomOverlayController {
     }
 
     @FXML
-    void closeModal(ActionEvent event) {
+    void closeModal() {
         rootPane.setVisible(false);
         lblErrorMessage.setVisible(false);
         lblErrorMessage.setManaged(false);
     }
 
     @FXML
-    void confirmDelete(ActionEvent event) {
+    void confirmDelete() {
         try {
             if (currentRoom != null) {
                 List<Showtime> showtimes = showtimeRepository.findAll();

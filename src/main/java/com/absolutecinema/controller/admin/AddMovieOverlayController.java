@@ -188,7 +188,6 @@ public class AddMovieOverlayController {
 
         try {
             String folderPath = "src/main/resources/com/absolutecinema/images/portadas/" + type;
-            File directory = new File(folderPath);
 
             String fileName = sourceFile.getName();
             String extension = fileName.substring(fileName.lastIndexOf("."));

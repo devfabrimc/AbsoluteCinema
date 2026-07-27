@@ -107,34 +107,6 @@ public class MovieRepository implements Repository<Movie> {
         return result;
     }
 
-    // Busca las películas por su título, ignorando mayúsculas y minúsculas
-
-    public List<Movie> findByTitle(String title) {
-        List<Movie> result = new ArrayList<>();
-
-        for (Movie movie : findAll()) {
-            if (movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result.add(movie);
-            }
-        }
-
-        return result;
-    }
-
-    // Busca las películas por su género cinematográfico
-
-    public List<Movie> findByGenre(Genre genre) {
-        List<Movie> result = new ArrayList<>();
-
-        for (Movie movie : findAll()) {
-            if (movie.getGenre().equals(genre)) {
-                result.add(movie);
-            }
-        }
-
-        return result;
-    }
-
     /*  Obtiene el último ID que se generó en el archivo
         para facilitar la creación de nuevos registros.
      */

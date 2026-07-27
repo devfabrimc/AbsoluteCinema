@@ -107,14 +107,6 @@ public class Showtime {
         reservedSeats.add(seatLabel);
     }
 
-    public void removeReservedSeat(String seatLabel){
-        reservedSeats.remove(seatLabel);
-    }
-
-    public boolean isSeatReserved(String seatLabel){
-        return reservedSeats.contains(seatLabel);
-    }
-
     // Método toString
 
     @Override

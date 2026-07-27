@@ -124,20 +124,6 @@ public class ShowtimeRepository implements Repository<Showtime> {
         return result;
     }
 
-    // Busca todas las funciones que se llevaran a cabo en una sala específica.
-
-    public List<Showtime> findByRoom(String roomId){
-        List<Showtime> result = new ArrayList<>();
-
-        for (Showtime showtime :  findAll()){
-            if (showtime.getRoomId().equals(roomId)){
-                result.add(showtime);
-            }
-        }
-
-        return result;
-    }
-
     /*  Obtiene el último ID que se generó en el archivo
         para facilitar la creación de nuevos registros.
      */

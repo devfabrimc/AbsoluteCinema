@@ -114,12 +114,12 @@ public class EditMovieOverlayController {
     }
 
     @FXML
-    void closeModal(ActionEvent event) {
+    void closeModal() {
         rootPane.setVisible(false);
     }
 
     @FXML
-    void saveMovie(ActionEvent event) {
+    void saveMovie() {
         try {
             if (lblTitle.getText().isBlank() || lblSynopsis.getText().isBlank() ||
                     cbxGenres.getValue() == null || lblDuration.getText().isBlank() ||
@@ -174,7 +174,6 @@ public class EditMovieOverlayController {
 
         try {
             String folderPath = "src/main/resources/com/absolutecinema/images/portadas/" + type;
-            File directory = new File(folderPath);
 
             String fileName = sourceFile.getName();
             String extension = fileName.substring(fileName.lastIndexOf("."));

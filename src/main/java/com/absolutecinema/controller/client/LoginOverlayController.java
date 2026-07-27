@@ -87,9 +87,4 @@ public class LoginOverlayController {
         resetForm();
         rootPane.setVisible(false);
     }
-
-    public void openModal() {
-        resetForm();
-        rootPane.setVisible(true);
-    }
 }
