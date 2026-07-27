@@ -18,13 +18,10 @@ public class MovieReleaseCardController {
 
     @FXML private Label lblGenero;
 
-    @FXML private Label lblScore;
-
     public void setMovie(Movie movie) {
         setTitle(movie);
         setGenre(movie);
         setImage(movie);
-        setGrade(movie);
     }
 
     private void setTitle(Movie movie) {
@@ -33,14 +30,6 @@ public class MovieReleaseCardController {
 
     private void setGenre(Movie movie){
         lblGenero.setText(GenreFormatter.format(movie.getGenre()));
-    }
-
-    private void setGrade(Movie movie) {
-        if(movie.getScore() == 0.0) {
-            lblScore.setText("S/N");
-        }else{
-            lblScore.setText(Double.toString(movie.getScore()));
-        }
     }
 
     private void setImage(Movie movie){

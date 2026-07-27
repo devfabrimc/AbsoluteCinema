@@ -67,11 +67,6 @@ public class AuthService {
         //Decimos que la creación del usuario fue hecha correctamente
         return true;
     }
-    //Metodo de logout
-    public void logout(){
-        //Cerramos sesión usando SessionManager
-        SessionManager.getInstance().logout();
-    }
     //Metodo verifica si el username ya existe
     public boolean usernameExists(String username){
         //Si la comparación es true significa que ya existe el usuario

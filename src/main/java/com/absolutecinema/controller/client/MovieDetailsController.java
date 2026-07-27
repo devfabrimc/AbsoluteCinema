@@ -43,6 +43,7 @@ public class MovieDetailsController implements Initializable {
     @FXML private Label lblScore;
     @FXML private Label lblMeta;
     @FXML private Label lblSynopsis;
+    @FXML private HBox lblShowtimeMessage;
     @FXML private Accordion functionsAccordion;;
 
     public static Movie selectedMovieData;
@@ -55,6 +56,9 @@ public class MovieDetailsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Movie movie = selectedMovieData;
+        lblShowtimeMessage.setVisible(false);
+        lblShowtimeMessage.setManaged(false);
+
 
         if (movie != null) {
             lblTitle.setText(movie.getTitle().toUpperCase());
@@ -111,6 +115,11 @@ public class MovieDetailsController implements Initializable {
             }
 
             addShowtimeToPaneContent(existingPane, showtime);
+        }
+
+        if(functionsAccordion.getPanes().size() == 0) {
+            lblShowtimeMessage.setVisible(true);
+            lblShowtimeMessage.setManaged(true);
         }
     }
 

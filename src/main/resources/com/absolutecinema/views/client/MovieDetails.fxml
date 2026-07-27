@@ -81,6 +81,21 @@
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </Accordion>
+                                          <HBox fx:id="lblShowtimeMessage" maxWidth="-Infinity" styleClass="error-container" stylesheets="@../../styles/admin-overlays.css">
+                                             <children>
+                                                <ImageView fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #ea4444, 100, 0.5, 0, 0);">
+                                                   <image>
+                                                      <Image url="@../../images/danger.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox>
+                                                   <children>
+                                                      <Label styleClass="title-container" text="No hay funciones disponibles." />
+                                                      <Label styleClass="text-container" text="Actualmente esta película no cuenta con ninguna función programada." />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>

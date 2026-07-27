@@ -17,15 +17,6 @@
          <children>
             <HBox fillHeight="false" spacing="18.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="upcoming-date-box">
-                     <children>
-                        <Label fx:id="lblScore" alignment="CENTER" styleClass="upcoming-date-day" text="DAY" textAlignment="CENTER" />
-                        <Label alignment="CENTER" styleClass="upcoming-date-month" text="PUNTOS" textAlignment="CENTER" />
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
                   <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets />
@@ -43,7 +34,7 @@
                   </VBox>
                </children>
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
                </padding>
             </HBox>
          </children>

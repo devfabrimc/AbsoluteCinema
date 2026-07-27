@@ -1,26 +1,24 @@
 package com.absolutecinema.controller.client;
 
 import com.absolutecinema.application.App;
-import com.absolutecinema.model.Genre;
 import com.absolutecinema.model.Movie;
-import com.absolutecinema.model.MovieStatus;
 import com.absolutecinema.utils.GenreFormatter;
 import com.absolutecinema.utils.Paths;
-import javafx.application.Application;
+import com.absolutecinema.utils.SessionManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+import static com.absolutecinema.controller.client.MenuController.staticOverlay;
+import static com.absolutecinema.controller.client.MenuController.staticOverlayController;
 
 public class MovieCardController {
 
@@ -43,6 +41,12 @@ public class MovieCardController {
         setScore(movie.getScore());
         movieCard.setOnMouseClicked(event -> {
             MovieDetailsController.selectedMovieData = movie;
+
+            if(!SessionManager.getInstance().isLoggedIn()) {
+                staticOverlayController.setParentController(this);
+                staticOverlay.setVisible(true);
+                return;
+            }
 
             App.app.setTitle(" | " + movie.getTitle());
             App.app.setScene(Paths.MOVIE_DETAILS_VIEW);
@@ -106,16 +110,16 @@ public class MovieCardController {
                 path = "/com/absolutecinema/images/star-empty.png";
             }
 
-            ImageView estrella = createStar(path);
+            ImageView star = createStar(path);
 
-            if (estrella != null) {
+            if (star != null) {
 
                 int index = hbxFeaturedMovieStars.getChildren().size() - 1;
 
                 if (index < 0) {
-                    hbxFeaturedMovieStars.getChildren().add(estrella);
+                    hbxFeaturedMovieStars.getChildren().add(star);
                 } else {
-                    hbxFeaturedMovieStars.getChildren().add(index, estrella);
+                    hbxFeaturedMovieStars.getChildren().add(index, star);
                 }
             }
         }
@@ -132,12 +136,12 @@ public class MovieCardController {
             return null;
         }
 
-        ImageView estrella = new ImageView(new Image(stream));
+        ImageView star = new ImageView(new Image(stream));
 
-        estrella.setFitWidth(14);
-        estrella.setFitHeight(14);
-        estrella.setPreserveRatio(true);
+        star.setFitWidth(14);
+        star.setFitHeight(14);
+        star.setPreserveRatio(true);
 
-        return estrella;
+        return star;
     }
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../styles/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MenuController">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../styles/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.absolutecinema.controller.client.MenuController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +32,7 @@
                                     <Region id="overlay-container" />
                                     <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="866.0" spacing="20.0" StackPane.alignment="CENTER_LEFT">
                                        <children>
-                                          <Label id="featured_tag" alignment="CENTER" text="DESTACADA">
+                                          <Label id="featured_tag" alignment="CENTER" text="PRÓXIMO ESTRENO">
                                              <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #E7BC72, 30, 0.5, 0, 0);">
                                                    <image>
@@ -41,41 +41,9 @@
                                                 </ImageView>
                                              </graphic>
                                           </Label>
-                                          <Label id="featured_title" fx:id="lblFeaturedTitle" text="SPIDER-MAN: UN NUEVO DÍA" />
-                                          <Label id="featured_meta" fx:id="lblFeaturedMeta" text="Acción • Aventura • Superhéroe • 2h 30m" />
-                                          <Label id="featured_synopsis" fx:id="lblFeaturedSynopsis" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefWidth="550.0" text="Tras el Día del Juicio Final, Peter Parker intenta centrarse en la universidad y abandonar a Spider-Man. Cuando una nueva amenaza pone en peligro a sus amigos, debe romper su promesa y volver al traje." wrapText="true" />
-                                          <HBox fx:id="hbxFeaturedMovieStars" alignment="CENTER_LEFT" spacing="2.0" style="-fx-effect: innershadow(gaussian, #FF7A59, 30, 0.5, 0, 0);" />
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                                             <children>
-                                                <Button fx:id="btnFeaturedShopTicket" mnemonicParsing="false" styleClass="primary_button" text="COMPRAR ENTRADAS">
-                                                   <graphic>
-                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #000, 30, 0.5, 0, 0);">
-                                                         <image>
-                                                            <Image url="@../../images/ticket.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </Button>
-                                                <Button fx:id="btnFeaturedViewDetails" mnemonicParsing="false" styleClass="secondary-button" text="VER DETALLES">
-                                                   <graphic>
-                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #F5F7FA, 30, 0.5, 0, 0);">
-                                                         <image>
-                                                            <Image url="@../../images/play.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Button>
-                                             </children>
-                                          </HBox>
+                                          <Label id="featured_title" text="SPIDER-MAN: UN NUEVO DÍA" />
+                                          <Label id="featured_meta" text="Acción • Aventura • Superhéroe • 2h 30m" />
+                                          <Label id="featured_synopsis" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefWidth="550.0" text="Tras el Día del Juicio Final, Peter Parker intenta centrarse en la universidad y abandonar a Spider-Man. Cuando una nueva amenaza pone en peligro a sus amigos, debe romper su promesa y volver al traje." wrapText="true" />
                                        </children>
                                        <StackPane.margin>
                                           <Insets bottom="50.0" right="50.0" top="50.0" />
@@ -235,6 +203,36 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Label>
+                        <Button fx:id="btnOpenAdminMenu" mnemonicParsing="false" onAction="#openAdminMenu" styleClass="secondary-button" text="Abrir Panel" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);">
+                                 <image>
+                                    <Image url="@../../images/admin.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnLogOut" mnemonicParsing="false" onAction="#closeSession" styleClass="secondary-button" text="Cerrar sesión" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow(gaussian, #FFF, 30, 0.5, 0, 0);">
+                                 <image>
+                                    <Image url="@../../images/close.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                         <Button fx:id="btnMenuRegister" mnemonicParsing="false" styleClass="primary_button" text="REGISTRARSE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -254,5 +252,6 @@
       </StackPane>
       <fx:include fx:id="loginOverlay" source="LoginOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <fx:include fx:id="registerOverlay" source="RegisterOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <fx:include fx:id="noAccountOverlay" source="NoAccountOverlay.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

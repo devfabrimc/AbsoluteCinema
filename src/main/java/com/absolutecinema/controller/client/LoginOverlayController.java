@@ -3,7 +3,6 @@ package com.absolutecinema.controller.client;
 import com.absolutecinema.model.User;
 import com.absolutecinema.repository.UserRepository;
 import com.absolutecinema.service.AuthService;
-import com.absolutecinema.utils.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

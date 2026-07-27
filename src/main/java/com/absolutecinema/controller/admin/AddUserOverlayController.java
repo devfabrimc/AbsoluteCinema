@@ -112,6 +112,12 @@ public class AddUserOverlayController {
         lblErrorMessage.setText(message);
     }
 
+    /**
+     * Genera el siguiente identificador
+     * consecutivo para un usuario.
+     * @param lastId último identificador registrado.
+     * @return Nuevo identificador generado. USR00#
+     */
     private String generateNextId(String lastId) {
         if (lastId == null || !lastId.startsWith("USR")) {
             return "USR001";
@@ -120,6 +126,10 @@ public class AddUserOverlayController {
         return String.format("USR%03d", numericPart + 1);
     }
 
+    /**
+     * Restablece todos los campos del
+     * formulario a sus valores iniciales.
+     */
     private void resetForm() {
         lblName.clear();
         lblEmail.clear();

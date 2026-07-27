@@ -31,14 +31,7 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     @FXML private Button btnSearchFilters;
-    @FXML private Button btnFeaturedShopTicket;
-    @FXML private Button btnFeaturedViewDetails;
     @FXML private ComboBox<Genre> cmbGenres;
-    @FXML private Region rgnFeaturedImage;
-    @FXML private Label lblFeaturedTitle;
-    @FXML private Label lblFeaturedMeta;
-    @FXML private Label lblFeaturedSynopsis;
-    @FXML private HBox hbxFeaturedMovieStars;
     @FXML private ScrollPane scrMain;
     @FXML private StackPane stkFeaturedImageSection;
     @FXML private Label lblScheduleSection;
@@ -52,9 +45,15 @@ public class MenuController implements Initializable {
     @FXML private Label lblUserWelcomeMessage;
     @FXML private Button btnMenuLogin;
     @FXML private Button btnMenuRegister;
+    @FXML private Button btnOpenAdminMenu;
+    @FXML private Button btnLogOut;
 
     @FXML private AnchorPane loginOverlay;
     @FXML private AnchorPane registerOverlay;
+    @FXML private AnchorPane noAccountOverlay;
+    @FXML private NoAccountOverlayController noAccountOverlayController;
+    public static AnchorPane staticOverlay;
+    public static NoAccountOverlayController staticOverlayController;
     @FXML private LoginOverlayController loginOverlayController;
     @FXML private RegisterOverlayController registerOverlayController;
 
@@ -66,9 +65,16 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.staticOverlay = noAccountOverlay;
+        staticOverlayController = noAccountOverlayController;
+
         hbxMovieCard.getChildren().clear();
         lblUserWelcomeMessage.setVisible(false);
         lblUserWelcomeMessage.setManaged(false);
+        btnOpenAdminMenu.setVisible(false);
+        btnOpenAdminMenu.setManaged(false);
+        btnLogOut.setVisible(false);
+        btnLogOut.setManaged(false);
 
         initOverlays();
         initNavigation();
@@ -82,6 +88,10 @@ public class MenuController implements Initializable {
         loadUpcomingReleases(originalComingSoon);
 
         refreshData();
+
+        if(SessionManager.getInstance().isLoggedIn()){
+            updateNavbarAfterLogin(SessionManager.getInstance().getCurrentUser().getUsername());
+        }
     }
 
     public void refreshData() {
@@ -108,15 +118,30 @@ public class MenuController implements Initializable {
         btnMenuRegister.setVisible(false);
         btnMenuRegister.setManaged(false);
 
+        btnLogOut.setVisible(true);
+        btnLogOut.setManaged(true);
+
         lblUserWelcomeMessage.setVisible(true);
         lblUserWelcomeMessage.setManaged(true);
         lblUserWelcomeMessage.setText("Hola, " + userName);
 
         if(SessionManager.getInstance().isAdmin()){
-            App.app.setScene(Paths.ADMIN_VIEW);
-            App.app.setTitle(" | Panel de Administrador");
+            btnOpenAdminMenu.setVisible(true);
+            btnOpenAdminMenu.setManaged(true);
         }
+    }
 
+    @FXML
+    public void openAdminMenu() {
+        App.app.setScene(Paths.ADMIN_VIEW);
+        App.app.setTitle(" | Panel de Administrador");
+    }
+
+    @FXML
+    public void closeSession() {
+        SessionManager.getInstance().logout();
+        App.app.setScene(Paths.MENU_VIEW);
+        App.app.setTitle(" | Menú Principal");
     }
 
     private void initOverlays() {
